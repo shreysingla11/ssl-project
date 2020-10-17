@@ -15,4 +15,4 @@ do	long	struct	wchar_t
 double	mutable	switch	while
 dynamic_cast	namespace	template
 cin cout return include bits stdc++
-iostream std
+iostream stdc++
