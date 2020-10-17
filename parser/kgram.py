@@ -88,7 +88,17 @@ for line in text:
 
 
         
-print(wordlist)
+# print(wordlist)
+kgramlen=4 
+wl=len(wordlist)
+list_kgrams=[]
+wl=wl-kgramlen
+for i in wl:
+    str=""
+    for j in range(kgramlen):
+        str+=wordlist[i+j]
+    list_kgrams.append(str);
 
+print(list_kgrams)
 # Strips the newline character 
 #/**/
