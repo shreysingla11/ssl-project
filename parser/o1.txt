@@ -1,0 +1,116 @@
+ # include    < iostream >  
+ using   namespace   std ;  
+ int   A [  1  0  5  0  0  0  0  ]  ;  
+ long   long   ans [  1  0  5  0  0  0  0  ]  ;  
+ bool   B [  1  0  5  0  0  0  0  ]  ;  
+                long   long   ans 3  [  1  0  5  0  0  0  0  ]  ;  
+    long   long   ans 2  [  1  0  5  0  0  0  0  ]  ;  
+ void   func ( int   st , int   endt )  {  
+             if ( st =  = endt )  {  
+             ans [ st ]  = A [ st ]  ;  
+             return ;     }  
+             int   mid =  ( st + endt )  /  2  ;  
+             func ( st , mid )  ;  
+             func ( mid +  1  , endt )  ;  
+             int   con = st - mid -  1  ;  
+             for ( int   i = mid +  1  ; i <  = endt ; i +  +  )  {  
+                         ans [ i ]  +  = ans [ i + con ]  ;  
+              }  
+             return ;  
+  }  
+ void   func 1  ( int   A 1  [  ]  , bool   B 1  [  ]  , int   n , long   long   ans 1  [  ]  )  {  
+             if ( n =  =  1  )  {  
+             ans 1  [  0  ]  = A 1  [  0  ]  ;  
+             return ;     }  
+             int   m = n /  2  ;  
+             int   a 1  [ m ]  ;  
+             int   a 2  [ m ]  ;  
+             bool   b 2  [ m ]  ;  
+             bool   b 1  [ m ]  ;  
+             long   long   an 1  [ m ]  ;  
+             long   long   an 2  [ m ]  ;  
+             for ( int   i =  0  ; i < m ; i +  +  )  {  
+                         a 1  [ i ]  = A 1  [ i ]  ;  
+                         b 1  [ i ]  = B 1  [ i ]  ;  
+              }  
+                   for ( int   i = m ; i < n ; i +  +  )  {  
+                         a 2  [ i - m ]  = A 1  [ i ]  ;  
+                         b 2  [ i - m ]  = B 1  [ i ]  ;  
+              }  
+             func 1  ( a 1  , b 1  , m , an 1  )  ;  
+             for ( int   i = m ; i < n ; i +  +  )  {     
+                         if ( B 1  [ i ]  )  
+                         a 2  [ i - m ]  = A 1  [ i ]  - an 1  [ i - m ]  ;  
+                         else 
+                         a 2  [ i - m ]  = A 1  [ i ]  ;  
+              }  
+                         func 1  ( a 2  , b 2  , m , an 2  )  ;  
+                         for ( int   i =  0  ; i < m ; i +  +  )  
+                         ans 1  [ i ]  = an 1  [ i ]  ;  
+                                  for ( int   i = m ; i < n ; i +  +  )  {  
+                         ans 1  [ i ]  = an 1  [ i - m ]  + an 2  [ i - m ]  ;  
+              }  
+             return ;  
+  }  
+ void   func 4  ( long   long   A 1  [  ]  , int   n , long   long   ans 1  [  ]  )  {  
+             if ( n =  =  1  )  {  
+             ans 1  [  0  ]  = A 1  [  0  ]  ;  
+             return ;     }  
+             int   m = n /  2  ;  
+             long   long   a 1  [ m ]  ;  
+             long   long   a 2  [ m ]  ;  
+             long   long   an 1  [ m ]  ;  
+             long   long   an 2  [ m ]  ;  
+             for ( int   i =  0  ; i < m ; i +  +  )  {  
+                         a 1  [ i ]  = A 1  [ i ]  ;  
+              }  
+                   for ( int   i = m ; i < n ; i +  +  )  {  
+                         a 2  [ i - m ]  = A 1  [ i ]  ;  
+              }  
+       for ( int   i =  0  ; i < m ; i +  +  )  {     
+                         a 2  [ i ]  = a 2  [ i ]  - a 1  [ i ]  ;  
+              }  
+             func 4  ( a 1  , m , an 1  )  ;  
+                         func 4  ( a 2  , m , an 2  )  ;  
+                         for ( int   i =  0  ; i < m ; i +  +  )  
+                         ans 1  [ i ]  = an 1  [ i ]  ;  
+                            for ( int   i = m ; i <  = n ; i +  +  )  
+                         ans 1  [ i ]  = an 2  [ i - m ]  ;  
+             return ;  
+  }  
+ int   main (  )     {  
+             ios _ base :  : sync _ with _ stdio ( false )  ;  
+                cin . tie ( NULL )  ;  
+             int   n ;  
+             cin >  > n ;  
+             int   ct =  (  1  <  < n )  ;  
+             for ( int   i =  0  ; i < ct ; i +  +  )  
+              { cin >  > A [ i ]  ;  
+ ans [ i ]  =  0  ;  }  
+             for ( int   i =  0  ; i < ct ; i +  +  )  {    int   bt ;  
+             cin >  > bt ;  
+             if ( bt )  
+             B [ i ]  = true ;  
+                         else 
+                         B [ i ]  = false ;     
+              }  
+           
+             func (  0  , ct -  1  )  ;  
+             for ( int   i =  0  ; i < ct ; i +  +  )  
+             cout <  < ans [ i ]  <  <  "     "  ;  
+             cout <  < endl ;     
+             for ( int   i =  0  ; i < ct ; i +  +  )  
+              { ans 2  [ i ]  =  0  ;  
+             ans [ i ]  =  0  ;  }  
+                func 1  ( A , B , ct , ans 2  )  ;  
+             func 4  ( ans 2  , ct , ans 3  )  ;  
+                for ( int   i =  0  ; i < ct ; i +  +  )  {  
+                                           if ( B [ i ]  )  
+                cout <  < ans 3  [ i ]  <  <  "     "  ;  
+                else 
+             cout <  < ans 2  [ i ]  <  <  "     "  ;  
+                    }  
+             cout <  < endl ;  
+  	  	 return    0  ;  
+  }  
+ 
