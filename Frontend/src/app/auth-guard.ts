@@ -1,4 +1,4 @@
-import { Router, CanActivate } from '@angular/router';
+import { Router, CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 
@@ -18,12 +18,13 @@ export class LoginRegisterGuard implements CanActivate {
             },err=>resolve(true));   
         });
     }
+
 }
 
 @Injectable({
     providedIn: 'root'
 })
-export class DashboardGuard implements CanActivate {
+export class DashboardGuard implements CanActivate{
     
         constructor(private auth: AuthService, private router: Router) {}
         canActivate(): Promise<boolean> {
@@ -37,5 +38,6 @@ export class DashboardGuard implements CanActivate {
                     resolve(false);
                 });   
             });
-        };
+        }
+
 }

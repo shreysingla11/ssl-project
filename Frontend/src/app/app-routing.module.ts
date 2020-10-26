@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginRegisterGuard, DashboardGuard } from './auth-guard';
+import { BatchComponent } from './batch/batch.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,13 @@ const routes: Routes = [
     path : 'dashboard',
     component : DashboardComponent,
     canActivate: [DashboardGuard],
+    children :[
+      {
+        path:':id',
+        component : BatchComponent,
+        //canActivate : [DashboardGuard]
+      }
+    ]
   },
   {
     path : '**',

@@ -10,7 +10,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
+import { BatchComponent } from './batch/batch.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms'
     LoginComponent,
     HeaderComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    BatchComponent
   ],
   imports: [
     BrowserModule,

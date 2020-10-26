@@ -16,20 +16,23 @@ from django.contrib.auth import login, authenticate,logout
 class BatchViewSet(viewsets.ModelViewSet):
 
     serializer_class = BatchSerializer
-    permission_classes = (IsAuthenticated,)
     lookup_field = 'id'
+    permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         return  Batch.objects.filter(user=self.request.user)
     
     def create(self, request, *args, **kwargs):
-        files = request.data.pop('files',None)
-        serializer = self.get_serializer(data=request.data,context={'user':request.user,'files':files})
-        serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
-        #headers = self.get_success_headers(serializer.data)
-        print("Yessss")
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        if request.user.is_authenticated:
+            print(request.data)
+            files = request.data.pop('files',None)
+            serializer = self.get_serializer(data=request.data,context={'user':request.user,'files':files})
+            serializer.is_valid(raise_exception=True)
+            self.perform_create(serializer)
+            #headers = self.get_success_headers(serializer.data)
+            print("Yessss")
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response({"error":"Unauthorized access"},status=status.HTTP_404_NOT_FOUND)
 
 
 class CodeFileViewSet(viewsets.ModelViewSet):

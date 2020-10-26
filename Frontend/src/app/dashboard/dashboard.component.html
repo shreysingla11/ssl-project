@@ -1,31 +1,27 @@
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <h4 class="modal-title" id="modal-basic-title">New Batch</h4>
+    <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-    <form>
+  <div class="modal-body"> 
+    <form class="form-signin" [formGroup]="createForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="dateOfBirth">Date of birth</label>
-        <div class="input-group">
-          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-          </div>
-        </div>
-      </div>
+        <label for="title">Title</label>
+        <input formControlName="name" type="text" class="form-control" name="title" />
+    </div>
+    
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea formControlName="description" rows="5" class="form-control" name="description" ></textarea>
+    </div>
+      <input type="file" (change)="syncFiles($event)" id="createFiles" multiple>
     </form>
-    <angular-file-uploader
-      [config]="afuConfig"
-      [resetUpload]=resetVar
-      (ApiResponse)="DocUpload($event)">
-    </angular-file-uploader>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-  </div>
+    <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Save</button>
+  </div> 
 </ng-template>
 
 <!-- <div class="container-fluid button-container">
@@ -43,59 +39,19 @@
           <!-- <li class="list-group-item">
             
           </li> -->
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+          <a *ngFor="let batch of batches" (click)="openBatch(batch.id)" class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">List group item heading</h5>
-              <small>3 days ago</small>
+              <h5 class="mb-1">{{batch.name}}</h5>
+              <small>{{batch.created_at}}</small>
             </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small>Donec id elit non mi porta.</small>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">List group item heading</h5>
-              <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">List group item heading</h5>
-              <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">List group item heading</h5>
-              <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">List group item heading</h5>
-              <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">List group item heading</h5>
-              <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
+            <p class="mb-1">{{batch.description}}</p>
+            <!-- <small>Donec id elit non mi porta.</small> -->
           </a>
         </ul>
     </div>
     <div class="col-sm-8">
       <div class="main">
-        this is sample text<br> hello world!
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>
