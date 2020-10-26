@@ -23,7 +23,7 @@ class BatchViewSet(viewsets.ModelViewSet):
         return  Batch.objects.filter(user=self.request.user)
     
     def create(self, request, *args, **kwargs):
-        files = request.data.pop('files')
+        files = request.data.pop('files',None)
         serializer = self.get_serializer(data=request.data,context={'user':request.user,'files':files})
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
