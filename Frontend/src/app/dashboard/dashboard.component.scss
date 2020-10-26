@@ -1,4 +1,29 @@
-.left{
-    width: 20%;
-    
+.container{
+    display: flex;
+    margin: 0px;
 }
+.sidenav {
+    float: left;
+    height: 100%;
+    border-color: #ff0000;
+    border-width: 3px;
+    border-style: solid;
+    overflow-x: hidden;
+  }
+  .button{
+    background-color: #ff0000;
+    color: #ffffff;
+    width: 100%;
+  }
+  
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
