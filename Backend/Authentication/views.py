@@ -26,7 +26,6 @@ class RegisterView(APIView):
         return Response(user_ser.errors,status = status.HTTP_400_BAD_REQUEST)
 
 class LoginView(APIView):
-    parser_classes = (MultiPartParser, FormParser)
 
     def post(self,request):
         if not request.user.is_authenticated:
@@ -50,7 +49,6 @@ class ProfileView(RetrieveAPIView):
 
     serializer_class = MyUserSerializer
     model = MyUser
-    permission_classes = (IsAuthenticated,)
 
     def get(self,request):
         print(request.user)

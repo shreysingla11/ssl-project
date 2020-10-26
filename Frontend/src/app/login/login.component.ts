@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.auth.postLogin(JSON.stringify(this.form.value)).subscribe(
+    this.auth.postLogin(this.form.value).subscribe(
       (data) => {
         if (data.hasOwnProperty('username')) {
           this.router.navigate(['/dashboard']);
