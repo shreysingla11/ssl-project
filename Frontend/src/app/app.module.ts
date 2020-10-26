@@ -10,7 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { HttpClientModule } from '@angular/common/http';
-
+import { ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -25,8 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     AngularFileUploaderModule,
     NgbModule,
-    HttpClientModule
-
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
