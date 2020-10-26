@@ -3,12 +3,20 @@
     <div id="navbarNavDropdown" class="navbar-collapse collapse">
         <ul class="navbar-nav mr-auto">
         </ul>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav" *ngIf="!username">
             <li class="nav-item">
                 <a class="nav-link" href="/login">Login</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/register">Register</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav" *ngIf="username">
+            <li class="nav-item">
+                Hello {{username}}
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="logout()">Logout</a>
             </li>
         </ul>
     </div>
