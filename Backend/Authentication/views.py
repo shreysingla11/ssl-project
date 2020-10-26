@@ -62,7 +62,6 @@ class LogoutView(APIView):
     def get(self,request):
         print(request.user)
         logout(request)
-        request.session.flush()
         print(request.user)
         return Response({"message":"Logged out successfully"})
 

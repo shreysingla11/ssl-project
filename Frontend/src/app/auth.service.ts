@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http'
 export class AuthService {
   url_register="http://localhost:8000/auth/register/";
   url_login="http://localhost:8000/auth/login/";
-  url_logout="http://localhost:8000/auth/logout";
+  url_logout="http://localhost:8000/auth/logout/";
   url_profile = "http://localhost:8000/auth/profile";
 
   options = {withCredentials:true}
