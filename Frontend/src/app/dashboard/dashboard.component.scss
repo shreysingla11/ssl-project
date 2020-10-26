@@ -1,20 +1,25 @@
-.container{
-    display: flex;
-    margin: 0px;
+.button-container{
+  padding: 8px;
+  border-bottom: solid;
+  border-color: gray;
 }
-.sidenav {
-    float: left;
-    height: 100%;
-    border-color: #ff0000;
-    border-width: 3px;
-    border-style: solid;
-    overflow-x: hidden;
+.sidebar{
+  padding: 0;
+  border-top: 0;
+  box-shadow: -6px 10px 8px 10px #888888;
+}
+.list-overflow{
+    max-height: 600px;
+    overflow-y: scroll;
   }
-  .button{
-    background-color: #ff0000;
-    color: #ffffff;
-    width: 100%;
+.list-overflow::-webkit-scrollbar {
+    display: none;
   }
+.round{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
   
   .sidenav a {
     padding: 6px 8px 6px 16px;
