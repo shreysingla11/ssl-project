@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
     this.auth.postRegister(this.form.value).subscribe(
       (data) => {
         if (data.hasOwnProperty('username')){
-          this.router.navigate(['/login']);
+          window.location.reload();
         }
         else {
           alert("Please try again");

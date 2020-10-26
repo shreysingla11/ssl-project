@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.auth.postLogin(this.form.value).subscribe(
       (data) => {
         if (data.hasOwnProperty('username')) {
-          this.router.navigate(['/dashboard']);
+          window.location.reload();
         }
         else {
           alert("Please try again");

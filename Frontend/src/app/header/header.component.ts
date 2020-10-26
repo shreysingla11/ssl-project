@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
 
   logout(){
     this.auth.logout().subscribe((data)=>{
-      this.router.navigate(["/login"])
+      window.location.reload()
     })
   }
 
