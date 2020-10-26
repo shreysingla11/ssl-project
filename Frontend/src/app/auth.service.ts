@@ -17,11 +17,11 @@ export class AuthService {
   ) { }
 
   postRegister(data) {
-    return this.http.post(this.url_register, data);
+    return this.http.post(this.url_register, data,this.options);
   }
 
   postLogin(data) {
-    return this.http.post(this.url_login, data);
+    return this.http.post(this.url_login, data,this.options);
   }
 
   logout(){
