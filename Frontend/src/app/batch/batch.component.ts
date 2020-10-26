@@ -15,7 +15,10 @@ export class BatchComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("hello")
-    this.batchService.getBatch(this.route.snapshot.params['id']).subscribe((data)=>this.batch=data)
+    this.route.paramMap.subscribe((params)=>{
+      this.batchService.getBatch(params.get('id')).subscribe((data)=>this.batch=data)
+    })
+    
   }
 
   download(){

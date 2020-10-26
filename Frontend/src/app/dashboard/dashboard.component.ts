@@ -51,10 +51,6 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  openBatch(id){
-    console.log("hre")
-    window.location.href='/dashboard/' + id;
-  }
   
 
 }

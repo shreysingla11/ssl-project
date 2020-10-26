@@ -39,7 +39,7 @@
           <!-- <li class="list-group-item">
             
           </li> -->
-          <a *ngFor="let batch of batches" (click)="openBatch(batch.id)" class="list-group-item list-group-item-action flex-column align-items-start">
+          <a *ngFor="let batch of batches" [routerLink]="batch.id" class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1">{{batch.name}}</h5>
               <small>{{batch.created_at}}</small>
