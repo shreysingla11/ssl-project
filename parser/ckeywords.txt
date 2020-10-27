@@ -16,3 +16,5 @@ double	mutable	switch	while
 dynamic_cast	namespace	template
 cin cout return include bits stdc++
 iostream stdc++ [ ] { } ( ) , ;
+vector map pair typdef define
+except
