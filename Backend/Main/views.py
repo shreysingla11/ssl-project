@@ -20,7 +20,7 @@ class BatchViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
-        return  Batch.objects.filter(user=self.request.user)
+        return  Batch.objects.filter(user=self.request.user).order_by('-created_at')
     
     def create(self, request, *args, **kwargs):
         if request.user.is_authenticated:
