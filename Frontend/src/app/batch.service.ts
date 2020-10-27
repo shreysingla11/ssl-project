@@ -40,6 +40,10 @@ export class BatchService {
   downloadResult(uid:string){
     return this.http.get(this.DOWNLOAD_URL+uid,this.downloadOptions)
   }
+
+  deleteBatch(uid:string){
+    return this.http.delete(this.BATCH_URL+uid,this.options)
+  }
 }
 
 

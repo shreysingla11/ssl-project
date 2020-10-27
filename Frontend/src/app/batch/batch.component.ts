@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Batch } from '../interfaces';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BatchService } from '../batch.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { BatchService } from '../batch.service';
 export class BatchComponent implements OnInit {
   batch:Batch;
 
-  constructor(private route:ActivatedRoute,private batchService:BatchService) { }
+  constructor(private route:ActivatedRoute,private batchService:BatchService,private router:Router) { }
 
   ngOnInit(): void {
     console.log("hello")
@@ -35,6 +35,12 @@ export class BatchComponent implements OnInit {
         downloadLink.parentNode.removeChild(downloadLink);
     }
     )
+  }
+
+  delete(){
+    this.batchService.deleteBatch(this.batch.id).subscribe((data)=>{
+      window.location.href='/dashboard';
+    },(err)=>alert('Some error occured'))
   }
 
 }
