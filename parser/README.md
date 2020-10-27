@@ -1,24 +1,29 @@
 
 # Red Plag
-python3 main.py -k <argument for size of n-grams>
 ## Implemented till now
 ### Parser
 
-The current implementation removes all comments and extra white spaces.
-Tokenization of variables: We are tokenizing names of variables and functions while special chars and c++ keywords remain unmodified.
-The implementation makes use of k-grams to check for the percentage similarity among files.
-A covariance matrix is being generated using the pair-wise percentage similarity between files.
-For the visualization part, we are generating a scatter plot using the covariance matrix.
-The implementation takes into account the location as well as frequency of occurences of k-grams.
-We have implemented basic of bag-of-words, as a backup for k gram implementation.
+The current implementation removes all comments and extra white spaces. <br/>
+We are tokenizing names of variables and functions while special chars and c++ keywords remain unmodified. <br/>
+The implementation makes use of k-grams to check for the percentage similarity among files. <br/>
+A covariance matrix is being generated using the pair-wise percentage similarity between files. <br/>
+For the visualization part a mat-plot is generated using the covariance matrix. <br/>
+The implementation takes into account the location as well as frequency of occurences of k-grams. <br/>
+We have implemented basic bag-of-words functionality, as a backup for k gram implementation. <br/>
 
 ## To be implemented
 
 ### Parser
- We aim to optimize the code for the functionalities implemented till now.
-We also aim to detect intelligent plagiarism eg. one using typedef & define or changing for loop to while with same core logic although we are not sure about feasibility.
-We are yet to work on hypertuning the parameter k.
- 
+We aim to optimize the code for the functionalities implemented till now.  <br/>
+We also aim to detect intelligent plagiarism eg. one using typedef & define or changing for loop to while with same core logic although we are not sure about feasibility.  <br/>
+We are yet to work on hypertuning the parameter k.  <br/>
+## Usage
+Clone the repository, navigate into the project directory and run the following commands
+
+```
+$ cd parser
+$ python3 main.py -k <size of n-gram>
+```
 ## Citations
 <ol>
 <li> Using Visualization to detect Plagiarism in computer science classes - Randy L. Ribler </li>
