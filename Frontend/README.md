@@ -1,27 +1,23 @@
-# RedPlagApp
+# Frontend
+This folder contains the implementation for the frontend of the app using angular framework. It provides functionality for the registration and login for the app as well as the dashboard component. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4.
+## Components:
+It consists of four major components:
+### Register Page
+The user is asked to register to use the services of the app. If the credentials provided are valid, user is redirected to the login page and user information is added to the database. A random passcode is sent to user via email.
 
-## Development server
+### Login Page
+The user is asked to sign in using his/her credentials and the organisational passcode provided. If the user is registered, (s)he is redirected to the dashboard page.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Dashboard Component
+The user can view previous results of batches of code files uploaded before as well as make a new batch. (s)he can upload the files to the newly created batch or download the results from the previous batches.
 
-## Code scaffolding
+## Usage
+Clone the repository, navigate into the project directory and run the following commands
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+$ cd Frontend
+$ npm install
+$ ng serve --open
+```
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
