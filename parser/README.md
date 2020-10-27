@@ -1,8 +1,6 @@
 
-# Red Plag
-## Implemented till now
-### Parser
-
+# Parser
+## Basic functionality implemented till now
 The current implementation removes all comments and extra white spaces. <br/>
 We are tokenizing names of variables and functions while special chars and c++ keywords remain unmodified. <br/>
 The implementation makes use of k-grams to check for the percentage similarity among files. <br/>
@@ -13,9 +11,8 @@ We have implemented basic bag-of-words functionality, as a backup for k gram imp
 
 ## To be implemented
 
-### Parser
 We aim to optimize the code for the functionalities implemented till now.  <br/>
-We also aim to detect intelligent plagiarism eg. one using typedef & define or changing for loop to while with same core logic although we are not sure about feasibility.  <br/>
+We also aim to detect intelligent plagiarism eg. one using typedef & define or changing for loop to while with same core logic although we are not sure about its feasibility.  <br/>
 We are yet to work on hypertuning the parameter k.  <br/>
 ## Usage
 Clone the repository, navigate into the project directory and run the following commands
