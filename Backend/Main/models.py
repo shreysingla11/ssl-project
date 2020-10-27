@@ -1,6 +1,10 @@
 from django.db import models
 import uuid
 from Authentication.models import MyUser
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
+import shutil
+import os
 
 # Create your models here.
 class Batch(models.Model):
@@ -21,3 +25,15 @@ def get_file_name(instance,filename):
 class CodeFile(models.Model):
     batch = models.ForeignKey(Batch,on_delete=models.CASCADE)
     file = models.FileField(upload_to=get_file_name)
+
+@receiver(post_delete, sender=Batch)
+def deleteBatchDir(sender, instance, **kwargs):
+
+    directory = os.path.join(os.getcwd(),'src',str(instance.id))
+    print(directory)
+    try:
+        if os.path.isdir(directory):
+            print("Yes")
+            shutil.rmtree(directory)
+    except:
+        print("Error")
