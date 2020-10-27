@@ -6,50 +6,39 @@ def word_list(path):
 	f = open(path,"r")
 	#w = open("temp","w")
 
-	pat=re.compile(r'(\/\*).+?(\*\/)',re.DOTALL)
+	pat=re.compile(r'(\/\*).+?(\*\/)',re.DOTALL)	#remove multiline comments
 	s = re.sub(pat,'',f.read())
 
 	s1=""
 	for line in s.split("\n"):
-		l=line.split("//",1)
+		l=line.split("//",1)   #remove single line comments
 		s1=s1+l[0]+"\n"
 
 
-	special_char=['+','-','=','*','/','[',']','{','}','<','>','(',')',';','#',',',':']
+	special_char=['+','-','=','*','/','<','>','#',':','.','!']
 	keywords=open("./ckeywords.txt").read().split()
 	#digits = ['0','1','2','3','4','5','6','7','8','9']
 
 	s2=""
-	for char in list(s1):
-		
+	for char in list(s1):			#add whitespace before and after a special character
 		if char in special_char:
 			e=" "+char+" "
 			s2+=e
 		else:
 			s2+=char
-		"""
-		x=ord(char)
-		if x>=65 and x<=90:
-			s2+=char
-		elif x>=97 and x<=122:
-			s2+=char
-		else:
-			e=" "+char+" "
-			s2+=e
-	    """
 
-	text = open("temp","r") 
+	text = open("temp","r")
 	myword="r"
 	sf=""
 	for line in s2.split("\n"):
-		#print(line)
-		for word in line.split():
-			if word not in keywords and word not in special_char:
-				sf+="r "
-			else:
+		for word in line.split():	#remove keywords and replace all words except special_char with a signature letter 'r' 
+			if word in keywords:
+				pass
+			elif word in special_char:
 				sf+=(word+" ")
+			else:
+				sf+="r "
 		sf+="\n"
 
 	#w.write(sf)
 	return sf.split()
-
