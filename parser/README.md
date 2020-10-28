@@ -6,7 +6,7 @@ We are tokenizing names of variables and functions while special chars remain un
 The implementation makes use of k-grams to check for the percentage similarity among files. <br/>
 A covariance matrix is being generated using the pair-wise percentage similarity between files. <br/>
 For the visualization part a mesh-plot is generated using the similarity matrix. <br/>
-The implementation in independent the location as well as frequency of occurences of k-grams, hence jumbled codes also get detected. <br/>
+The implementation is independent of the location as well as frequency of occurences of k-grams, hence jumbled codes also get detected. <br/>
 We have implemented basic bag-of-words functionality, as a backup for k gram implementation. <br/>
 
 ## To be implemented
