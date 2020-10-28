@@ -1,8 +1,8 @@
 
 # Parser
 ## Basic functionality implemented till now
-The current implementation removes all comments and extra white spaces. <br/>
-We are tokenizing names of variables and functions while special chars and c++ keywords remain unmodified. <br/>
+The current implementation removes all comments, extra white spaces and keywords. <br/>
+We are tokenizing names of variables and functions while special chars remain unmodified. <br/>
 The implementation makes use of k-grams to check for the percentage similarity among files. <br/>
 A covariance matrix is being generated using the pair-wise percentage similarity between files. <br/>
 For the visualization part a mesh-plot is generated using the similarity matrix. <br/>
