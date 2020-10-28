@@ -18,7 +18,7 @@ Clone the repository, navigate into the project directory and run the following 
 
 ```
 $ cd parser
-$ python3 main.py -k <size of n-gram>
+$ python3 main.py -k <size of n-gram> -in <path to directory containing testfiles>
 ```
 ## Citations
 <ol>
