@@ -14,9 +14,10 @@ export class BatchComponent implements OnInit {
   constructor(private route:ActivatedRoute,private batchService:BatchService,private router:Router) { }
 
   ngOnInit(): void {
-    console.log("hello")
     this.route.paramMap.subscribe((params)=>{
-      this.batchService.getBatch(params.get('id')).subscribe((data)=>this.batch=data)
+      this.batchService.getBatch(params.get('id')).subscribe((data)=>{
+        this.batch=data;
+      })
     })
     
   }

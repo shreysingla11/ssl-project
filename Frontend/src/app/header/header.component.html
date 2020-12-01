@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand navbar-dark bgcolor">
-    <a class="navbar-brand" href="#">Red Plag</a>
+    <a class="navbar-brand" href="#" style="font-family: cursive;font-weight: bold;">RedPlag</a>
     <div id="navbarNavDropdown" class="navbar-collapse collapse">
         <ul class="navbar-nav mr-auto">
         </ul>
@@ -13,7 +13,10 @@
         </ul>
         <ul class="navbar-nav" *ngIf="username">
             <li class="nav-item">
-                <a class="nav-link" href="/dashboard" style="color: white;">Hello {{username}}</a>
+                <a class="nav-link" href="/dashboard" style="color: white;">{{username}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile" style="cursor: pointer;">Profile</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" (click)="logout()" style="cursor: pointer;">Logout</a>

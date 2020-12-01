@@ -50,10 +50,17 @@
             <!-- <small>Donec id elit non mi porta.</small> -->
           </a>
         </ul>
+        <div *ngIf="!batches.length" class="text-muted" style="text-align: center;padding: 20px;">
+            Create a batch to get started!!
+        </div>
     </div>
     <div class="col-sm-8">
       <div class="main">
-        <router-outlet></router-outlet>
+        <router-outlet>
+          <!-- <div class="center text-muted">
+            Chhose a batch from the list
+          </div> -->
+        </router-outlet>
       </div>
     </div>
   </div>

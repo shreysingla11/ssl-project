@@ -7,6 +7,7 @@
   padding: 0;
   border-top: 0;
   box-shadow: 5px 0 8px -8px black;
+  height: 92.3vh;
 }
 .list-overflow{
     max-height: 600px;
@@ -50,4 +51,11 @@
 }
 .form-signin .form-control:focus {
   z-index: 2;
+}
+
+.center{
+  height: 92.3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

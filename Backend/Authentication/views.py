@@ -91,4 +91,4 @@ class ChangePasswordView(UpdateAPIView):
                     
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             else:
-                return Response({"error":"You are not logged in"})
+                return Response({"error":"You are not logged in"},status=status.HTTP_401_UNAUTHORIZED)

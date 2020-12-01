@@ -11,7 +11,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BatchComponent } from './batch/batch.component'
+import { BatchComponent } from './batch/batch.component';
+import { ProfileComponent } from './profile/profile.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BatchComponent } from './batch/batch.component'
     HeaderComponent,
     RegisterComponent,
     DashboardComponent,
-    BatchComponent
+    BatchComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
