@@ -1,0 +1,31 @@
+<div class="profile">
+    <h2>{{name}}</h2>
+    <p><strong>Username: </strong>{{username}}</p>
+    <p><strong>Email: </strong>{{email}}</p>
+    <div class="divider text-center" style="display: flex;">
+        <div class="emphasis" style="flex-grow: 1; padding-top: 20px;">
+            <h2><strong>20 </strong></h2>                    
+            <p><small>Batches</small></p>
+        </div>
+        <div class="emphasis" style="flex-grow: 1;padding-top: 20px;">
+            <h2><strong>245</strong></h2>                    
+            <p><small>Source code files</small></p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+
+    </div>
+    <div class="profile col-md-4" style="padding: 20px;">
+      <form [formGroup]="pass_form" (ngSubmit)="onSubmit()">
+        <!-- <h1 class="h3 mb-3 font-weight-normal">Login</h1> -->
+        <label for="inputOldPassword" class="sr-only">Old Password</label>
+        <input formControlName="old_password" type="password" id="inputOldPassword" class="form-control" style="margin-bottom: 10px;" placeholder="Old password" required autofocus>
+        <label for="inputNewPassword" class="sr-only">New Password</label>
+        <input formControlName="new_password" type="password" id="inputNewPassword" class="form-control" placeholder="New password" required autofocus>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top:20px">Change password</button>
+      </form>
+</div>
+
+</div>

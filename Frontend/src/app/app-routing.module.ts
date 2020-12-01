@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginRegisterGuard, DashboardGuard } from './auth-guard';
 import { BatchComponent } from './batch/batch.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
   {
     path : 'register',
     component : RegisterComponent,
-    //canActivate: [LoginRegisterGuard],
+    canActivate: [LoginRegisterGuard],
   },
   {
     path : 'dashboard',
@@ -28,6 +29,11 @@ const routes: Routes = [
         //canActivate : [DashboardGuard]
       }
     ]
+  },
+  {
+    path : 'profile',
+    component : ProfileComponent,
+    canActivate : [DashboardGuard],
   },
   {
     path : '**',

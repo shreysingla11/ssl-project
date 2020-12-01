@@ -9,6 +9,7 @@ export class AuthService {
   url_login="http://localhost:8000/auth/login/";
   url_logout="http://localhost:8000/auth/logout/";
   url_profile = "http://localhost:8000/auth/profile";
+  url_changepass = "http://localhost:8000/auth/changepassword/";
 
   options = {withCredentials:true}
 
@@ -32,4 +33,7 @@ export class AuthService {
     return this.http.get(this.url_profile,this.options);
   }
 
+  changePassword(data){
+    return this.http.put(this.url_changepass,data,this.options);
+  }
 }
