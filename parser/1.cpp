@@ -43,7 +43,7 @@ void f(ll a[],ll N,ll ans[]){
 
 }
 
-int p=1 //How's life
+int p=1; //How's life
 
 /*
 void f(ll a[], ll start, ll end, ll ans[]){

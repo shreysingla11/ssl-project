@@ -14,7 +14,7 @@ def word_list(path):
 		l=line.split("//",1)   #remove single line comments
 		s1=s1+l[0]+"\n"
 
-
+	# print(s1)
 	special_char=['+','-','=','*','/','<','>','#',':','.','!']
 	keywords=open("./ckeywords.txt").read().split()
 	#digits = ['0','1','2','3','4','5','6','7','8','9']
@@ -27,8 +27,8 @@ def word_list(path):
 		else:
 			s2+=char
 
-	text = open("temp","r")
-	myword="r"
+	# text = open("temp","r")
+	# myword="r"
 	sf=""
 	for line in s2.split("\n"):
 		for word in line.split():	#remove keywords and replace all words except special_char with a signature letter 'r' 
@@ -40,5 +40,6 @@ def word_list(path):
 				sf+="r "
 		sf+="\n"
 
+	# print(sf)
 	#w.write(sf)
 	return sf.split()

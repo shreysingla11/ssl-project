@@ -30,6 +30,8 @@ for r, d, f in os.walk(args.inn):	#prepare a list of testfile names
 
 for i in range(len(files_in_dir)):
 	print (i,files_in_dir[i])	#print each filename with it's respective id
+
+print(os.listdir(args.inn))
 	
 q=0
 z=np.zeros((len(files_in_dir),len(files_in_dir)))  #will store similarity score
@@ -62,10 +64,23 @@ for xt in range(len(files_in_dir)):
 		except:
 			z[xt][yt]=0
 
+# num=len(files_in_dir)
+# print("[",end="")
+# for i in range(num):
+# 	print("[",end="")
+# 	for j in range(num):
+# 		if j!=num-1:
+# 			print(z[i][j],end=",")
+# 		else:
+# 			print(z[i][j],end="")
+# 	print("]",end=",\n")
+# print("]")
+
 cmap=matplotlib.colors.ListedColormap(['green','red'])
 bounds=[0,0.5,1]
 norm = matplotlib.colors.BoundaryNorm(bounds, cmap.N)
 img = plt.imshow(z,interpolation='nearest',cmap = cmap,norm=norm)
+# plt.imshow(z,cmap="hot",interpolation="nearest")
 
 # make a color bar
 #plt.colorbar(img,cmap=cmap,norm=norm,boundaries=bounds,ticks=[0.2,0.4,0.6])
