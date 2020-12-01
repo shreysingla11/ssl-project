@@ -82,7 +82,7 @@ class ChangePasswordView(UpdateAPIView):
                         return Response({"error": "Wrong old password."}, status=status.HTTP_400_BAD_REQUEST)
                     # set_password also hashes the password that the user will get
                     request.user.set_password(serializer.data.get("new_password"))
-                    request.user.password.save()
+                    request.user.save()
                     response = {
                         'message': 'Password updated successfully',
                     }
