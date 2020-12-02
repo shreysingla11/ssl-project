@@ -10,7 +10,7 @@ from rest_framework.generics import UpdateAPIView,RetrieveAPIView
 from django.http import FileResponse
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import login, authenticate,logout
-
+import io
 # Create your views here.
 
 class BatchViewSet(viewsets.ModelViewSet):
@@ -38,7 +38,14 @@ class BatchViewSet(viewsets.ModelViewSet):
 class CodeFileViewSet(viewsets.ModelViewSet):
     
     serializer_class = CodeFileSerializer
-    queryset = CodeFile.objects.all()
+    permission_classes = (IsAuthenticated,)
+    
+    def get_queryset(self):
+        btchs = Batch.objects.filter(user = self.request.user)
+        qs = CodeFile.objects.none()
+        for bt in btchs:
+            qs = qs.union(CodeFile.objects.filter(batch=bt))
+        return qs
 
 class DownloadResult(APIView):
 
@@ -47,8 +54,8 @@ class DownloadResult(APIView):
     def get(self,request,id):
         batch = Batch.objects.get(id=id)
         if batch is not None:
-            print(batch.result.path,'\n\n\n\n\n\n\n')
-            f = open(batch.result.path,'rb')
+            print(batch.result,'\n\n\n')
+            f = io.BytesIO(bytes(batch.result,encoding='utf-8'))
             return FileResponse(f,filename='result.txt',as_attachment=True)
         else:
             return Response({"error":"Unknown batch"},status=status.HTTP_404_NOT_FOUND)

@@ -13,7 +13,7 @@ class Batch(models.Model):
     name = models.CharField(max_length=150)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now=True,editable=False)
-    result = models.FileField(default='sample/result.txt')
+    result = models.TextField(default="This is a sample results file")
 
     def __str__(self):
         return str(self.id)
