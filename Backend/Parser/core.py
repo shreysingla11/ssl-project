@@ -53,8 +53,6 @@ def word_list(path):
 	#digits = ['0','1','2','3','4','5','6','7','8','9']
 	s2=identify_special_characters(s1)
 	
-	text = open("temp","r") 
-	myword="r"
 	sf=""
 	for line in s2.split("\n"):
 		for word in line.split():

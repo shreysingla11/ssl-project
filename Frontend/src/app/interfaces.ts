@@ -3,6 +3,7 @@ export interface Batch{
     name: string;
     description:string;
     created_at: string;
+    result:string;
 }
 
 export interface BatchData{

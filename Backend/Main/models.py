@@ -1,10 +1,12 @@
 from django.db import models
 import uuid
 from Authentication.models import MyUser
-from django.db.models.signals import post_delete
+from django.db.models.signals import post_delete,post_init
 from django.dispatch import receiver
 import shutil
 import os
+import json
+from Parser.core import logic
 
 # Create your models here.
 class Batch(models.Model):
@@ -37,3 +39,9 @@ def deleteBatchDir(sender, instance, **kwargs):
             shutil.rmtree(directory)
     except:
         print("Error")
+
+@receiver(post_init, sender=Batch)
+def computeResult(sender, instance, **kwargs):
+
+    result = logic(os.getcwd(),str(instance.id))
+    instance.result = json.dumps(result)
