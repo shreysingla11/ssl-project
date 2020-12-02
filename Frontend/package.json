@@ -23,8 +23,13 @@
     "@ionic/angular": "^5.4.1",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "angular-file-uploader": "^7.0.2",
+    "angular-highcharts": "^10.0.1",
+    "angular-plotly.js": "^3.0.0",
     "bootstrap": "^4.5.3",
+    "highcharts": "^8.2.2",
+    "highcharts-angular": "^2.8.2",
     "jquery": "^3.5.1",
+    "plotly.js": "^1.57.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

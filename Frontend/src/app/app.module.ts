@@ -12,7 +12,12 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BatchComponent } from './batch/batch.component';
-import { ProfileComponent } from './profile/profile.component'
+import { ProfileComponent } from './profile/profile.component';
+//import * as PlotlyJS from 'plotly.js/dist/plotly.js';
+//import { PlotlyModule } from 'angular-plotly.js';
+import { ChartModule } from 'angular-highcharts';
+//PlotlyModule.plotlyjs = PlotlyJS;
+import { HighchartsChartModule } from 'highcharts-angular';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,7 @@ import { ProfileComponent } from './profile/profile.component'
     RegisterComponent,
     DashboardComponent,
     BatchComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,8 @@ import { ProfileComponent } from './profile/profile.component'
     AngularFileUploaderModule,
     NgbModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HighchartsChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
