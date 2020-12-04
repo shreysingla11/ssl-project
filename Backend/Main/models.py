@@ -1,7 +1,7 @@
 from django.db import models
 import uuid
 from Authentication.models import MyUser
-from django.db.models.signals import post_delete,post_init
+from django.db.models.signals import post_delete,pre_save
 from django.dispatch import receiver
 import shutil
 import os
@@ -19,6 +19,12 @@ class Batch(models.Model):
 
     def __str__(self):
         return str(self.id)
+    
+    def computeResult(self):
+        print("In compute result2")
+        result = logic(os.getcwd(),str(self.id))
+        self.result = json.dumps(result)
+        self.save()
 
 
 def get_file_name(instance,filename):
@@ -40,8 +46,8 @@ def deleteBatchDir(sender, instance, **kwargs):
     except:
         print("Error")
 
-@receiver(post_init, sender=Batch)
-def computeResult(sender, instance, **kwargs):
-
-    result = logic(os.getcwd(),str(instance.id))
-    instance.result = json.dumps(result)
+# @receiver(pre_save, sender=Batch)
+# def computeResult(sender, instance, **kwargs):
+#     print("In compute result")
+#     result = logic(os.getcwd(),str(instance.id))
+#     instance.result = json.dumps(result)

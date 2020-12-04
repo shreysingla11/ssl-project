@@ -17,6 +17,7 @@ class BatchSerializer(serializers.HyperlinkedModelSerializer):
                 print('Yes')
                 obj = CodeFile(batch=instance,file=f)
                 obj.save()
+        instance.computeResult()
         return instance
 
 class CodeFileSerializer(serializers.HyperlinkedModelSerializer):

@@ -3,7 +3,7 @@ import { Batch } from '../interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BatchService } from '../batch.service';
 import * as Highcharts from 'highcharts';
-import {highcharts,chartOptions} from './dummy';
+import {chartOptions} from './dummy';
 
 declare var Plotly: any;
 @Component({
@@ -17,8 +17,8 @@ export class BatchComponent implements OnInit {
   filenames:string[];
   updateFlag = false;
   ind = [];
-  Highcharts = highcharts;
-  chartOptions = chartOptions;
+  Highcharts: typeof Highcharts = Highcharts;
+  chartOptions: Highcharts.Options = chartOptions as Highcharts.Options;
   
   constructor(private route:ActivatedRoute,private batchService:BatchService,private router:Router) {
    }
@@ -66,7 +66,6 @@ export class BatchComponent implements OnInit {
     this.route.paramMap.subscribe((params)=>{
       this.batchService.getBatch(params.get('id')).subscribe((data)=>{
         this.batch = data;
-        console.log(this.batch.result);
         let temp = JSON.parse(this.batch.result);
         this.filenames = temp["filenames"];
         this.data = temp["data"];

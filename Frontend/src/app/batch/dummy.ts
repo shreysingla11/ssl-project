@@ -1,7 +1,4 @@
-import * as Highcharts from 'highcharts';
-
-export var highcharts: typeof Highcharts = Highcharts;
-export var chartOptions: Highcharts.Options = {
+export var chartOptions = {
     chart: {
       type: 'scatter',
       zoomType: 'xy'
