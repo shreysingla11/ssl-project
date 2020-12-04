@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { collectExternalReferences } from '@angular/compiler';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +24,8 @@ export class RegisterComponent implements OnInit {
       email: '',
       first_name: '',
       last_name: '',
-      password: ''
+      password: '',
+      org_pass:''
     })
   }
 
@@ -42,6 +44,7 @@ export class RegisterComponent implements OnInit {
         
       },
       (error) => {
+        console.log(error)
         alert("Please try again");
       }
     )

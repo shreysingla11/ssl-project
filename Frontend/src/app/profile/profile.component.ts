@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
   username:string;
   name: string;
   email: string;
+  org:string;
   pass_form;
   constructor(private auth: AuthService,private formBuilder:FormBuilder) {
     this.pass_form = this.formBuilder.group({
@@ -21,9 +22,11 @@ export class ProfileComponent implements OnInit {
    }
   ngOnInit(): void {
     this.auth.profile().subscribe((data)=>{
+        console.log(data)
         this.name = data["first_name"] + " " + data["last_name"];
         this.username = data["username"];
         this.email = data["email"];
+        this.org = data["org"]["name"]
     });
   }
 

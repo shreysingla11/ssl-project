@@ -4,7 +4,8 @@ from Authentication import views
 from Authentication.views import LoginView,LogoutView,ProfileView,RegisterView,ChangePasswordView
 
 router = DefaultRouter()
-router.register(r'users', views.UserViewSet)
+#router.register(r'users', views.UserViewSet,basename='users')
+router.register(r'orgs',views.OrganisationViewSet,basename='organisation')
 
 urlpatterns = [
     path('',include(router.urls)),

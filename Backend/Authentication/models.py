@@ -5,9 +5,15 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.core.mail import send_mail
 # Create your models here.
+class Organisation(models.Model):
+    name = models.CharField(max_length=50)
+    org_pass = models.CharField(max_length=20,unique=True)
+
+    def __str__(self):
+        return self.name
 
 class MyUser(AbstractUser):
-    org_pass = models.CharField(max_length=20,default=get_random_string(length=20))
+    org = models.ForeignKey(Organisation,on_delete=models.CASCADE,null=True)
     pass
 
 

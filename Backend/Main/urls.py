@@ -4,7 +4,7 @@ from Main.views import BatchViewSet,CodeFileViewSet,DownloadResult
 
 router = DefaultRouter()
 router.register(r'batch', BatchViewSet,basename='batch')
-router.register(r'src',CodeFileViewSet,basename='codefile')
+#router.register(r'src',CodeFileViewSet,basename='codefile')
 
 urlpatterns = [
     path('',include(router.urls)),
