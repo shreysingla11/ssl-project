@@ -8,100 +8,152 @@ import re
 from collections import defaultdict
 import random
 
-
+#Global Constants
+##Special_char are non_alphanumeric characters which build the logic of the program
 special_char=['+','-','=','*','/','<','>',':','.','!','"','\'','&','|','^','#']
+##These are non alphanumeric character that contain no/low logical information
 other_chars=['(','{','}',')','[',']',',',';']
-#digits=['0','1','2','3','4','5','6','7','8','9']
+##Keywords are the list of reserved words of the language
 keywords=[]
+##Syntax for beginning of multiline comment in test data
 multi_begin=''
+##Syntax for ending of multiline comment in test data
 multi_end=''
+##Syntax for singleline comment in test data
 onelinecomment=''
+##Programming language of test code data
 language=''
 
+#Functions
 def remove_comments(path):
-	f = open(path,"r")
-	t=f.read()
+	"""!Removes single and multiline comments from a code file
+	
+	@param path    path of code file
+	@return text   code file data as string(after removing comments)
+	"""
+	file = open(path,"r")
+	text = file.read()
 	if multi_begin!='':
+		#Regular Expression for multiline comments
 		multi_exp=re.escape(multi_begin)+r'.+?'+re.escape(multi_end)
 		pat=re.compile(multi_exp,re.DOTALL)
-		t = re.sub(pat,'',t)
+		text = re.sub(pat,'',text)
 
 	if onelinecomment!='':
-		s1=""
+		text1=""
+		#Regular Expression for singleline comments
 		single_exp=re.escape(onelinecomment)
-		for line in t.split("\n"):
+		for line in text.split("\n"):
 			l=line.split(single_exp,1)
-			s1=s1+l[0]+"\n"
-		return s1
-	return t
+			text1+=l[0]+"\n"
+		text=text1
+	return text
 
 
-def identify_special_characters(s1, remove=False):
-	s2=""
-	for char in list(s1):
-		
+def identify_special_characters(code, remove=False):
+	"""!Either removes special characters from string or 
+		adds a preceeding and trailing whitespace so that 
+		each special character gets recognised as a separate 
+		word in future.
+
+		@param code   	 		code file data as string
+		@param remove  			remove special characters if true, else add whitespaces as discribed
+		@return processed_code	returns resulting string after processing
+	"""
+	processed_code=""
+	for char in list(code):
 		if char in special_char:
 			if remove:
 				e=" "
 			else:
 				e=" "+char+" "
-			s2+=e
+			processed_code+=e
 		elif char in other_chars:
 			if remove:
-				s2+=" "
+				processed_code+=" "
 		else:
-			s2+=char
-	return s2
+			processed_code+=char
+	return processed_code
 
 def word_list(path):
-	s1 = remove_comments(path)
+	"""!Preprocess the code file whose path is provided i.e.
+		removes comments, identifies special characters,
+		removes keywords, encodes the file data and returns 
+		the output as list  
+		@param path    path of code file
+	"""
+	s1 = remove_comments(path)				#remove comments
+	s2 = identify_special_characters(s1)	#identify special characters and add preceeding and trailing whitespace 
 	
-	#keywords=open("./ckeywords.txt").read().split()
-	#keywords=[]
-	#digits = ['0','1','2','3','4','5','6','7','8','9']
-	s2=identify_special_characters(s1)
-	
-	sf=""
+	sfinal=""
 	for line in s2.split("\n"):
 		for word in line.split():
 			if word in keywords:
-				pass
-			elif word in special_char:
-				sf+=(word+" ")
+				pass						#remove keywords
+			elif word in special_char:		
+				sfinal+=(word+" ")			#special character remains as it is 
 			else:
-				sf+="r "
-		sf+="\n"
-	print (sf)
-	return sf.split()
+				sfinal+="r "				#all other words(variable names, function names etc) are encoded with character r
+		sfinal+="\n"
+	#print (sf)
+	return sfinal.split()					#return encoded data as list
 
 
 def kgram(words,k):
-	l=set()
+	'''!Takes the encoded list(representing a code file data) as input 
+		and returns a set of k-grams of the encoded file.
+
+		@param words		encoded list (output of word_list function)
+		@param k			k in k-grams
+		@return kgram_set	set of kgrams
+	'''
+	kgram_set=set()
 	for i in range(len(words)-k+1):
 		s=""
 		for j in range(k):
 			s=s+words[i+j]
-		l.add(s)
-	return l
+		kgram_set.add(s)
+	return kgram_set
 
 
 def find_keywords(files_in_dir, sample_size):
+	"""!Predicts keywords of test file programming language (general case)
+		based on Documents Frequency scores of words occuring in test files
+
+		@param files_in_dir		list of test files name
+		@sample_size			 
+	"""
 	global keywords	
-	if language=='cpp':
-		keywords=['asm','else','new','this','auto','enum','operator','throw','bool','explicit','private','true','break','export','protected','try','case','extern','public','typedef','catch','false','register','typeid','char','float','reinterpret_cast','typename','class','for','return','union','const','friend','short','unsigned','const_cast','goto','signed','using','continue','if','sizeof','virtual','default','inline','static','void','delete','int','static_cast','volatile','do','long','struct','wchar_t','double','mutable','switch','while','dynamic_cast','namespace','template','cin','cout','return','include','bits','stdc++','iostream','stdc++','[',']','{','}','(',')',',',';','vector','map','pair','typdef','define']
+	if language=='C++':
+		keywords=['asm','else','new','this','auto','enum','operator','throw','bool',\
+				'explicit','private','true','break','export','protected','try','case',\
+				'extern','public','typedef','catch','false','register','typeid',\
+				'char','float','reinterpret_cast','typename','class','for','return',\
+				'union','const','friend','short','unsigned','const_cast','goto','signed',\
+				'using','continue','if','sizeof','virtual','default','inline','static',\
+				'void','delete','int','static_cast','volatile','do','long','struct',\
+				'wchar_t','double','mutable','switch','while','dynamic_cast','namespace',\
+				'template','cin','cout','return','include','bits','stdc++','iostream',\
+				'stdc++','[',']','{','}','(',')',',',';','vector','map','pair','typdef','define']
 		return
-	if language=='python':
-		keywords=['and','as','assert','break','class','continue','def','del','elif','else','except','False','finally','for','from','global','if','import','in','is','lambda','None','nonlocal','not','or','pass','raise','return','True','try','while','with','yield','[',']','{','}','(',')',',',';']
+	if language=='Python':
+		keywords=['and','as','assert','break','class','continue','def','del','elif','else',\
+				'except','False','finally','for','from','global','if','import','in','is',\
+				'lambda','None','nonlocal','not','or','pass','raise','return','True','try',\
+				'while','with','yield','[',']','{','}','(',')',',',';']
 		return
+
+	#map of words to their document frequency
 	l=dict()
 	sampling = random.choices(files_in_dir, k=min(sample_size,len(files_in_dir)))
 	for i in sampling:
 		s1=remove_comments(i)
 		s2=identify_special_characters(s1, remove=True)
+		#set of words in the current file
 		current_set=set()
 		for line in s2.split("\n"):
 			for word in line.split():
-				if len(word)==1:
+				if len(word)==1:				#so that common variable names (eg:i,j) are not included in keywords
 					pass
 				elif word in current_set:
 					pass
@@ -111,11 +163,31 @@ def find_keywords(files_in_dir, sample_size):
 				else:
 					l[word]=1
 					current_set.add(word)			
-	keywords+=[i[0] for i in sorted(l.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)[0:25]]
-	keywords+=other_chars
+	keywords+=[i[0] for i in sorted(l.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)[0:25]] #top 25 potential keyword (enough)
+	keywords+=other_chars					#other_chars(global variable)
+
+
+def result(final, threshold):
+	l = []
+	for i in range(len(final['data'])):
+		if final["data"][i] >= threshold:
+			l.append(i)
+	resultlist=[]
+	n = len(final["filenames"])
+	for i in l:
+		file1 = i//n
+		file2 = i-file1*n
+		resultlist.append((final["filenames"][file1],final["filenames"][file2],final["data"][i]*100))
+	resultlist.sort(key=lambda x:x[2],reverse=True)
+	
+	res = "File1          File2          Score\n"
+	for i in resultlist:
+		res += i[0]+(15-len(i[0]))*' '+i[1]+(15-len(i[1]))*' '+str(i[2])+'%\n'
+	return res
 
 def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline_end=''):
     global multi_begin,multi_end,onelinecomment,language
+    language=lang
     if lang=='C++':
         multi_begin='/*'
         multi_end='*/'
@@ -128,7 +200,7 @@ def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline
         multi_begin=multiline_begin
         multi_end=multiline_end
         onelinecomment=one_line_comment
-        language=lang
+        
 
     dir=os.path.join(path,"src",str(user_id))
     k=10
@@ -185,5 +257,5 @@ def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline
     for xt in range(len(files_in_dir)):
         for yt in range(len(files_in_dir)):
             final["data"].append(z[xt][yt])
-    
+    #print(result(final,0.35))
     return final
