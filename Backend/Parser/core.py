@@ -9,23 +9,31 @@ from collections import defaultdict
 import random
 
 
-special_char=['+','-','=','*','/','<','>',':','.','!',',',';','"','\'','&','|','^','#']
-other_chars=['(','{','}',')','[',']']
+special_char=['+','-','=','*','/','<','>',':','.','!','"','\'','&','|','^','#']
+other_chars=['(','{','}',')','[',']',',',';']
 #digits=['0','1','2','3','4','5','6','7','8','9']
 keywords=[]
+multi_begin=''
+multi_end=''
+onelinecomment=''
+language=''
 
 def remove_comments(path):
 	f = open(path,"r")
+	t=f.read()
+	if multi_begin!='':
+		multi_exp=re.escape(multi_begin)+r'.+?'+re.escape(multi_end)
+		pat=re.compile(multi_exp,re.DOTALL)
+		t = re.sub(pat,'',t)
 
-	pat=re.compile(r'(\/\*).+?(\*\/)',re.DOTALL)
-	s = re.sub(pat,'',f.read())
-
-	s1=""
-	for line in s.split("\n"):
-		l=line.split("//",1)
-		s1=s1+l[0]+"\n"
-
-	return s1
+	if onelinecomment!='':
+		s1=""
+		single_exp=re.escape(onelinecomment)
+		for line in t.split("\n"):
+			l=line.split(single_exp,1)
+			s1=s1+l[0]+"\n"
+		return s1
+	return t
 
 
 def identify_special_characters(s1, remove=False):
@@ -63,7 +71,7 @@ def word_list(path):
 			else:
 				sf+="r "
 		sf+="\n"
-
+	print (sf)
 	return sf.split()
 
 
@@ -78,6 +86,13 @@ def kgram(words,k):
 
 
 def find_keywords(files_in_dir, sample_size):
+	global keywords	
+	if language=='cpp':
+		keywords=['asm','else','new','this','auto','enum','operator','throw','bool','explicit','private','true','break','export','protected','try','case','extern','public','typedef','catch','false','register','typeid','char','float','reinterpret_cast','typename','class','for','return','union','const','friend','short','unsigned','const_cast','goto','signed','using','continue','if','sizeof','virtual','default','inline','static','void','delete','int','static_cast','volatile','do','long','struct','wchar_t','double','mutable','switch','while','dynamic_cast','namespace','template','cin','cout','return','include','bits','stdc++','iostream','stdc++','[',']','{','}','(',')',',',';','vector','map','pair','typdef','define']
+		return
+	if language=='python':
+		keywords=['and','as','assert','break','class','continue','def','del','elif','else','except','False','finally','for','from','global','if','import','in','is','lambda','None','nonlocal','not','or','pass','raise','return','True','try','while','with','yield','[',']','{','}','(',')',',',';']
+		return
 	l=dict()
 	sampling = random.choices(files_in_dir, k=min(sample_size,len(files_in_dir)))
 	for i in sampling:
@@ -95,13 +110,27 @@ def find_keywords(files_in_dir, sample_size):
 					current_set.add(word)
 				else:
 					l[word]=1
-					current_set.add(word)
-	global keywords				
+					current_set.add(word)			
 	keywords+=[i[0] for i in sorted(l.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)[0:25]]
 	keywords+=other_chars
 
-def logic(path,user_id):
-    dir=path+"/src/"+str(user_id)
+def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline_end=''):
+    global multi_begin,multi_end,onelinecomment,language
+    if lang=='cpp':
+        multi_begin='/*'
+        multi_end='*/'
+        onelinecomment='//'
+    elif lang=='python':
+        multi_begin='"""'
+        multi_end='"""'
+        onelinecomment='#'
+    else:
+        multi_begin=multiline_begin
+        multi_end=multiline_end
+        onelinecomment=one_line_comment
+        language=lang
+
+    dir=os.path.join(path,"src",str(user_id))
     k=10
     final=dict()
     final["filenames"]=[]
@@ -110,14 +139,13 @@ def logic(path,user_id):
     # print("hello")
     for r, d, f in os.walk(dir):
         for item in f:
-            if '.cpp' in item:
-                files_in_dir.append(os.path.join(r, item))
+            files_in_dir.append(os.path.join(r, item))
 
     # print(files_in_dir)
-    files_in_dir.sort(key=lambda x:int(x.split('/')[-1][0:-4]))
+    files_in_dir.sort(key=lambda x:int(x.split(os.path.sep)[-1][0:-4]))
 
     for i in range(len(files_in_dir)):
-        final["filenames"].append(files_in_dir[i].split('/')[-1])
+        final["filenames"].append(files_in_dir[i].split(os.path.sep)[-1])
         # print (i,files_in_dir[i].split('/')[-1])
     
     find_keywords(files_in_dir,50)
@@ -147,10 +175,10 @@ def logic(path,user_id):
                 if w not in commonset:
                     if w in kgrams[yt]:
                         count+=1
-                else:
+                elif w in kgrams[yt]:
                     common_words+=1
             try:
-                z[xt][yt]=count/(min(len(kgrams[xt]),len(kgrams[yt]))-common_words)
+                z[xt][yt]=count/((len(kgrams[xt])+len(kgrams[yt]))/2-common_words)
             except:
                 z[xt][yt]=0
 
