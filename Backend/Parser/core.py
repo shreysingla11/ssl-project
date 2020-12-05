@@ -116,11 +116,11 @@ def find_keywords(files_in_dir, sample_size):
 
 def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline_end=''):
     global multi_begin,multi_end,onelinecomment,language
-    if lang=='cpp':
+    if lang=='C++':
         multi_begin='/*'
         multi_end='*/'
         onelinecomment='//'
-    elif lang=='python':
+    elif lang=='Python':
         multi_begin='"""'
         multi_end='"""'
         onelinecomment='#'

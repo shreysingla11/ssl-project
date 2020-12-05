@@ -18,11 +18,12 @@ export class BatchService {
     responseType:'blob' as 'json'
   }
 
-  createBatch(name:string,description:string,files:File[]){
+  createBatch(data,files:File[]){
     let form = new FormData()
 
-    form.append('name',name)
-    form.append('description',description)
+    Object.keys(data).forEach((value)=>{
+      form.append(value,data[value]);
+    })
     for(let i=0;i<files.length;i++)
       form.append("files",files[i])
     

@@ -14,6 +14,10 @@ class Batch(models.Model):
     user = models.ForeignKey(MyUser,on_delete=models.CASCADE)
     name = models.CharField(max_length=150)
     description = models.TextField()
+    language = models.CharField(max_length=40)
+    inline_comment = models.CharField(max_length=5,default='')
+    multi_begin = models.CharField(max_length=5,default='')
+    multi_end = models.CharField(max_length=5,default='')
     created_at = models.DateTimeField(auto_now=True,editable=False)
     result = models.TextField(default="This is a sample results file")
 
@@ -22,7 +26,7 @@ class Batch(models.Model):
     
     def computeResult(self):
         print("In compute result2")
-        result = logic(os.getcwd(),str(self.id))
+        result = logic(os.getcwd(),str(self.id),self.language,self.inline_comment,self.multi_begin,self.multi_end)
         self.result = json.dumps(result)
         self.save()
 

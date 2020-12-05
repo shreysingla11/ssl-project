@@ -5,7 +5,7 @@ class BatchSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Batch
-        fields = ['id','name','description','created_at','result']
+        fields = ['id','name','description','created_at','result','language','inline_comment','multi_begin','multi_end']
 
     def create(self, validated_data):
         print(validated_data)

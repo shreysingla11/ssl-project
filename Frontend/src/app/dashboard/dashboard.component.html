@@ -10,17 +10,38 @@
       <div class="form-group">
         <label for="title">Title</label>
         <input formControlName="name" type="text" class="form-control" name="title" />
-    </div>
+      </div>
     
-    <div class="form-group">
-        <label for="description">Description</label>
-        <textarea formControlName="description" rows="5" class="form-control" name="description" ></textarea>
-    </div>
+      <div class="form-group">
+          <label for="description">Description</label>
+          <textarea formControlName="description" rows="5" class="form-control" name="description" ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="language">Language</label>
+        <select class="form-control" formControlName="language" id="language" (change)="disable()">
+          <option *ngFor="let lang of languages" [value]="lang">{{lang}}</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <!-- <label for="inline_comment">Inline comment character</label> -->
+        <input formControlName="inline_comment" type="text" class="form-control" name="inline_comment" placeholder="Enter character for starting an inline comment" />
+      </div>
+      <div class="form-group">
+        <!-- <label for="multi_begin">Multiline starter</label> -->
+        <input formControlName="multi_begin" type="text" class="form-control" name="multi_begin" placeholder="Enter character for starting a multiline comment"/>
+      </div>
+      <div class="form-group">
+        <!-- <label for="multi_end">Multline closer</label> -->
+        <input formControlName="multi_end" type="text" class="form-control" name="multi_end" placeholder="Enter character for ending a multiline comment" />
+      </div>
+
       <input type="file" (change)="syncFiles($event)" id="createFiles" multiple>
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Save</button>
+    <button [disabled]="!createForm.valid" type="button" class="btn btn-primary" (click)="modal.close('Save click')">Save</button>
   </div> 
 </ng-template>
 
