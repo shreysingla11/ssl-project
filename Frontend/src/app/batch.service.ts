@@ -38,8 +38,8 @@ export class BatchService {
     return this.http.get<Batch>(this.BATCH_URL+uid,this.options)
   }
 
-  downloadResult(uid:string){
-    return this.http.get(this.DOWNLOAD_URL+uid,this.downloadOptions)
+  downloadResult(uid:string,threshold:number){
+    return this.http.get(this.DOWNLOAD_URL+uid+"?threshold="+threshold,this.downloadOptions)
   }
 
   deleteBatch(uid:string){

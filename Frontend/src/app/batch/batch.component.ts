@@ -17,6 +17,7 @@ export class BatchComponent implements OnInit {
   filenames:string[];
   updateFlag = false;
   ind = [];
+  threshold:number;
   Highcharts: typeof Highcharts = Highcharts;
   chartOptions: Highcharts.Options = chartOptions as Highcharts.Options;
   
@@ -30,7 +31,7 @@ export class BatchComponent implements OnInit {
         this.ind.push([Math.floor(index/this.filenames.length),index%this.filenames.length]);
     });
     console.log(threshold);
-
+    this.threshold = threshold/100;
     var points = this.data;
     var names = this.filenames;
 
@@ -77,7 +78,7 @@ export class BatchComponent implements OnInit {
   }
 
   download(){
-    this.batchService.downloadResult(this.batch.id).subscribe(
+    this.batchService.downloadResult(this.batch.id,this.threshold).subscribe(
       (response: any) =>{
         let dataType = response.type;
         let binaryData = [];
