@@ -1,3 +1,9 @@
+"""!
+@file views.py
+@brief File for defining functions controllling API endpoints
+
+Classes and functions are defined here which return responses to different HTTP requests at different endpoints
+"""
 from django.shortcuts import render
 from rest_framework import viewsets
 from Authentication.serializers import MyUserSerializer,ChangePasswordSerializer,RegisterSerializer,LoginSerializer,SampleSerializer,OrganisationSerializer
@@ -20,18 +26,39 @@ class UserViewSet(viewsets.ModelViewSet):
         return MyUser.objects.filter(username=self.request.user.username)
 
 class OrganisationViewSet(viewsets.ModelViewSet):
+    """!
+    @brief This is the class controlling the /auth/orgs endpoint
+
+    This viewset supports GET requests to create objects of the Orgaisation model\n  
+    GET /orgs  Returns the current user's organisation
+    """
 
     serializer_class = OrganisationSerializer
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
-        print()
+        """!
+        Filters the organisations to only show the authenticated users organisation
+        """
         return Organisation.objects.filter(org_pass=self.request.user.org.org_pass)
 
 
 class RegisterView(APIView):
+    """!
+    @brief This is the class controlling the /auth/register endpoint
 
+    This viewset supports POST request to create a new user\n  
+    POST /auth/register  Creates a new user
+    """
     def post(self,request):
+        """!
+        @brief This is the function for handling the POST request
+
+        @param self Default object parameter
+        @param request Request object with post data fields - 'username','first_name','last_name','email','password','org_pass'
+
+        @return JSON response with created user's data or errors
+        """
         org_pass = request.data.pop('org_pass','')
         if Organisation.objects.filter(org_pass=org_pass).exists():
             user_ser = RegisterSerializer(data=request.data,context={'org':Organisation.objects.get(org_pass=org_pass)})
@@ -42,8 +69,21 @@ class RegisterView(APIView):
         return Response({"msg":"No organization with this passcode"})
 
 class LoginView(APIView):
+    """!
+    @brief This is the class controlling the /auth/login endpoint
 
+    This viewset supports POST request to login a user\n  
+    POST /auth/login  Login a user
+    """
     def post(self,request):
+        """!
+        @brief This is the function for handling the POST request
+
+        @param self Default object parameter
+        @param request Request object with post data fields - 'username','password','org_pass'
+
+        @return JSON response with user's username or error response in case of failure
+        """
         if not request.user.is_authenticated:
             print(request.data)
             creds = LoginSerializer(data=request.data)
@@ -62,11 +102,24 @@ class LoginView(APIView):
             return Response({"error":"Already logged in"},status=status.HTTP_400_BAD_REQUEST)
 
 class ProfileView(RetrieveAPIView):
+    """!
+    @brief This is the class controlling the /auth/profile endpoint
 
+    This viewset supports GET request to obtain current user's information\n  
+    GET /auth/profile Get current user's info
+    """
     serializer_class = MyUserSerializer
     model = MyUser
 
     def get(self,request):
+        """!
+        @brief This is the function for handling the GET request
+
+        @param self Default object parameter
+        @param request Request object
+
+        @return JSON response with current user's data or error response in case of failure
+        """
         print(request.user)
         if request.user.is_authenticated:
             return Response(MyUserSerializer(request.user,context={'request':request}).data,status=status.HTTP_200_OK)
@@ -74,21 +127,45 @@ class ProfileView(RetrieveAPIView):
             return Response({"error":"User not logged in"},status=status.HTTP_404_NOT_FOUND)
 
 class LogoutView(APIView):
+    """!
+    @brief This is the class controlling the /auth/logout endpoint
 
+    This viewset supports GET request to log out the current user's session\n  
+    GET /auth/logout
+    """
     def get(self,request):
+        """!
+        @brief This is the function for handling the GET request
+
+        @param self Default object parameter
+        @param request Request object
+
+        @return JSON response on successful logging out of the current user
+        """
         print(request.user)
         logout(request)
         print(request.user)
         return Response({"message":"Logged out successfully"})
 
 class ChangePasswordView(UpdateAPIView):
-        """
-        An endpoint for changing password.
+        """!
+        @brief This is the class controlling the /auth/changepassword endpoint
+
+        This viewset supports PUT request to change the current user's password\n  
+        PUT /auth/changepassword/
         """
         serializer_class = ChangePasswordSerializer
         model = MyUser
 
         def update(self, request):
+            """!
+            @brief This is the function for handling the PUT request
+
+            @param self Default object parameter
+            @param request Request object with PUT JSON data with fields 'old_password','new_password'
+
+            @return JSON response on successful password change or error message in case of failure
+            """
             serializer = self.get_serializer(data=request.data)
 
             if request.user.is_authenticated:
