@@ -1,0 +1,110 @@
+\hypertarget{classAuthentication_1_1views_1_1ProfileView}{}\doxysection{Authentication.\+views.\+Profile\+View Class Reference}
+\label{classAuthentication_1_1views_1_1ProfileView}\index{Authentication.views.ProfileView@{Authentication.views.ProfileView}}
+
+
+This is the class controlling the /auth/profile endpoint.  
+
+
+Inheritance diagram for Authentication.\+views.\+Profile\+View\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classAuthentication_1_1views_1_1ProfileView}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classAuthentication_1_1views_1_1ProfileView_a19cc5755b68b523d87ca59f8c6cfd62c}{get}} (self, request)
+\begin{DoxyCompactList}\small\item\em This is the function for handling the GET request. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAuthentication_1_1views_1_1ProfileView_aad4ec8dff5b6051a83a1a1e79a5cf1f0}{serializer\+\_\+class}} = My\+User\+Serializer
+\item 
+\mbox{\hyperlink{classAuthentication_1_1views_1_1ProfileView_a958c218d3ba9e22ad70be49eaa69b8ea}{model}} = My\+User
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the class controlling the /auth/profile endpoint. 
+
+This viewset supports GET request to obtain current user\textquotesingle{}s information~\newline
+ ~\newline
+ GET /auth/profile Get current user\textquotesingle{}s info 
+
+Definition at line 104 of file views.\+py.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAuthentication_1_1views_1_1ProfileView_a19cc5755b68b523d87ca59f8c6cfd62c}\label{classAuthentication_1_1views_1_1ProfileView_a19cc5755b68b523d87ca59f8c6cfd62c}} 
+\index{Authentication.views.ProfileView@{Authentication.views.ProfileView}!get@{get}}
+\index{get@{get}!Authentication.views.ProfileView@{Authentication.views.ProfileView}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily def Authentication.\+views.\+Profile\+View.\+get (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{request }\end{DoxyParamCaption})}
+
+
+
+This is the function for handling the GET request. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Default object parameter \\
+\hline
+{\em request} & Request object\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+JSON response with current user\textquotesingle{}s data or error response in case of failure 
+\end{DoxyReturn}
+
+
+Definition at line 114 of file views.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{114     \textcolor{keyword}{def }get(self,request):}
+\DoxyCodeLine{115         \textcolor{stringliteral}{"{}"{}"{}!}}
+\DoxyCodeLine{116 \textcolor{stringliteral}{        @brief This is the function for handling the GET request}}
+\DoxyCodeLine{117 \textcolor{stringliteral}{}}
+\DoxyCodeLine{118 \textcolor{stringliteral}{        @param self Default object parameter}}
+\DoxyCodeLine{119 \textcolor{stringliteral}{        @param request Request object}}
+\DoxyCodeLine{120 \textcolor{stringliteral}{}}
+\DoxyCodeLine{121 \textcolor{stringliteral}{        @return JSON response with current user's data or error response in case of failure}}
+\DoxyCodeLine{122 \textcolor{stringliteral}{        "{}"{}"{}}}
+\DoxyCodeLine{123         print(request.user)}
+\DoxyCodeLine{124         \textcolor{keywordflow}{if} request.user.is\_authenticated:}
+\DoxyCodeLine{125             \textcolor{keywordflow}{return} Response(MyUserSerializer(request.user,context=\{\textcolor{stringliteral}{'request'}:request\}).data,status=status.HTTP\_200\_OK)}
+\DoxyCodeLine{126         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{127             \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}error"{}}:\textcolor{stringliteral}{"{}User not logged in"{}}\},status=status.HTTP\_404\_NOT\_FOUND)}
+\DoxyCodeLine{128 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classAuthentication_1_1views_1_1ProfileView_a958c218d3ba9e22ad70be49eaa69b8ea}\label{classAuthentication_1_1views_1_1ProfileView_a958c218d3ba9e22ad70be49eaa69b8ea}} 
+\index{Authentication.views.ProfileView@{Authentication.views.ProfileView}!model@{model}}
+\index{model@{model}!Authentication.views.ProfileView@{Authentication.views.ProfileView}}
+\doxysubsubsection{\texorpdfstring{model}{model}}
+{\footnotesize\ttfamily Authentication.\+views.\+Profile\+View.\+model = My\+User\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 112 of file views.\+py.
+
+\mbox{\Hypertarget{classAuthentication_1_1views_1_1ProfileView_aad4ec8dff5b6051a83a1a1e79a5cf1f0}\label{classAuthentication_1_1views_1_1ProfileView_aad4ec8dff5b6051a83a1a1e79a5cf1f0}} 
+\index{Authentication.views.ProfileView@{Authentication.views.ProfileView}!serializer\_class@{serializer\_class}}
+\index{serializer\_class@{serializer\_class}!Authentication.views.ProfileView@{Authentication.views.ProfileView}}
+\doxysubsubsection{\texorpdfstring{serializer\_class}{serializer\_class}}
+{\footnotesize\ttfamily Authentication.\+views.\+Profile\+View.\+serializer\+\_\+class = My\+User\+Serializer\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 111 of file views.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/hp/\+Sem3/\+CS251/\+Red\+Plag/\+Project\+Repo/\+Backend/\+Authentication/\mbox{\hyperlink{Authentication_2views_8py}{views.\+py}}\end{DoxyCompactItemize}

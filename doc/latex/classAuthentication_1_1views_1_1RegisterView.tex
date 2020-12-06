@@ -1,0 +1,83 @@
+\hypertarget{classAuthentication_1_1views_1_1RegisterView}{}\doxysection{Authentication.\+views.\+Register\+View Class Reference}
+\label{classAuthentication_1_1views_1_1RegisterView}\index{Authentication.views.RegisterView@{Authentication.views.RegisterView}}
+
+
+This is the class controlling the /auth/register endpoint.  
+
+
+Inheritance diagram for Authentication.\+views.\+Register\+View\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classAuthentication_1_1views_1_1RegisterView}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classAuthentication_1_1views_1_1RegisterView_a25d13c4f9f6b7a6145f160f447e4a3bc}{post}} (self, request)
+\begin{DoxyCompactList}\small\item\em This is the function for handling the POST request. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the class controlling the /auth/register endpoint. 
+
+This viewset supports POST request to create a new user~\newline
+ ~\newline
+ POST /auth/register Creates a new user 
+
+Definition at line 46 of file views.\+py.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAuthentication_1_1views_1_1RegisterView_a25d13c4f9f6b7a6145f160f447e4a3bc}\label{classAuthentication_1_1views_1_1RegisterView_a25d13c4f9f6b7a6145f160f447e4a3bc}} 
+\index{Authentication.views.RegisterView@{Authentication.views.RegisterView}!post@{post}}
+\index{post@{post}!Authentication.views.RegisterView@{Authentication.views.RegisterView}}
+\doxysubsubsection{\texorpdfstring{post()}{post()}}
+{\footnotesize\ttfamily def Authentication.\+views.\+Register\+View.\+post (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{request }\end{DoxyParamCaption})}
+
+
+
+This is the function for handling the POST request. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Default object parameter \\
+\hline
+{\em request} & Request object with post data fields -\/ \textquotesingle{}username\textquotesingle{},\textquotesingle{}first\+\_\+name\textquotesingle{},\textquotesingle{}last\+\_\+name\textquotesingle{},\textquotesingle{}email\textquotesingle{},\textquotesingle{}password\textquotesingle{},\textquotesingle{}org\+\_\+pass\textquotesingle{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+JSON response with created user\textquotesingle{}s data or errors 
+\end{DoxyReturn}
+
+
+Definition at line 53 of file views.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{53     \textcolor{keyword}{def }post(self,request):}
+\DoxyCodeLine{54         \textcolor{stringliteral}{"{}"{}"{}!}}
+\DoxyCodeLine{55 \textcolor{stringliteral}{        @brief This is the function for handling the POST request}}
+\DoxyCodeLine{56 \textcolor{stringliteral}{}}
+\DoxyCodeLine{57 \textcolor{stringliteral}{        @param self Default object parameter}}
+\DoxyCodeLine{58 \textcolor{stringliteral}{        @param request Request object with post data fields -\/ 'username','first\_name','last\_name','email','password','org\_pass'}}
+\DoxyCodeLine{59 \textcolor{stringliteral}{}}
+\DoxyCodeLine{60 \textcolor{stringliteral}{        @return JSON response with created user's data or errors}}
+\DoxyCodeLine{61 \textcolor{stringliteral}{        "{}"{}"{}}}
+\DoxyCodeLine{62         org\_pass = request.data.pop(\textcolor{stringliteral}{'org\_pass'},\textcolor{stringliteral}{''})}
+\DoxyCodeLine{63         \textcolor{keywordflow}{if} Organisation.objects.filter(org\_pass=org\_pass).exists():}
+\DoxyCodeLine{64             user\_ser = RegisterSerializer(data=request.data,context=\{\textcolor{stringliteral}{'org'}:Organisation.objects.get(org\_pass=org\_pass)\})}
+\DoxyCodeLine{65             \textcolor{keywordflow}{if} user\_ser.is\_valid():}
+\DoxyCodeLine{66                 user\_ser.save()}
+\DoxyCodeLine{67                 \textcolor{keywordflow}{return} Response(user\_ser.data,status=status.HTTP\_201\_CREATED)}
+\DoxyCodeLine{68             \textcolor{keywordflow}{return} Response(user\_ser.errors,status = status.HTTP\_400\_BAD\_REQUEST)}
+\DoxyCodeLine{69         \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}msg"{}}:\textcolor{stringliteral}{"{}No organization with this passcode"{}}\})}
+\DoxyCodeLine{70 }
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/hp/\+Sem3/\+CS251/\+Red\+Plag/\+Project\+Repo/\+Backend/\+Authentication/\mbox{\hyperlink{Authentication_2views_8py}{views.\+py}}\end{DoxyCompactItemize}

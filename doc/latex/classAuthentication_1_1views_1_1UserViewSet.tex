@@ -1,0 +1,75 @@
+\hypertarget{classAuthentication_1_1views_1_1UserViewSet}{}\doxysection{Authentication.\+views.\+User\+View\+Set Class Reference}
+\label{classAuthentication_1_1views_1_1UserViewSet}\index{Authentication.views.UserViewSet@{Authentication.views.UserViewSet}}
+Inheritance diagram for Authentication.\+views.\+User\+View\+Set\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classAuthentication_1_1views_1_1UserViewSet}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classAuthentication_1_1views_1_1UserViewSet_aa21e283094b938d8b4f3a3984f8a3bc8}{get\+\_\+queryset}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+tuple \mbox{\hyperlink{classAuthentication_1_1views_1_1UserViewSet_ab0303ae1f04f80bdb3feda28d60c2ba6}{permission\+\_\+classes}} = (Is\+Authenticated,)
+\item 
+\mbox{\hyperlink{classAuthentication_1_1views_1_1UserViewSet_a737cb0ebf3420c716259148653d13977}{serializer\+\_\+class}} = Sample\+Serializer
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 20 of file views.\+py.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAuthentication_1_1views_1_1UserViewSet_aa21e283094b938d8b4f3a3984f8a3bc8}\label{classAuthentication_1_1views_1_1UserViewSet_aa21e283094b938d8b4f3a3984f8a3bc8}} 
+\index{Authentication.views.UserViewSet@{Authentication.views.UserViewSet}!get\_queryset@{get\_queryset}}
+\index{get\_queryset@{get\_queryset}!Authentication.views.UserViewSet@{Authentication.views.UserViewSet}}
+\doxysubsubsection{\texorpdfstring{get\_queryset()}{get\_queryset()}}
+{\footnotesize\ttfamily def Authentication.\+views.\+User\+View\+Set.\+get\+\_\+queryset (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file views.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25     \textcolor{keyword}{def }get\_queryset(self):}
+\DoxyCodeLine{26         \textcolor{keywordflow}{return} MyUser.objects.filter(username=self.request.user.username)}
+\DoxyCodeLine{27 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classAuthentication_1_1views_1_1UserViewSet_ab0303ae1f04f80bdb3feda28d60c2ba6}\label{classAuthentication_1_1views_1_1UserViewSet_ab0303ae1f04f80bdb3feda28d60c2ba6}} 
+\index{Authentication.views.UserViewSet@{Authentication.views.UserViewSet}!permission\_classes@{permission\_classes}}
+\index{permission\_classes@{permission\_classes}!Authentication.views.UserViewSet@{Authentication.views.UserViewSet}}
+\doxysubsubsection{\texorpdfstring{permission\_classes}{permission\_classes}}
+{\footnotesize\ttfamily tuple Authentication.\+views.\+User\+View\+Set.\+permission\+\_\+classes = (Is\+Authenticated,)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 22 of file views.\+py.
+
+\mbox{\Hypertarget{classAuthentication_1_1views_1_1UserViewSet_a737cb0ebf3420c716259148653d13977}\label{classAuthentication_1_1views_1_1UserViewSet_a737cb0ebf3420c716259148653d13977}} 
+\index{Authentication.views.UserViewSet@{Authentication.views.UserViewSet}!serializer\_class@{serializer\_class}}
+\index{serializer\_class@{serializer\_class}!Authentication.views.UserViewSet@{Authentication.views.UserViewSet}}
+\doxysubsubsection{\texorpdfstring{serializer\_class}{serializer\_class}}
+{\footnotesize\ttfamily Authentication.\+views.\+User\+View\+Set.\+serializer\+\_\+class = Sample\+Serializer\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 23 of file views.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/hp/\+Sem3/\+CS251/\+Red\+Plag/\+Project\+Repo/\+Backend/\+Authentication/\mbox{\hyperlink{Authentication_2views_8py}{views.\+py}}\end{DoxyCompactItemize}

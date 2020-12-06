@@ -1,0 +1,194 @@
+\hypertarget{classMain_1_1models_1_1Batch}{}\doxysection{Main.\+models.\+Batch Class Reference}
+\label{classMain_1_1models_1_1Batch}\index{Main.models.Batch@{Main.models.Batch}}
+Inheritance diagram for Main.\+models.\+Batch\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMain_1_1models_1_1Batch}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classMain_1_1models_1_1Batch_a71e44cf192c9f4f70d6d51cea11cdaba}{\+\_\+\+\_\+str\+\_\+\+\_\+}} (self)
+\item 
+def \mbox{\hyperlink{classMain_1_1models_1_1Batch_ae99a0f1a2a544296b110a5216b1a48b7}{compute\+Result}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMain_1_1models_1_1Batch_a988839e88c6b905f2fbe866ce32c50bc}{id}} = models.\+UUIDField(primary\+\_\+key=True, default=uuid.\+uuid4, editable=False)
+\item 
+\mbox{\hyperlink{classMain_1_1models_1_1Batch_a8dfbabc3a417fadd3918cce28cfb2e21}{user}} = models.\+Foreign\+Key(\mbox{\hyperlink{classAuthentication_1_1models_1_1MyUser}{My\+User}},on\+\_\+delete=models.\+CASCADE)
+\item 
+\mbox{\hyperlink{classMain_1_1models_1_1Batch_abf7bbc611d788abf9968b22fbb97c915}{name}} = models.\+Char\+Field(max\+\_\+length=150)
+\item 
+\mbox{\hyperlink{classMain_1_1models_1_1Batch_aea9ba27ae0f0f7944446a9a5fbbd45e9}{description}} = models.\+Text\+Field()
+\item 
+\mbox{\hyperlink{classMain_1_1models_1_1Batch_a18def6ca2cde9774393c11a18ae0f5ec}{language}} = models.\+Char\+Field(max\+\_\+length=40)
+\item 
+\mbox{\hyperlink{classMain_1_1models_1_1Batch_af611ee33fc662f7f75ff66d8a26d7354}{inline\+\_\+comment}} = models.\+Char\+Field(max\+\_\+length=5,default=\textquotesingle{}\textquotesingle{})
+\item 
+\mbox{\hyperlink{classMain_1_1models_1_1Batch_af92d98edaa1063e9e4a84f07d805c746}{multi\+\_\+begin}} = models.\+Char\+Field(max\+\_\+length=5,default=\textquotesingle{}\textquotesingle{})
+\item 
+\mbox{\hyperlink{classMain_1_1models_1_1Batch_acd88b4edad7636e2444164fd36ffe683}{multi\+\_\+end}} = models.\+Char\+Field(max\+\_\+length=5,default=\textquotesingle{}\textquotesingle{})
+\item 
+\mbox{\hyperlink{classMain_1_1models_1_1Batch_a39bde0357da0cd9e2082d1a298f97d3f}{created\+\_\+at}} = models.\+Date\+Time\+Field(auto\+\_\+now=True,editable=False)
+\item 
+\mbox{\hyperlink{classMain_1_1models_1_1Batch_ac54d44cf4afd4702db50910b7536e0a4}{result}} = models.\+Text\+Field(default=\char`\"{}This is a sample results file\char`\"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 12 of file models.\+py.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMain_1_1models_1_1Batch_a71e44cf192c9f4f70d6d51cea11cdaba}\label{classMain_1_1models_1_1Batch_a71e44cf192c9f4f70d6d51cea11cdaba}} 
+\index{Main.models.Batch@{Main.models.Batch}!\_\_str\_\_@{\_\_str\_\_}}
+\index{\_\_str\_\_@{\_\_str\_\_}!Main.models.Batch@{Main.models.Batch}}
+\doxysubsubsection{\texorpdfstring{\_\_str\_\_()}{\_\_str\_\_()}}
+{\footnotesize\ttfamily def Main.\+models.\+Batch.\+\_\+\+\_\+str\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 24 of file models.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{24     \textcolor{keyword}{def }\_\_str\_\_(self):}
+\DoxyCodeLine{25         \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacebagwords_a2cb5df95818340380eeeb015b9398c41}{str}}(self.id)}
+\DoxyCodeLine{26     }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMain_1_1models_1_1Batch_ae99a0f1a2a544296b110a5216b1a48b7}\label{classMain_1_1models_1_1Batch_ae99a0f1a2a544296b110a5216b1a48b7}} 
+\index{Main.models.Batch@{Main.models.Batch}!computeResult@{computeResult}}
+\index{computeResult@{computeResult}!Main.models.Batch@{Main.models.Batch}}
+\doxysubsubsection{\texorpdfstring{computeResult()}{computeResult()}}
+{\footnotesize\ttfamily def Main.\+models.\+Batch.\+compute\+Result (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 27 of file models.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{27     \textcolor{keyword}{def }computeResult(self):}
+\DoxyCodeLine{28         print(\textcolor{stringliteral}{"{}In compute result2"{}})}
+\DoxyCodeLine{29         result = \mbox{\hyperlink{namespacecore_ab05c0b37878602eb4a9f4aea994c941b}{logic}}(os.getcwd(),\mbox{\hyperlink{namespacebagwords_a2cb5df95818340380eeeb015b9398c41}{str}}(self.id),self.language,self.inline\_comment,self.multi\_begin,self.multi\_end)}
+\DoxyCodeLine{30         self.result = json.dumps(result)}
+\DoxyCodeLine{31         self.save()}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classMain_1_1models_1_1Batch_a39bde0357da0cd9e2082d1a298f97d3f}\label{classMain_1_1models_1_1Batch_a39bde0357da0cd9e2082d1a298f97d3f}} 
+\index{Main.models.Batch@{Main.models.Batch}!created\_at@{created\_at}}
+\index{created\_at@{created\_at}!Main.models.Batch@{Main.models.Batch}}
+\doxysubsubsection{\texorpdfstring{created\_at}{created\_at}}
+{\footnotesize\ttfamily Main.\+models.\+Batch.\+created\+\_\+at = models.\+Date\+Time\+Field(auto\+\_\+now=True,editable=False)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 21 of file models.\+py.
+
+\mbox{\Hypertarget{classMain_1_1models_1_1Batch_aea9ba27ae0f0f7944446a9a5fbbd45e9}\label{classMain_1_1models_1_1Batch_aea9ba27ae0f0f7944446a9a5fbbd45e9}} 
+\index{Main.models.Batch@{Main.models.Batch}!description@{description}}
+\index{description@{description}!Main.models.Batch@{Main.models.Batch}}
+\doxysubsubsection{\texorpdfstring{description}{description}}
+{\footnotesize\ttfamily Main.\+models.\+Batch.\+description = models.\+Text\+Field()\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 16 of file models.\+py.
+
+\mbox{\Hypertarget{classMain_1_1models_1_1Batch_a988839e88c6b905f2fbe866ce32c50bc}\label{classMain_1_1models_1_1Batch_a988839e88c6b905f2fbe866ce32c50bc}} 
+\index{Main.models.Batch@{Main.models.Batch}!id@{id}}
+\index{id@{id}!Main.models.Batch@{Main.models.Batch}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily Main.\+models.\+Batch.\+id = models.\+UUIDField(primary\+\_\+key=True, default=uuid.\+uuid4, editable=False)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 13 of file models.\+py.
+
+\mbox{\Hypertarget{classMain_1_1models_1_1Batch_af611ee33fc662f7f75ff66d8a26d7354}\label{classMain_1_1models_1_1Batch_af611ee33fc662f7f75ff66d8a26d7354}} 
+\index{Main.models.Batch@{Main.models.Batch}!inline\_comment@{inline\_comment}}
+\index{inline\_comment@{inline\_comment}!Main.models.Batch@{Main.models.Batch}}
+\doxysubsubsection{\texorpdfstring{inline\_comment}{inline\_comment}}
+{\footnotesize\ttfamily Main.\+models.\+Batch.\+inline\+\_\+comment = models.\+Char\+Field(max\+\_\+length=5,default=\textquotesingle{}\textquotesingle{})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 18 of file models.\+py.
+
+\mbox{\Hypertarget{classMain_1_1models_1_1Batch_a18def6ca2cde9774393c11a18ae0f5ec}\label{classMain_1_1models_1_1Batch_a18def6ca2cde9774393c11a18ae0f5ec}} 
+\index{Main.models.Batch@{Main.models.Batch}!language@{language}}
+\index{language@{language}!Main.models.Batch@{Main.models.Batch}}
+\doxysubsubsection{\texorpdfstring{language}{language}}
+{\footnotesize\ttfamily Main.\+models.\+Batch.\+language = models.\+Char\+Field(max\+\_\+length=40)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 17 of file models.\+py.
+
+\mbox{\Hypertarget{classMain_1_1models_1_1Batch_af92d98edaa1063e9e4a84f07d805c746}\label{classMain_1_1models_1_1Batch_af92d98edaa1063e9e4a84f07d805c746}} 
+\index{Main.models.Batch@{Main.models.Batch}!multi\_begin@{multi\_begin}}
+\index{multi\_begin@{multi\_begin}!Main.models.Batch@{Main.models.Batch}}
+\doxysubsubsection{\texorpdfstring{multi\_begin}{multi\_begin}}
+{\footnotesize\ttfamily Main.\+models.\+Batch.\+multi\+\_\+begin = models.\+Char\+Field(max\+\_\+length=5,default=\textquotesingle{}\textquotesingle{})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 19 of file models.\+py.
+
+\mbox{\Hypertarget{classMain_1_1models_1_1Batch_acd88b4edad7636e2444164fd36ffe683}\label{classMain_1_1models_1_1Batch_acd88b4edad7636e2444164fd36ffe683}} 
+\index{Main.models.Batch@{Main.models.Batch}!multi\_end@{multi\_end}}
+\index{multi\_end@{multi\_end}!Main.models.Batch@{Main.models.Batch}}
+\doxysubsubsection{\texorpdfstring{multi\_end}{multi\_end}}
+{\footnotesize\ttfamily Main.\+models.\+Batch.\+multi\+\_\+end = models.\+Char\+Field(max\+\_\+length=5,default=\textquotesingle{}\textquotesingle{})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 20 of file models.\+py.
+
+\mbox{\Hypertarget{classMain_1_1models_1_1Batch_abf7bbc611d788abf9968b22fbb97c915}\label{classMain_1_1models_1_1Batch_abf7bbc611d788abf9968b22fbb97c915}} 
+\index{Main.models.Batch@{Main.models.Batch}!name@{name}}
+\index{name@{name}!Main.models.Batch@{Main.models.Batch}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily Main.\+models.\+Batch.\+name = models.\+Char\+Field(max\+\_\+length=150)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 15 of file models.\+py.
+
+\mbox{\Hypertarget{classMain_1_1models_1_1Batch_ac54d44cf4afd4702db50910b7536e0a4}\label{classMain_1_1models_1_1Batch_ac54d44cf4afd4702db50910b7536e0a4}} 
+\index{Main.models.Batch@{Main.models.Batch}!result@{result}}
+\index{result@{result}!Main.models.Batch@{Main.models.Batch}}
+\doxysubsubsection{\texorpdfstring{result}{result}}
+{\footnotesize\ttfamily Main.\+models.\+Batch.\+result = models.\+Text\+Field(default=\char`\"{}This is a sample results file\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 22 of file models.\+py.
+
+\mbox{\Hypertarget{classMain_1_1models_1_1Batch_a8dfbabc3a417fadd3918cce28cfb2e21}\label{classMain_1_1models_1_1Batch_a8dfbabc3a417fadd3918cce28cfb2e21}} 
+\index{Main.models.Batch@{Main.models.Batch}!user@{user}}
+\index{user@{user}!Main.models.Batch@{Main.models.Batch}}
+\doxysubsubsection{\texorpdfstring{user}{user}}
+{\footnotesize\ttfamily Main.\+models.\+Batch.\+user = models.\+Foreign\+Key(\mbox{\hyperlink{classAuthentication_1_1models_1_1MyUser}{My\+User}},on\+\_\+delete=models.\+CASCADE)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 14 of file models.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/hp/\+Sem3/\+CS251/\+Red\+Plag/\+Project\+Repo/\+Backend/\+Main/\mbox{\hyperlink{Main_2models_8py}{models.\+py}}\end{DoxyCompactItemize}

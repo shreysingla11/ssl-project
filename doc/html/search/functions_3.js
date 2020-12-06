@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logic_86',['logic',['../namespacecore.html#ab05c0b37878602eb4a9f4aea994c941b',1,'core']]]
+  ['identify_5fspecial_5fcharacters_124',['identify_special_characters',['../namespacecore.html#a6cdf2fdfd3999cbf9708533eb5806e37',1,'core.identify_special_characters()'],['../namespacemain.html#a2024669d2b02738df910eb55d90c9d2b',1,'main.identify_special_characters()']]]
 ];

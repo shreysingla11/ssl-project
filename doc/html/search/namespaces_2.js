@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['debug_71',['debug',['../namespacedebug.html',1,'']]]
+  ['core_105',['core',['../namespacecore.html',1,'']]]
 ];

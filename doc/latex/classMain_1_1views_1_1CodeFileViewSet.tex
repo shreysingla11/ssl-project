@@ -1,0 +1,79 @@
+\hypertarget{classMain_1_1views_1_1CodeFileViewSet}{}\doxysection{Main.\+views.\+Code\+File\+View\+Set Class Reference}
+\label{classMain_1_1views_1_1CodeFileViewSet}\index{Main.views.CodeFileViewSet@{Main.views.CodeFileViewSet}}
+Inheritance diagram for Main.\+views.\+Code\+File\+View\+Set\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMain_1_1views_1_1CodeFileViewSet}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classMain_1_1views_1_1CodeFileViewSet_ae7fddc5f424156911cd3d6e653e8e230}{get\+\_\+queryset}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMain_1_1views_1_1CodeFileViewSet_a187bc888e6e81fcfff819bf2eeffe0f8}{serializer\+\_\+class}} = Code\+File\+Serializer
+\item 
+tuple \mbox{\hyperlink{classMain_1_1views_1_1CodeFileViewSet_a2295226ead46b240d39c657938c6d629}{permission\+\_\+classes}} = (Is\+Authenticated,)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 65 of file views.\+py.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMain_1_1views_1_1CodeFileViewSet_ae7fddc5f424156911cd3d6e653e8e230}\label{classMain_1_1views_1_1CodeFileViewSet_ae7fddc5f424156911cd3d6e653e8e230}} 
+\index{Main.views.CodeFileViewSet@{Main.views.CodeFileViewSet}!get\_queryset@{get\_queryset}}
+\index{get\_queryset@{get\_queryset}!Main.views.CodeFileViewSet@{Main.views.CodeFileViewSet}}
+\doxysubsubsection{\texorpdfstring{get\_queryset()}{get\_queryset()}}
+{\footnotesize\ttfamily def Main.\+views.\+Code\+File\+View\+Set.\+get\+\_\+queryset (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 69 of file views.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{69     \textcolor{keyword}{def }get\_queryset(self):}
+\DoxyCodeLine{70         btchs = Batch.objects.filter(user = self.request.user)}
+\DoxyCodeLine{71         qs = CodeFile.objects.none()}
+\DoxyCodeLine{72         \textcolor{keywordflow}{for} bt \textcolor{keywordflow}{in} btchs:}
+\DoxyCodeLine{73             qs = qs.union(CodeFile.objects.filter(batch=bt))}
+\DoxyCodeLine{74         \textcolor{keywordflow}{return} qs}
+\DoxyCodeLine{75 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classMain_1_1views_1_1CodeFileViewSet_a2295226ead46b240d39c657938c6d629}\label{classMain_1_1views_1_1CodeFileViewSet_a2295226ead46b240d39c657938c6d629}} 
+\index{Main.views.CodeFileViewSet@{Main.views.CodeFileViewSet}!permission\_classes@{permission\_classes}}
+\index{permission\_classes@{permission\_classes}!Main.views.CodeFileViewSet@{Main.views.CodeFileViewSet}}
+\doxysubsubsection{\texorpdfstring{permission\_classes}{permission\_classes}}
+{\footnotesize\ttfamily tuple Main.\+views.\+Code\+File\+View\+Set.\+permission\+\_\+classes = (Is\+Authenticated,)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 67 of file views.\+py.
+
+\mbox{\Hypertarget{classMain_1_1views_1_1CodeFileViewSet_a187bc888e6e81fcfff819bf2eeffe0f8}\label{classMain_1_1views_1_1CodeFileViewSet_a187bc888e6e81fcfff819bf2eeffe0f8}} 
+\index{Main.views.CodeFileViewSet@{Main.views.CodeFileViewSet}!serializer\_class@{serializer\_class}}
+\index{serializer\_class@{serializer\_class}!Main.views.CodeFileViewSet@{Main.views.CodeFileViewSet}}
+\doxysubsubsection{\texorpdfstring{serializer\_class}{serializer\_class}}
+{\footnotesize\ttfamily Main.\+views.\+Code\+File\+View\+Set.\+serializer\+\_\+class = Code\+File\+Serializer\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 66 of file views.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/hp/\+Sem3/\+CS251/\+Red\+Plag/\+Project\+Repo/\+Backend/\+Main/\mbox{\hyperlink{Main_2views_8py}{views.\+py}}\end{DoxyCompactItemize}

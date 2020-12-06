@@ -1,0 +1,57 @@
+\hypertarget{classAuthentication_1_1serializers_1_1RegisterSerializer}{}\doxysection{Authentication.\+serializers.\+Register\+Serializer Class Reference}
+\label{classAuthentication_1_1serializers_1_1RegisterSerializer}\index{Authentication.serializers.RegisterSerializer@{Authentication.serializers.RegisterSerializer}}
+Inheritance diagram for Authentication.\+serializers.\+Register\+Serializer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classAuthentication_1_1serializers_1_1RegisterSerializer}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classAuthentication_1_1serializers_1_1RegisterSerializer_1_1Meta}{Meta}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classAuthentication_1_1serializers_1_1RegisterSerializer_a5c9f4d83cc737877bdddd63a38d5dfa3}{create}} (self, validated\+\_\+data)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 17 of file serializers.\+py.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAuthentication_1_1serializers_1_1RegisterSerializer_a5c9f4d83cc737877bdddd63a38d5dfa3}\label{classAuthentication_1_1serializers_1_1RegisterSerializer_a5c9f4d83cc737877bdddd63a38d5dfa3}} 
+\index{Authentication.serializers.RegisterSerializer@{Authentication.serializers.RegisterSerializer}!create@{create}}
+\index{create@{create}!Authentication.serializers.RegisterSerializer@{Authentication.serializers.RegisterSerializer}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily def Authentication.\+serializers.\+Register\+Serializer.\+create (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{validated\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 22 of file serializers.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{22     \textcolor{keyword}{def }create(self, validated\_data):}
+\DoxyCodeLine{23         password = validated\_data.pop(\textcolor{stringliteral}{'password'}, \textcolor{keywordtype}{None})}
+\DoxyCodeLine{24         print(validated\_data)}
+\DoxyCodeLine{25         instance = self.Meta.model(**validated\_data)}
+\DoxyCodeLine{26         instance.org = self.context[\textcolor{stringliteral}{"{}org"{}}]}
+\DoxyCodeLine{27         \textcolor{keywordflow}{if} password \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{28             instance.set\_password(password)}
+\DoxyCodeLine{29         instance.save()}
+\DoxyCodeLine{30         \textcolor{keywordflow}{return} instance}
+\DoxyCodeLine{31 }
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/hp/\+Sem3/\+CS251/\+Red\+Plag/\+Project\+Repo/\+Backend/\+Authentication/\mbox{\hyperlink{Authentication_2serializers_8py}{serializers.\+py}}\end{DoxyCompactItemize}

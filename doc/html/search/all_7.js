@@ -1,11 +1,7 @@
 var searchData=
 [
-  ['k_25',['k',['../namespacemain.html#a40a5467a91fc0d6cf6c7551c8fb01ddb',1,'main.k()'],['../namespacemain2.html#a4bf7c7203822846817750558a036f31f',1,'main2.k()']]],
-  ['key_26',['key',['../namespacemain.html#a832185a351506083e49f83201cbc8433',1,'main']]],
-  ['keydict_27',['keydict',['../namespacebagwords.html#a1c48a2e4d0e85254186c6da4f4dd2468',1,'bagwords.keydict()'],['../namespacekgram.html#afb46c73eec4135fb0cd63e5ee77077fd',1,'kgram.keydict()']]],
-  ['keywords_28',['keywords',['../namespacecore.html#a6bb063cb921f3de8c317e8353bbd779c',1,'core.keywords()'],['../namespacemain.html#a61dae4fa2fb831c443592584c5143889',1,'main.keywords()']]],
-  ['kgram_29',['kgram',['../namespacekgram.html',1,'kgram'],['../namespacecore.html#a71d6891306fa079e686bd7d735184547',1,'core.kgram()'],['../namespacemain.html#ae7f2c7a84886467c64292ca1d81fa534',1,'main.kgram()'],['../namespacemain2.html#af7cacb36f6e89e7ccbf9e87b4a685bb7',1,'main2.kgram()']]],
-  ['kgram_2epy_30',['kgram.py',['../kgram_8py.html',1,'']]],
-  ['kgramlen_31',['kgramlen',['../namespacekgram.html#a62cea87b170cff2009a25c8a98f5de98',1,'kgram']]],
-  ['kgrams_32',['kgrams',['../namespacemain.html#a9eb4c974a79b5393081a07a3e8bfed4e',1,'main']]]
+  ['i_30',['i',['../namespacebagwords.html#a62a39696467db8e4a36caed837357d4e',1,'bagwords.i()'],['../namespacekgram.html#adb94d02bcd082e4beb3f6cf3e8846d82',1,'kgram.i()']]],
+  ['identify_5fspecial_5fcharacters_31',['identify_special_characters',['../namespacecore.html#a6cdf2fdfd3999cbf9708533eb5806e37',1,'core.identify_special_characters()'],['../namespacemain.html#a2024669d2b02738df910eb55d90c9d2b',1,'main.identify_special_characters()']]],
+  ['ignore_32',['ignore',['../namespacebagwords.html#a6f8c5144dc3757a86244575003f1cc97',1,'bagwords.ignore()'],['../namespacekgram.html#aadbed3c089e2b9940ec124b8920e9bc2',1,'kgram.ignore()']]],
+  ['img_33',['img',['../namespacedebug.html#a3cfebeaa6a2bfbf208a4c599f7807a73',1,'debug.img()'],['../namespacemain.html#ac42fa4e2ae668390fb9733572e6f45ad',1,'main.img()']]]
 ];

@@ -1,0 +1,66 @@
+\hypertarget{namespaceMain_1_1models}{}\doxysection{Main.\+models Namespace Reference}
+\label{namespaceMain_1_1models}\index{Main.models@{Main.models}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classMain_1_1models_1_1Batch}{Batch}}
+\item 
+class \mbox{\hyperlink{classMain_1_1models_1_1CodeFile}{Code\+File}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespaceMain_1_1models_aa602114d81a69a68a4e012fe8f95bdc2}{get\+\_\+file\+\_\+name}} (instance, filename)
+\item 
+def \mbox{\hyperlink{namespaceMain_1_1models_aaf4d65a3009525490be261ba89ccac1f}{delete\+Batch\+Dir}} (sender, instance, $\ast$$\ast$kwargs)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceMain_1_1models_aaf4d65a3009525490be261ba89ccac1f}\label{namespaceMain_1_1models_aaf4d65a3009525490be261ba89ccac1f}} 
+\index{Main.models@{Main.models}!deleteBatchDir@{deleteBatchDir}}
+\index{deleteBatchDir@{deleteBatchDir}!Main.models@{Main.models}}
+\doxysubsubsection{\texorpdfstring{deleteBatchDir()}{deleteBatchDir()}}
+{\footnotesize\ttfamily def Main.\+models.\+delete\+Batch\+Dir (\begin{DoxyParamCaption}\item[{}]{sender,  }\item[{}]{instance,  }\item[{$\ast$$\ast$}]{kwargs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 42 of file models.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{42 \textcolor{keyword}{def }\mbox{\hyperlink{namespaceMain_1_1models_aaf4d65a3009525490be261ba89ccac1f}{deleteBatchDir}}(sender, instance, **kwargs):}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     directory = os.path.join(os.getcwd(),\textcolor{stringliteral}{'src'},\mbox{\hyperlink{namespacebagwords_a2cb5df95818340380eeeb015b9398c41}{str}}(instance.id))}
+\DoxyCodeLine{45     print(directory)}
+\DoxyCodeLine{46     \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{47         \textcolor{keywordflow}{if} os.path.isdir(directory):}
+\DoxyCodeLine{48             print(\textcolor{stringliteral}{"{}Yes"{}})}
+\DoxyCodeLine{49             shutil.rmtree(directory)}
+\DoxyCodeLine{50     \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{51         print(\textcolor{stringliteral}{"{}Error"{}})}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{comment}{\# @receiver(pre\_save, sender=Batch)}}
+\DoxyCodeLine{54 \textcolor{comment}{\# def computeResult(sender, instance, **kwargs):}}
+\DoxyCodeLine{55 \textcolor{comment}{\#     print("{}In compute result"{})}}
+\DoxyCodeLine{56 \textcolor{comment}{\#     result = logic(os.getcwd(),str(instance.id))}}
+\DoxyCodeLine{57 \textcolor{comment}{\#     instance.result = json.dumps(result)}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceMain_1_1models_aa602114d81a69a68a4e012fe8f95bdc2}\label{namespaceMain_1_1models_aa602114d81a69a68a4e012fe8f95bdc2}} 
+\index{Main.models@{Main.models}!get\_file\_name@{get\_file\_name}}
+\index{get\_file\_name@{get\_file\_name}!Main.models@{Main.models}}
+\doxysubsubsection{\texorpdfstring{get\_file\_name()}{get\_file\_name()}}
+{\footnotesize\ttfamily def Main.\+models.\+get\+\_\+file\+\_\+name (\begin{DoxyParamCaption}\item[{}]{instance,  }\item[{}]{filename }\end{DoxyParamCaption})}
+
+
+
+Definition at line 34 of file models.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{34 \textcolor{keyword}{def }\mbox{\hyperlink{namespaceMain_1_1models_aa602114d81a69a68a4e012fe8f95bdc2}{get\_file\_name}}(instance,filename):}
+\DoxyCodeLine{35     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}/"{}}.join([\textcolor{stringliteral}{'src'},\mbox{\hyperlink{namespacebagwords_a2cb5df95818340380eeeb015b9398c41}{str}}(instance.batch),filename])}
+\DoxyCodeLine{36 }
+
+\end{DoxyCode}

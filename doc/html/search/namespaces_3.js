@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['kgram_72',['kgram',['../namespacekgram.html',1,'']]]
+  ['debug_106',['debug',['../namespacedebug.html',1,'']]]
 ];

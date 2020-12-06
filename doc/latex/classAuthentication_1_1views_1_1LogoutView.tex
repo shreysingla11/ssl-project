@@ -1,0 +1,79 @@
+\hypertarget{classAuthentication_1_1views_1_1LogoutView}{}\doxysection{Authentication.\+views.\+Logout\+View Class Reference}
+\label{classAuthentication_1_1views_1_1LogoutView}\index{Authentication.views.LogoutView@{Authentication.views.LogoutView}}
+
+
+This is the class controlling the /auth/logout endpoint.  
+
+
+Inheritance diagram for Authentication.\+views.\+Logout\+View\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classAuthentication_1_1views_1_1LogoutView}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classAuthentication_1_1views_1_1LogoutView_a01b8c27cfa5370d0b777fbf5cb1b1f71}{get}} (self, request)
+\begin{DoxyCompactList}\small\item\em This is the function for handling the GET request. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the class controlling the /auth/logout endpoint. 
+
+This viewset supports GET request to log out the current user\textquotesingle{}s session~\newline
+ ~\newline
+ GET /auth/logout 
+
+Definition at line 129 of file views.\+py.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAuthentication_1_1views_1_1LogoutView_a01b8c27cfa5370d0b777fbf5cb1b1f71}\label{classAuthentication_1_1views_1_1LogoutView_a01b8c27cfa5370d0b777fbf5cb1b1f71}} 
+\index{Authentication.views.LogoutView@{Authentication.views.LogoutView}!get@{get}}
+\index{get@{get}!Authentication.views.LogoutView@{Authentication.views.LogoutView}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily def Authentication.\+views.\+Logout\+View.\+get (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{request }\end{DoxyParamCaption})}
+
+
+
+This is the function for handling the GET request. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Default object parameter \\
+\hline
+{\em request} & Request object\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+JSON response on successful logging out of the current user 
+\end{DoxyReturn}
+
+
+Definition at line 136 of file views.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{136     \textcolor{keyword}{def }get(self,request):}
+\DoxyCodeLine{137         \textcolor{stringliteral}{"{}"{}"{}!}}
+\DoxyCodeLine{138 \textcolor{stringliteral}{        @brief This is the function for handling the GET request}}
+\DoxyCodeLine{139 \textcolor{stringliteral}{}}
+\DoxyCodeLine{140 \textcolor{stringliteral}{        @param self Default object parameter}}
+\DoxyCodeLine{141 \textcolor{stringliteral}{        @param request Request object}}
+\DoxyCodeLine{142 \textcolor{stringliteral}{}}
+\DoxyCodeLine{143 \textcolor{stringliteral}{        @return JSON response on successful logging out of the current user}}
+\DoxyCodeLine{144 \textcolor{stringliteral}{        "{}"{}"{}}}
+\DoxyCodeLine{145         print(request.user)}
+\DoxyCodeLine{146         logout(request)}
+\DoxyCodeLine{147         print(request.user)}
+\DoxyCodeLine{148         \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}message"{}}:\textcolor{stringliteral}{"{}Logged out successfully"{}}\})}
+\DoxyCodeLine{149 }
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/hp/\+Sem3/\+CS251/\+Red\+Plag/\+Project\+Repo/\+Backend/\+Authentication/\mbox{\hyperlink{Authentication_2views_8py}{views.\+py}}\end{DoxyCompactItemize}

@@ -1,0 +1,60 @@
+\hypertarget{classMain_1_1serializers_1_1BatchSerializer}{}\doxysection{Main.\+serializers.\+Batch\+Serializer Class Reference}
+\label{classMain_1_1serializers_1_1BatchSerializer}\index{Main.serializers.BatchSerializer@{Main.serializers.BatchSerializer}}
+Inheritance diagram for Main.\+serializers.\+Batch\+Serializer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMain_1_1serializers_1_1BatchSerializer}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classMain_1_1serializers_1_1BatchSerializer_1_1Meta}{Meta}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classMain_1_1serializers_1_1BatchSerializer_aaff9dba24d9ade000b8462289a0e6488}{create}} (self, validated\+\_\+data)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 4 of file serializers.\+py.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMain_1_1serializers_1_1BatchSerializer_aaff9dba24d9ade000b8462289a0e6488}\label{classMain_1_1serializers_1_1BatchSerializer_aaff9dba24d9ade000b8462289a0e6488}} 
+\index{Main.serializers.BatchSerializer@{Main.serializers.BatchSerializer}!create@{create}}
+\index{create@{create}!Main.serializers.BatchSerializer@{Main.serializers.BatchSerializer}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily def Main.\+serializers.\+Batch\+Serializer.\+create (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{validated\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 10 of file serializers.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{10     \textcolor{keyword}{def }create(self, validated\_data):}
+\DoxyCodeLine{11         print(validated\_data)}
+\DoxyCodeLine{12         instance = Batch(user=self.context[\textcolor{stringliteral}{'user'}],**validated\_data)}
+\DoxyCodeLine{13         instance.save()}
+\DoxyCodeLine{14         print(instance)}
+\DoxyCodeLine{15         \textcolor{keywordflow}{if} self.context[\textcolor{stringliteral}{'files'}] \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{16             \textcolor{keywordflow}{for} f \textcolor{keywordflow}{in} self.context[\textcolor{stringliteral}{'files'}]:}
+\DoxyCodeLine{17                 print(\textcolor{stringliteral}{'Yes'})}
+\DoxyCodeLine{18                 obj = CodeFile(batch=instance,file=f)}
+\DoxyCodeLine{19                 obj.save()}
+\DoxyCodeLine{20         instance.computeResult()}
+\DoxyCodeLine{21         \textcolor{keywordflow}{return} instance}
+\DoxyCodeLine{22 }
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/hp/\+Sem3/\+CS251/\+Red\+Plag/\+Project\+Repo/\+Backend/\+Main/\mbox{\hyperlink{Main_2serializers_8py}{serializers.\+py}}\end{DoxyCompactItemize}

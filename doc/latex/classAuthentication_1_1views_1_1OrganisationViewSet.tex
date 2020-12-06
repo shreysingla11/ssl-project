@@ -1,0 +1,92 @@
+\hypertarget{classAuthentication_1_1views_1_1OrganisationViewSet}{}\doxysection{Authentication.\+views.\+Organisation\+View\+Set Class Reference}
+\label{classAuthentication_1_1views_1_1OrganisationViewSet}\index{Authentication.views.OrganisationViewSet@{Authentication.views.OrganisationViewSet}}
+
+
+This is the class controlling the /auth/orgs endpoint.  
+
+
+Inheritance diagram for Authentication.\+views.\+Organisation\+View\+Set\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classAuthentication_1_1views_1_1OrganisationViewSet}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classAuthentication_1_1views_1_1OrganisationViewSet_a2e32ebb53986a6e9c707c0b806d2bd73}{get\+\_\+queryset}} (self)
+\begin{DoxyCompactList}\small\item\em Filters the organisations to only show the authenticated users organisation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAuthentication_1_1views_1_1OrganisationViewSet_a4e93293d265c73539e89d4a17dda375b}{serializer\+\_\+class}} = Organisation\+Serializer
+\item 
+tuple \mbox{\hyperlink{classAuthentication_1_1views_1_1OrganisationViewSet_a2901844353e640c36beb4c6b8b3bf8cd}{permission\+\_\+classes}} = (Is\+Authenticated,)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the class controlling the /auth/orgs endpoint. 
+
+This viewset supports GET requests to create objects of the Orgaisation model~\newline
+ ~\newline
+ GET /orgs Returns the current user\textquotesingle{}s organisation 
+
+Definition at line 28 of file views.\+py.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAuthentication_1_1views_1_1OrganisationViewSet_a2e32ebb53986a6e9c707c0b806d2bd73}\label{classAuthentication_1_1views_1_1OrganisationViewSet_a2e32ebb53986a6e9c707c0b806d2bd73}} 
+\index{Authentication.views.OrganisationViewSet@{Authentication.views.OrganisationViewSet}!get\_queryset@{get\_queryset}}
+\index{get\_queryset@{get\_queryset}!Authentication.views.OrganisationViewSet@{Authentication.views.OrganisationViewSet}}
+\doxysubsubsection{\texorpdfstring{get\_queryset()}{get\_queryset()}}
+{\footnotesize\ttfamily def Authentication.\+views.\+Organisation\+View\+Set.\+get\+\_\+queryset (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Filters the organisations to only show the authenticated users organisation. 
+
+
+
+Definition at line 39 of file views.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{39     \textcolor{keyword}{def }get\_queryset(self):}
+\DoxyCodeLine{40         \textcolor{stringliteral}{"{}"{}"{}!}}
+\DoxyCodeLine{41 \textcolor{stringliteral}{        Filters the organisations to only show the authenticated users organisation}}
+\DoxyCodeLine{42 \textcolor{stringliteral}{        "{}"{}"{}}}
+\DoxyCodeLine{43         \textcolor{keywordflow}{return} Organisation.objects.filter(org\_pass=self.request.user.org.org\_pass)}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classAuthentication_1_1views_1_1OrganisationViewSet_a2901844353e640c36beb4c6b8b3bf8cd}\label{classAuthentication_1_1views_1_1OrganisationViewSet_a2901844353e640c36beb4c6b8b3bf8cd}} 
+\index{Authentication.views.OrganisationViewSet@{Authentication.views.OrganisationViewSet}!permission\_classes@{permission\_classes}}
+\index{permission\_classes@{permission\_classes}!Authentication.views.OrganisationViewSet@{Authentication.views.OrganisationViewSet}}
+\doxysubsubsection{\texorpdfstring{permission\_classes}{permission\_classes}}
+{\footnotesize\ttfamily tuple Authentication.\+views.\+Organisation\+View\+Set.\+permission\+\_\+classes = (Is\+Authenticated,)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 37 of file views.\+py.
+
+\mbox{\Hypertarget{classAuthentication_1_1views_1_1OrganisationViewSet_a4e93293d265c73539e89d4a17dda375b}\label{classAuthentication_1_1views_1_1OrganisationViewSet_a4e93293d265c73539e89d4a17dda375b}} 
+\index{Authentication.views.OrganisationViewSet@{Authentication.views.OrganisationViewSet}!serializer\_class@{serializer\_class}}
+\index{serializer\_class@{serializer\_class}!Authentication.views.OrganisationViewSet@{Authentication.views.OrganisationViewSet}}
+\doxysubsubsection{\texorpdfstring{serializer\_class}{serializer\_class}}
+{\footnotesize\ttfamily Authentication.\+views.\+Organisation\+View\+Set.\+serializer\+\_\+class = Organisation\+Serializer\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 36 of file views.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/hp/\+Sem3/\+CS251/\+Red\+Plag/\+Project\+Repo/\+Backend/\+Authentication/\mbox{\hyperlink{Authentication_2views_8py}{views.\+py}}\end{DoxyCompactItemize}

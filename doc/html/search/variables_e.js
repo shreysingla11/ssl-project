@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['s_130',['s',['../namespacemain2.html#acd616784ff29c4a85cc9d102c5ebee6a',1,'main2']]],
-  ['special_5fchar_131',['special_char',['../namespacecore.html#abe368b7aa890ed8b5008fa11cb50b4cb',1,'core.special_char()'],['../namespacemain.html#adfd80b7f838f0962afba5d33d9f3c87b',1,'main.special_char()']]],
-  ['str_132',['str',['../namespacebagwords.html#a2cb5df95818340380eeeb015b9398c41',1,'bagwords.str()'],['../namespacekgram.html#abccbf46b2b7d68d612d1ae839450013a',1,'kgram.str()']]]
+  ['s_175',['s',['../namespacemain2.html#acd616784ff29c4a85cc9d102c5ebee6a',1,'main2']]],
+  ['serializer_5fclass_176',['serializer_class',['../classAuthentication_1_1views_1_1UserViewSet.html#a737cb0ebf3420c716259148653d13977',1,'Authentication.views.UserViewSet.serializer_class()'],['../classAuthentication_1_1views_1_1OrganisationViewSet.html#a4e93293d265c73539e89d4a17dda375b',1,'Authentication.views.OrganisationViewSet.serializer_class()'],['../classAuthentication_1_1views_1_1ProfileView.html#aad4ec8dff5b6051a83a1a1e79a5cf1f0',1,'Authentication.views.ProfileView.serializer_class()'],['../classAuthentication_1_1views_1_1ChangePasswordView.html#aa8348fe2e55f64496d0bcf3f57f1bf57',1,'Authentication.views.ChangePasswordView.serializer_class()'],['../classMain_1_1views_1_1BatchViewSet.html#a61ef80503f6db47f98a551c3c5feb9da',1,'Main.views.BatchViewSet.serializer_class()'],['../classMain_1_1views_1_1CodeFileViewSet.html#a187bc888e6e81fcfff819bf2eeffe0f8',1,'Main.views.CodeFileViewSet.serializer_class()']]],
+  ['special_5fchar_177',['special_char',['../namespacecore.html#abe368b7aa890ed8b5008fa11cb50b4cb',1,'core.special_char()'],['../namespacemain.html#adfd80b7f838f0962afba5d33d9f3c87b',1,'main.special_char()']]],
+  ['str_178',['str',['../namespacebagwords.html#a2cb5df95818340380eeeb015b9398c41',1,'bagwords.str()'],['../namespacekgram.html#abccbf46b2b7d68d612d1ae839450013a',1,'kgram.str()']]]
 ];

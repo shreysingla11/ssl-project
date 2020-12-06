@@ -1,0 +1,109 @@
+\hypertarget{classMain_1_1views_1_1DownloadResult}{}\doxysection{Main.\+views.\+Download\+Result Class Reference}
+\label{classMain_1_1views_1_1DownloadResult}\index{Main.views.DownloadResult@{Main.views.DownloadResult}}
+
+
+This is the class controlling the authenticated /rp/download endpoint.  
+
+
+Inheritance diagram for Main.\+views.\+Download\+Result\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMain_1_1views_1_1DownloadResult}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classMain_1_1views_1_1DownloadResult_aec0741f93ee70ae95327ea7976929cff}{get}} (self, request, id)
+\begin{DoxyCompactList}\small\item\em This is the function for handling the GET request. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+tuple \mbox{\hyperlink{classMain_1_1views_1_1DownloadResult_a17580ceb97423edbcc9e32a1178e42a5}{permission\+\_\+classes}} = (Is\+Authenticated,)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the class controlling the authenticated /rp/download endpoint. 
+
+This viewset supports GET request to download a particular batch\textquotesingle{}s result~\newline
+ ~\newline
+ GET /rp/download/\+:uid Returns file response with the required batch\textquotesingle{}s result 
+
+Definition at line 76 of file views.\+py.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMain_1_1views_1_1DownloadResult_aec0741f93ee70ae95327ea7976929cff}\label{classMain_1_1views_1_1DownloadResult_aec0741f93ee70ae95327ea7976929cff}} 
+\index{Main.views.DownloadResult@{Main.views.DownloadResult}!get@{get}}
+\index{get@{get}!Main.views.DownloadResult@{Main.views.DownloadResult}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily def Main.\+views.\+Download\+Result.\+get (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{request,  }\item[{}]{id }\end{DoxyParamCaption})}
+
+
+
+This is the function for handling the GET request. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Default object parameter \\
+\hline
+{\em request} & Request object \\
+\hline
+{\em id} & The batch ID\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File response with the request batch\textquotesingle{}s result 
+\end{DoxyReturn}
+
+
+Definition at line 85 of file views.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{85     \textcolor{keyword}{def }get(self,request,id):}
+\DoxyCodeLine{86         \textcolor{stringliteral}{"{}"{}"{}!}}
+\DoxyCodeLine{87 \textcolor{stringliteral}{        @brief This is the function for handling the GET request}}
+\DoxyCodeLine{88 \textcolor{stringliteral}{}}
+\DoxyCodeLine{89 \textcolor{stringliteral}{        @param self Default object parameter}}
+\DoxyCodeLine{90 \textcolor{stringliteral}{        @param request Request object}}
+\DoxyCodeLine{91 \textcolor{stringliteral}{        @param id The batch ID}}
+\DoxyCodeLine{92 \textcolor{stringliteral}{}}
+\DoxyCodeLine{93 \textcolor{stringliteral}{        @return File response with the request batch's result}}
+\DoxyCodeLine{94 \textcolor{stringliteral}{        "{}"{}"{}}}
+\DoxyCodeLine{95         batch = Batch.objects.filter(user=request.user,id=id).exists()}
+\DoxyCodeLine{96         \textcolor{keywordflow}{if} batch:}
+\DoxyCodeLine{97             batch = Batch.objects.get(id=id)}
+\DoxyCodeLine{98             print(batch.result,\textcolor{stringliteral}{'\(\backslash\)n\(\backslash\)n\(\backslash\)n'})}
+\DoxyCodeLine{99             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'threshold'} \textcolor{keywordflow}{in} request.query\_params:}
+\DoxyCodeLine{100                 threshold = float(request.query\_params.get(\textcolor{stringliteral}{'threshold'}))}
+\DoxyCodeLine{101             \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{102                 threshold = 0.5}
+\DoxyCodeLine{103             res = \mbox{\hyperlink{namespacecore_a62946155b08710f13e2f3ff2a3b5e924}{result}}(json.loads(batch.result),threshold)}
+\DoxyCodeLine{104             f = io.BytesIO(bytes(res,encoding=\textcolor{stringliteral}{'utf-\/8'}))}
+\DoxyCodeLine{105             \textcolor{keywordflow}{return} FileResponse(f,filename=\textcolor{stringliteral}{'result.txt'},as\_attachment=\textcolor{keyword}{True})}
+\DoxyCodeLine{106         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{107             \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}error"{}}:\textcolor{stringliteral}{"{}Unknown batch"{}}\},status=status.HTTP\_404\_NOT\_FOUND)}
+\DoxyCodeLine{108 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classMain_1_1views_1_1DownloadResult_a17580ceb97423edbcc9e32a1178e42a5}\label{classMain_1_1views_1_1DownloadResult_a17580ceb97423edbcc9e32a1178e42a5}} 
+\index{Main.views.DownloadResult@{Main.views.DownloadResult}!permission\_classes@{permission\_classes}}
+\index{permission\_classes@{permission\_classes}!Main.views.DownloadResult@{Main.views.DownloadResult}}
+\doxysubsubsection{\texorpdfstring{permission\_classes}{permission\_classes}}
+{\footnotesize\ttfamily tuple Main.\+views.\+Download\+Result.\+permission\+\_\+classes = (Is\+Authenticated,)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 83 of file views.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/hp/\+Sem3/\+CS251/\+Red\+Plag/\+Project\+Repo/\+Backend/\+Main/\mbox{\hyperlink{Main_2views_8py}{views.\+py}}\end{DoxyCompactItemize}

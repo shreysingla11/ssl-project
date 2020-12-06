@@ -1,0 +1,157 @@
+\hypertarget{classMain_1_1views_1_1BatchViewSet}{}\doxysection{Main.\+views.\+Batch\+View\+Set Class Reference}
+\label{classMain_1_1views_1_1BatchViewSet}\index{Main.views.BatchViewSet@{Main.views.BatchViewSet}}
+
+
+This is the class controlling the authenticated /rp/batch endpoint.  
+
+
+Inheritance diagram for Main.\+views.\+Batch\+View\+Set\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMain_1_1views_1_1BatchViewSet}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classMain_1_1views_1_1BatchViewSet_a47ec2845608e6c206b3708fca85b733f}{get\+\_\+queryset}} (self)
+\begin{DoxyCompactList}\small\item\em Filters the batches to only show the authenticated users batches. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classMain_1_1views_1_1BatchViewSet_a56db3cf157451764fdf69381e9821d5d}{create}} (self, request, $\ast$args, $\ast$$\ast$kwargs)
+\begin{DoxyCompactList}\small\item\em This is the function for handling the POST request to create a batch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMain_1_1views_1_1BatchViewSet_a61ef80503f6db47f98a551c3c5feb9da}{serializer\+\_\+class}} = Batch\+Serializer
+\item 
+string \mbox{\hyperlink{classMain_1_1views_1_1BatchViewSet_a93da4a99a4f4cee9620fa0447303983e}{lookup\+\_\+field}} = \textquotesingle{}id\textquotesingle{}
+\item 
+tuple \mbox{\hyperlink{classMain_1_1views_1_1BatchViewSet_a872ef885d7cc9d6c1f1e866d8d03190a}{permission\+\_\+classes}} = (Is\+Authenticated,)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the class controlling the authenticated /rp/batch endpoint. 
+
+This viewset supports GET,POST,DELETE requests to perform CRUD operations on batches~\newline
+ ~\newline
+ GET /rp/batch Returns list of current user\textquotesingle{}s batches~\newline
+ GET /rp/batch/\+:id Returns detail of batch with ID = id~\newline
+ POST /rp/batch/ Creates a new batch for the current user~\newline
+ DELETE /rp/batch/"{}\+:id Deletes the batch with ID=id if it belongs to the current user 
+
+Definition at line 24 of file views.\+py.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMain_1_1views_1_1BatchViewSet_a56db3cf157451764fdf69381e9821d5d}\label{classMain_1_1views_1_1BatchViewSet_a56db3cf157451764fdf69381e9821d5d}} 
+\index{Main.views.BatchViewSet@{Main.views.BatchViewSet}!create@{create}}
+\index{create@{create}!Main.views.BatchViewSet@{Main.views.BatchViewSet}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily def Main.\+views.\+Batch\+View\+Set.\+create (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{request,  }\item[{$\ast$}]{args,  }\item[{$\ast$$\ast$}]{kwargs }\end{DoxyParamCaption})}
+
+
+
+This is the function for handling the POST request to create a batch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Default object parameter \\
+\hline
+{\em request} & Request object with post data fields -\/ \textquotesingle{}name\textquotesingle{},\textquotesingle{}description\textquotesingle{},\textquotesingle{}language\textquotesingle{},\textquotesingle{}inline\+\_\+comment\textquotesingle{},\textquotesingle{}multi\+\_\+begin\textquotesingle{},\textquotesingle{}multi\+\_\+end\textquotesingle{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+JSON response with created batch\textquotesingle{}s data or error response in case of failure 
+\end{DoxyReturn}
+
+
+Definition at line 44 of file views.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{44     \textcolor{keyword}{def }create(self, request, *args, **kwargs):}
+\DoxyCodeLine{45         \textcolor{stringliteral}{"{}"{}"{}!}}
+\DoxyCodeLine{46 \textcolor{stringliteral}{        @brief This is the function for handling the POST request to create a batch}}
+\DoxyCodeLine{47 \textcolor{stringliteral}{}}
+\DoxyCodeLine{48 \textcolor{stringliteral}{        @param self Default object parameter}}
+\DoxyCodeLine{49 \textcolor{stringliteral}{        @param request Request object with post data fields -\/ 'name','description','language','inline\_comment','multi\_begin','multi\_end'}}
+\DoxyCodeLine{50 \textcolor{stringliteral}{}}
+\DoxyCodeLine{51 \textcolor{stringliteral}{        @return JSON response with created batch's data or error response in case of failure}}
+\DoxyCodeLine{52 \textcolor{stringliteral}{        "{}"{}"{}}}
+\DoxyCodeLine{53         \textcolor{keywordflow}{if} request.user.is\_authenticated:}
+\DoxyCodeLine{54             print(request.data)}
+\DoxyCodeLine{55             files = request.data.pop(\textcolor{stringliteral}{'files'},\textcolor{keywordtype}{None})}
+\DoxyCodeLine{56             serializer = self.get\_serializer(data=request.data,context=\{\textcolor{stringliteral}{'user'}:request.user,\textcolor{stringliteral}{'files'}:files\})}
+\DoxyCodeLine{57             serializer.is\_valid(raise\_exception=\textcolor{keyword}{True})}
+\DoxyCodeLine{58             self.perform\_create(serializer)}
+\DoxyCodeLine{59             \textcolor{comment}{\#headers = self.get\_success\_headers(serializer.data)}}
+\DoxyCodeLine{60             print(\textcolor{stringliteral}{"{}Yessss"{}})}
+\DoxyCodeLine{61             \textcolor{keywordflow}{return} Response(serializer.data, status=status.HTTP\_201\_CREATED)}
+\DoxyCodeLine{62         \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}error"{}}:\textcolor{stringliteral}{"{}Unauthorized access"{}}\},status=status.HTTP\_404\_NOT\_FOUND)}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classMain_1_1views_1_1BatchViewSet_a47ec2845608e6c206b3708fca85b733f}\label{classMain_1_1views_1_1BatchViewSet_a47ec2845608e6c206b3708fca85b733f}} 
+\index{Main.views.BatchViewSet@{Main.views.BatchViewSet}!get\_queryset@{get\_queryset}}
+\index{get\_queryset@{get\_queryset}!Main.views.BatchViewSet@{Main.views.BatchViewSet}}
+\doxysubsubsection{\texorpdfstring{get\_queryset()}{get\_queryset()}}
+{\footnotesize\ttfamily def Main.\+views.\+Batch\+View\+Set.\+get\+\_\+queryset (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Filters the batches to only show the authenticated users batches. 
+
+
+
+Definition at line 38 of file views.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{38     \textcolor{keyword}{def }get\_queryset(self):}
+\DoxyCodeLine{39         \textcolor{stringliteral}{"{}"{}"{}!}}
+\DoxyCodeLine{40 \textcolor{stringliteral}{        Filters the batches to only show the authenticated users batches}}
+\DoxyCodeLine{41 \textcolor{stringliteral}{        "{}"{}"{}}}
+\DoxyCodeLine{42         \textcolor{keywordflow}{return}  Batch.objects.filter(user=self.request.user).order\_by(\textcolor{stringliteral}{'-\/created\_at'})}
+\DoxyCodeLine{43     }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classMain_1_1views_1_1BatchViewSet_a93da4a99a4f4cee9620fa0447303983e}\label{classMain_1_1views_1_1BatchViewSet_a93da4a99a4f4cee9620fa0447303983e}} 
+\index{Main.views.BatchViewSet@{Main.views.BatchViewSet}!lookup\_field@{lookup\_field}}
+\index{lookup\_field@{lookup\_field}!Main.views.BatchViewSet@{Main.views.BatchViewSet}}
+\doxysubsubsection{\texorpdfstring{lookup\_field}{lookup\_field}}
+{\footnotesize\ttfamily string Main.\+views.\+Batch\+View\+Set.\+lookup\+\_\+field = \textquotesingle{}id\textquotesingle{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 35 of file views.\+py.
+
+\mbox{\Hypertarget{classMain_1_1views_1_1BatchViewSet_a872ef885d7cc9d6c1f1e866d8d03190a}\label{classMain_1_1views_1_1BatchViewSet_a872ef885d7cc9d6c1f1e866d8d03190a}} 
+\index{Main.views.BatchViewSet@{Main.views.BatchViewSet}!permission\_classes@{permission\_classes}}
+\index{permission\_classes@{permission\_classes}!Main.views.BatchViewSet@{Main.views.BatchViewSet}}
+\doxysubsubsection{\texorpdfstring{permission\_classes}{permission\_classes}}
+{\footnotesize\ttfamily tuple Main.\+views.\+Batch\+View\+Set.\+permission\+\_\+classes = (Is\+Authenticated,)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 36 of file views.\+py.
+
+\mbox{\Hypertarget{classMain_1_1views_1_1BatchViewSet_a61ef80503f6db47f98a551c3c5feb9da}\label{classMain_1_1views_1_1BatchViewSet_a61ef80503f6db47f98a551c3c5feb9da}} 
+\index{Main.views.BatchViewSet@{Main.views.BatchViewSet}!serializer\_class@{serializer\_class}}
+\index{serializer\_class@{serializer\_class}!Main.views.BatchViewSet@{Main.views.BatchViewSet}}
+\doxysubsubsection{\texorpdfstring{serializer\_class}{serializer\_class}}
+{\footnotesize\ttfamily Main.\+views.\+Batch\+View\+Set.\+serializer\+\_\+class = Batch\+Serializer\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 34 of file views.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/hp/\+Sem3/\+CS251/\+Red\+Plag/\+Project\+Repo/\+Backend/\+Main/\mbox{\hyperlink{Main_2views_8py}{views.\+py}}\end{DoxyCompactItemize}

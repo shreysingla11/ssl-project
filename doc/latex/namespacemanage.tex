@@ -1,0 +1,43 @@
+\hypertarget{namespacemanage}{}\doxysection{manage Namespace Reference}
+\label{namespacemanage}\index{manage@{manage}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacemanage_afd5b00260cc364aa5bde07e227c6ea78}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Django's command-line utility for administrative tasks.\end{DoxyVerb}
+ 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacemanage_afd5b00260cc364aa5bde07e227c6ea78}\label{namespacemanage_afd5b00260cc364aa5bde07e227c6ea78}} 
+\index{manage@{manage}!main@{main}}
+\index{main@{main}!manage@{manage}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def manage.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Run administrative tasks.\end{DoxyVerb}
+ 
+
+Definition at line 7 of file manage.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{7 \textcolor{keyword}{def }\mbox{\hyperlink{namespacemanage_afd5b00260cc364aa5bde07e227c6ea78}{main}}():}
+\DoxyCodeLine{8     \textcolor{stringliteral}{"{}"{}"{}Run administrative tasks."{}"{}"{}}}
+\DoxyCodeLine{9     os.environ.setdefault(\textcolor{stringliteral}{'DJANGO\_SETTINGS\_MODULE'}, \textcolor{stringliteral}{'Backend.settings'})}
+\DoxyCodeLine{10     \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{11         \textcolor{keyword}{from} django.core.management \textcolor{keyword}{import} execute\_from\_command\_line}
+\DoxyCodeLine{12     \textcolor{keywordflow}{except} ImportError \textcolor{keyword}{as} exc:}
+\DoxyCodeLine{13         \textcolor{keywordflow}{raise} ImportError(}
+\DoxyCodeLine{14             \textcolor{stringliteral}{"{}Couldn't import Django. Are you sure it's installed and "{}}}
+\DoxyCodeLine{15             \textcolor{stringliteral}{"{}available on your PYTHONPATH environment variable? Did you "{}}}
+\DoxyCodeLine{16             \textcolor{stringliteral}{"{}forget to activate a virtual environment?"{}}}
+\DoxyCodeLine{17         ) \textcolor{keyword}{from} exc}
+\DoxyCodeLine{18     execute\_from\_command\_line(sys.argv)}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 }
+
+\end{DoxyCode}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['y_67',['y',['../namespacemain2.html#a9900ae10849fc2a465b981d51c3926d2',1,'main2']]]
+  ['views_2epy_84',['views.py',['../Authentication_2views_8py.html',1,'(Global Namespace)'],['../Main_2views_8py.html',1,'(Global Namespace)']]]
 ];
