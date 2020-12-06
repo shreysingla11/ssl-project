@@ -16,7 +16,7 @@ def \mbox{\hyperlink{namespacecore_a024d976aea43275b9de6e268b8f8335f}{find\+\_\+
 def \mbox{\hyperlink{namespacecore_a62946155b08710f13e2f3ff2a3b5e924}{result}} (final, threshold)
 \item 
 def \mbox{\hyperlink{namespacecore_ab05c0b37878602eb4a9f4aea994c941b}{logic}} (path, user\+\_\+id, lang=\textquotesingle{}\textquotesingle{}, one\+\_\+line\+\_\+comment=\textquotesingle{}\textquotesingle{}, multiline\+\_\+begin=\textquotesingle{}\textquotesingle{}, multiline\+\_\+end=\textquotesingle{}\textquotesingle{})
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The core functionality is defined in this function. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -35,6 +35,13 @@ string \mbox{\hyperlink{namespacecore_a01e4f55cd55381b220fff23c590b2d21}{oneline
 string \mbox{\hyperlink{namespacecore_a214f14e2f8382861c8edba0cf65173ce}{language}} = \textquotesingle{}\textquotesingle{}
 \begin{DoxyCompactList}\small\item\em Programming language of test code data. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}@package docstring
+This module describes the main logic used to find plagiarism 
+for code files
+\end{DoxyVerb}
+ 
 
 \doxysubsection{Function Documentation}
 \mbox{\Hypertarget{namespacecore_a024d976aea43275b9de6e268b8f8335f}\label{namespacecore_a024d976aea43275b9de6e268b8f8335f}} 
@@ -55,61 +62,61 @@ Predicts keywords of test file programming language (general case) based on Docu
 \end{DoxyParams}
 
 
-Definition at line 119 of file core.\+py.
+Definition at line 124 of file core.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{119 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecore_a024d976aea43275b9de6e268b8f8335f}{find\_keywords}}(files\_in\_dir, sample\_size):}
-\DoxyCodeLine{120     \textcolor{stringliteral}{"{}"{}"{}!Predicts keywords of test file programming language (general case)}}
-\DoxyCodeLine{121 \textcolor{stringliteral}{        based on Documents Frequency scores of words occuring in test files}}
-\DoxyCodeLine{122 \textcolor{stringliteral}{}}
-\DoxyCodeLine{123 \textcolor{stringliteral}{        @param files\_in\_dir     list of test files name}}
-\DoxyCodeLine{124 \textcolor{stringliteral}{        @sample\_size             }}
-\DoxyCodeLine{125 \textcolor{stringliteral}{    "{}"{}"{}}}
-\DoxyCodeLine{126     \textcolor{keyword}{global} keywords }
-\DoxyCodeLine{127     \textcolor{keywordflow}{if} language==\textcolor{stringliteral}{'C++'}:}
-\DoxyCodeLine{128         keywords=[\textcolor{stringliteral}{'asm'},\textcolor{stringliteral}{'else'},\textcolor{stringliteral}{'new'},\textcolor{stringliteral}{'this'},\textcolor{stringliteral}{'auto'},\textcolor{stringliteral}{'enum'},\textcolor{stringliteral}{'operator'},\textcolor{stringliteral}{'throw'},\textcolor{stringliteral}{'bool'},\(\backslash\)}
-\DoxyCodeLine{129                 \textcolor{stringliteral}{'explicit'},\textcolor{stringliteral}{'private'},\textcolor{stringliteral}{'true'},\textcolor{stringliteral}{'break'},\textcolor{stringliteral}{'export'},\textcolor{stringliteral}{'protected'},\textcolor{stringliteral}{'try'},\textcolor{stringliteral}{'case'},\(\backslash\)}
-\DoxyCodeLine{130                 \textcolor{stringliteral}{'extern'},\textcolor{stringliteral}{'public'},\textcolor{stringliteral}{'typedef'},\textcolor{stringliteral}{'catch'},\textcolor{stringliteral}{'false'},\textcolor{stringliteral}{'register'},\textcolor{stringliteral}{'typeid'},\(\backslash\)}
-\DoxyCodeLine{131                 \textcolor{stringliteral}{'char'},\textcolor{stringliteral}{'float'},\textcolor{stringliteral}{'reinterpret\_cast'},\textcolor{stringliteral}{'typename'},\textcolor{stringliteral}{'class'},\textcolor{stringliteral}{'for'},\textcolor{stringliteral}{'return'},\(\backslash\)}
-\DoxyCodeLine{132                 \textcolor{stringliteral}{'union'},\textcolor{stringliteral}{'const'},\textcolor{stringliteral}{'friend'},\textcolor{stringliteral}{'short'},\textcolor{stringliteral}{'unsigned'},\textcolor{stringliteral}{'const\_cast'},\textcolor{stringliteral}{'goto'},\textcolor{stringliteral}{'signed'},\(\backslash\)}
-\DoxyCodeLine{133                 \textcolor{stringliteral}{'using'},\textcolor{stringliteral}{'continue'},\textcolor{stringliteral}{'if'},\textcolor{stringliteral}{'sizeof'},\textcolor{stringliteral}{'virtual'},\textcolor{stringliteral}{'default'},\textcolor{stringliteral}{'inline'},\textcolor{stringliteral}{'static'},\(\backslash\)}
-\DoxyCodeLine{134                 \textcolor{stringliteral}{'void'},\textcolor{stringliteral}{'delete'},\textcolor{stringliteral}{'int'},\textcolor{stringliteral}{'static\_cast'},\textcolor{stringliteral}{'volatile'},\textcolor{stringliteral}{'do'},\textcolor{stringliteral}{'long'},\textcolor{stringliteral}{'struct'},\(\backslash\)}
-\DoxyCodeLine{135                 \textcolor{stringliteral}{'wchar\_t'},\textcolor{stringliteral}{'double'},\textcolor{stringliteral}{'mutable'},\textcolor{stringliteral}{'switch'},\textcolor{stringliteral}{'while'},\textcolor{stringliteral}{'dynamic\_cast'},\textcolor{stringliteral}{'namespace'},\(\backslash\)}
-\DoxyCodeLine{136                 \textcolor{stringliteral}{'template'},\textcolor{stringliteral}{'cin'},\textcolor{stringliteral}{'cout'},\textcolor{stringliteral}{'return'},\textcolor{stringliteral}{'include'},\textcolor{stringliteral}{'bits'},\textcolor{stringliteral}{'stdc++'},\textcolor{stringliteral}{'iostream'},\(\backslash\)}
-\DoxyCodeLine{137                 \textcolor{stringliteral}{'stdc++'},\textcolor{stringliteral}{'['},\textcolor{stringliteral}{']'},\textcolor{stringliteral}{'\{'},\textcolor{stringliteral}{'\}'},\textcolor{stringliteral}{'('},\textcolor{stringliteral}{')'},\textcolor{stringliteral}{','},\textcolor{stringliteral}{';'},\textcolor{stringliteral}{'vector'},\textcolor{stringliteral}{'map'},\textcolor{stringliteral}{'pair'},\textcolor{stringliteral}{'typdef'},\textcolor{stringliteral}{'define'}]}
-\DoxyCodeLine{138         \textcolor{keywordflow}{return}}
-\DoxyCodeLine{139     \textcolor{keywordflow}{if} language==\textcolor{stringliteral}{'Python'}:}
-\DoxyCodeLine{140         keywords=[\textcolor{stringliteral}{'and'},\textcolor{stringliteral}{'as'},\textcolor{stringliteral}{'assert'},\textcolor{stringliteral}{'break'},\textcolor{stringliteral}{'class'},\textcolor{stringliteral}{'continue'},\textcolor{stringliteral}{'def'},\textcolor{stringliteral}{'del'},\textcolor{stringliteral}{'elif'},\textcolor{stringliteral}{'else'},\(\backslash\)}
-\DoxyCodeLine{141                 \textcolor{stringliteral}{'except'},\textcolor{stringliteral}{'False'},\textcolor{stringliteral}{'finally'},\textcolor{stringliteral}{'for'},\textcolor{stringliteral}{'from'},\textcolor{stringliteral}{'global'},\textcolor{stringliteral}{'if'},\textcolor{stringliteral}{'import'},\textcolor{stringliteral}{'in'},\textcolor{stringliteral}{'is'},\(\backslash\)}
-\DoxyCodeLine{142                 \textcolor{stringliteral}{'lambda'},\textcolor{stringliteral}{'None'},\textcolor{stringliteral}{'nonlocal'},\textcolor{stringliteral}{'not'},\textcolor{stringliteral}{'or'},\textcolor{stringliteral}{'pass'},\textcolor{stringliteral}{'raise'},\textcolor{stringliteral}{'return'},\textcolor{stringliteral}{'True'},\textcolor{stringliteral}{'try'},\(\backslash\)}
-\DoxyCodeLine{143                 \textcolor{stringliteral}{'while'},\textcolor{stringliteral}{'with'},\textcolor{stringliteral}{'yield'},\textcolor{stringliteral}{'['},\textcolor{stringliteral}{']'},\textcolor{stringliteral}{'\{'},\textcolor{stringliteral}{'\}'},\textcolor{stringliteral}{'('},\textcolor{stringliteral}{')'},\textcolor{stringliteral}{','},\textcolor{stringliteral}{';'}]}
-\DoxyCodeLine{144         \textcolor{keywordflow}{return}}
-\DoxyCodeLine{145 }
-\DoxyCodeLine{146     \textcolor{comment}{\#map of words to their document frequency}}
-\DoxyCodeLine{147     l=dict()}
-\DoxyCodeLine{148     sampling = random.choices(files\_in\_dir, k=min(sample\_size,len(files\_in\_dir)))}
-\DoxyCodeLine{149     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} sampling:}
-\DoxyCodeLine{150         s1=\mbox{\hyperlink{namespacecore_a42f36ba32aa9d59fb6b2f29dbdeef055}{remove\_comments}}(i)}
-\DoxyCodeLine{151         s2=\mbox{\hyperlink{namespacecore_a6cdf2fdfd3999cbf9708533eb5806e37}{identify\_special\_characters}}(s1, remove=\textcolor{keyword}{True})}
-\DoxyCodeLine{152         \textcolor{comment}{\#set of words in the current file}}
-\DoxyCodeLine{153         current\_set=set()}
-\DoxyCodeLine{154         \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} s2.split(\textcolor{stringliteral}{"{}\(\backslash\)n"{}}):}
-\DoxyCodeLine{155             \textcolor{keywordflow}{for} word \textcolor{keywordflow}{in} line.split():}
-\DoxyCodeLine{156                 \textcolor{keywordflow}{if} len(word)==1:                \textcolor{comment}{\#so that common variable names (eg:i,j) are not included in keywords}}
-\DoxyCodeLine{157                     \textcolor{keywordflow}{pass}}
-\DoxyCodeLine{158                 \textcolor{keywordflow}{elif} word \textcolor{keywordflow}{in} current\_set:}
-\DoxyCodeLine{159                     \textcolor{keywordflow}{pass}}
-\DoxyCodeLine{160                 \textcolor{keywordflow}{elif} word \textcolor{keywordflow}{in} l.keys():}
-\DoxyCodeLine{161                     l[word]+=1}
-\DoxyCodeLine{162                     current\_set.add(word)}
-\DoxyCodeLine{163                 \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{164                     l[word]=1}
-\DoxyCodeLine{165                     current\_set.add(word)           }
-\DoxyCodeLine{166     keywords+=[i[0] \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} sorted(l.items(), key = \textcolor{keyword}{lambda} kv:(kv[1], kv[0]), reverse=\textcolor{keyword}{True})[0:25]] \textcolor{comment}{\#top 25 potential keyword (enough)}}
-\DoxyCodeLine{167     keywords+=other\_chars                   \textcolor{comment}{\#other\_chars(global variable)}}
-\DoxyCodeLine{168 }
-\DoxyCodeLine{169 }
+\DoxyCodeLine{124 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecore_a024d976aea43275b9de6e268b8f8335f}{find\_keywords}}(files\_in\_dir, sample\_size):}
+\DoxyCodeLine{125     \textcolor{stringliteral}{"{}"{}"{}!Predicts keywords of test file programming language (general case)}}
+\DoxyCodeLine{126 \textcolor{stringliteral}{        based on Documents Frequency scores of words occuring in test files}}
+\DoxyCodeLine{127 \textcolor{stringliteral}{}}
+\DoxyCodeLine{128 \textcolor{stringliteral}{        @param files\_in\_dir     list of test files name}}
+\DoxyCodeLine{129 \textcolor{stringliteral}{        @sample\_size             }}
+\DoxyCodeLine{130 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{131     \textcolor{keyword}{global} keywords }
+\DoxyCodeLine{132     \textcolor{keywordflow}{if} language==\textcolor{stringliteral}{'C++'}:}
+\DoxyCodeLine{133         keywords=[\textcolor{stringliteral}{'asm'},\textcolor{stringliteral}{'else'},\textcolor{stringliteral}{'new'},\textcolor{stringliteral}{'this'},\textcolor{stringliteral}{'auto'},\textcolor{stringliteral}{'enum'},\textcolor{stringliteral}{'operator'},\textcolor{stringliteral}{'throw'},\textcolor{stringliteral}{'bool'},\(\backslash\)}
+\DoxyCodeLine{134                 \textcolor{stringliteral}{'explicit'},\textcolor{stringliteral}{'private'},\textcolor{stringliteral}{'true'},\textcolor{stringliteral}{'break'},\textcolor{stringliteral}{'export'},\textcolor{stringliteral}{'protected'},\textcolor{stringliteral}{'try'},\textcolor{stringliteral}{'case'},\(\backslash\)}
+\DoxyCodeLine{135                 \textcolor{stringliteral}{'extern'},\textcolor{stringliteral}{'public'},\textcolor{stringliteral}{'typedef'},\textcolor{stringliteral}{'catch'},\textcolor{stringliteral}{'false'},\textcolor{stringliteral}{'register'},\textcolor{stringliteral}{'typeid'},\(\backslash\)}
+\DoxyCodeLine{136                 \textcolor{stringliteral}{'char'},\textcolor{stringliteral}{'float'},\textcolor{stringliteral}{'reinterpret\_cast'},\textcolor{stringliteral}{'typename'},\textcolor{stringliteral}{'class'},\textcolor{stringliteral}{'for'},\textcolor{stringliteral}{'return'},\(\backslash\)}
+\DoxyCodeLine{137                 \textcolor{stringliteral}{'union'},\textcolor{stringliteral}{'const'},\textcolor{stringliteral}{'friend'},\textcolor{stringliteral}{'short'},\textcolor{stringliteral}{'unsigned'},\textcolor{stringliteral}{'const\_cast'},\textcolor{stringliteral}{'goto'},\textcolor{stringliteral}{'signed'},\(\backslash\)}
+\DoxyCodeLine{138                 \textcolor{stringliteral}{'using'},\textcolor{stringliteral}{'continue'},\textcolor{stringliteral}{'if'},\textcolor{stringliteral}{'sizeof'},\textcolor{stringliteral}{'virtual'},\textcolor{stringliteral}{'default'},\textcolor{stringliteral}{'inline'},\textcolor{stringliteral}{'static'},\(\backslash\)}
+\DoxyCodeLine{139                 \textcolor{stringliteral}{'void'},\textcolor{stringliteral}{'delete'},\textcolor{stringliteral}{'int'},\textcolor{stringliteral}{'static\_cast'},\textcolor{stringliteral}{'volatile'},\textcolor{stringliteral}{'do'},\textcolor{stringliteral}{'long'},\textcolor{stringliteral}{'struct'},\(\backslash\)}
+\DoxyCodeLine{140                 \textcolor{stringliteral}{'wchar\_t'},\textcolor{stringliteral}{'double'},\textcolor{stringliteral}{'mutable'},\textcolor{stringliteral}{'switch'},\textcolor{stringliteral}{'while'},\textcolor{stringliteral}{'dynamic\_cast'},\textcolor{stringliteral}{'namespace'},\(\backslash\)}
+\DoxyCodeLine{141                 \textcolor{stringliteral}{'template'},\textcolor{stringliteral}{'cin'},\textcolor{stringliteral}{'cout'},\textcolor{stringliteral}{'return'},\textcolor{stringliteral}{'include'},\textcolor{stringliteral}{'bits'},\textcolor{stringliteral}{'stdc++'},\textcolor{stringliteral}{'iostream'},\(\backslash\)}
+\DoxyCodeLine{142                 \textcolor{stringliteral}{'stdc++'},\textcolor{stringliteral}{'['},\textcolor{stringliteral}{']'},\textcolor{stringliteral}{'\{'},\textcolor{stringliteral}{'\}'},\textcolor{stringliteral}{'('},\textcolor{stringliteral}{')'},\textcolor{stringliteral}{','},\textcolor{stringliteral}{';'},\textcolor{stringliteral}{'vector'},\textcolor{stringliteral}{'map'},\textcolor{stringliteral}{'pair'},\textcolor{stringliteral}{'typdef'},\textcolor{stringliteral}{'define'}]}
+\DoxyCodeLine{143         \textcolor{keywordflow}{return}}
+\DoxyCodeLine{144     \textcolor{keywordflow}{if} language==\textcolor{stringliteral}{'Python'}:}
+\DoxyCodeLine{145         keywords=[\textcolor{stringliteral}{'and'},\textcolor{stringliteral}{'as'},\textcolor{stringliteral}{'assert'},\textcolor{stringliteral}{'break'},\textcolor{stringliteral}{'class'},\textcolor{stringliteral}{'continue'},\textcolor{stringliteral}{'def'},\textcolor{stringliteral}{'del'},\textcolor{stringliteral}{'elif'},\textcolor{stringliteral}{'else'},\(\backslash\)}
+\DoxyCodeLine{146                 \textcolor{stringliteral}{'except'},\textcolor{stringliteral}{'False'},\textcolor{stringliteral}{'finally'},\textcolor{stringliteral}{'for'},\textcolor{stringliteral}{'from'},\textcolor{stringliteral}{'global'},\textcolor{stringliteral}{'if'},\textcolor{stringliteral}{'import'},\textcolor{stringliteral}{'in'},\textcolor{stringliteral}{'is'},\(\backslash\)}
+\DoxyCodeLine{147                 \textcolor{stringliteral}{'lambda'},\textcolor{stringliteral}{'None'},\textcolor{stringliteral}{'nonlocal'},\textcolor{stringliteral}{'not'},\textcolor{stringliteral}{'or'},\textcolor{stringliteral}{'pass'},\textcolor{stringliteral}{'raise'},\textcolor{stringliteral}{'return'},\textcolor{stringliteral}{'True'},\textcolor{stringliteral}{'try'},\(\backslash\)}
+\DoxyCodeLine{148                 \textcolor{stringliteral}{'while'},\textcolor{stringliteral}{'with'},\textcolor{stringliteral}{'yield'},\textcolor{stringliteral}{'['},\textcolor{stringliteral}{']'},\textcolor{stringliteral}{'\{'},\textcolor{stringliteral}{'\}'},\textcolor{stringliteral}{'('},\textcolor{stringliteral}{')'},\textcolor{stringliteral}{','},\textcolor{stringliteral}{';'}]}
+\DoxyCodeLine{149         \textcolor{keywordflow}{return}}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151     \textcolor{comment}{\#map of words to their document frequency}}
+\DoxyCodeLine{152     l=dict()}
+\DoxyCodeLine{153     sampling = random.choices(files\_in\_dir, k=min(sample\_size,len(files\_in\_dir)))}
+\DoxyCodeLine{154     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} sampling:}
+\DoxyCodeLine{155         s1=\mbox{\hyperlink{namespacecore_a42f36ba32aa9d59fb6b2f29dbdeef055}{remove\_comments}}(i)}
+\DoxyCodeLine{156         s2=\mbox{\hyperlink{namespacecore_a6cdf2fdfd3999cbf9708533eb5806e37}{identify\_special\_characters}}(s1, remove=\textcolor{keyword}{True})}
+\DoxyCodeLine{157         \textcolor{comment}{\#set of words in the current file}}
+\DoxyCodeLine{158         current\_set=set()}
+\DoxyCodeLine{159         \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} s2.split(\textcolor{stringliteral}{"{}\(\backslash\)n"{}}):}
+\DoxyCodeLine{160             \textcolor{keywordflow}{for} word \textcolor{keywordflow}{in} line.split():}
+\DoxyCodeLine{161                 \textcolor{keywordflow}{if} len(word)==1:                \textcolor{comment}{\#so that common variable names (eg:i,j) are not included in keywords}}
+\DoxyCodeLine{162                     \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{163                 \textcolor{keywordflow}{elif} word \textcolor{keywordflow}{in} current\_set:}
+\DoxyCodeLine{164                     \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{165                 \textcolor{keywordflow}{elif} word \textcolor{keywordflow}{in} l.keys():}
+\DoxyCodeLine{166                     l[word]+=1}
+\DoxyCodeLine{167                     current\_set.add(word)}
+\DoxyCodeLine{168                 \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{169                     l[word]=1}
+\DoxyCodeLine{170                     current\_set.add(word)           }
+\DoxyCodeLine{171     keywords+=[i[0] \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} sorted(l.items(), key = \textcolor{keyword}{lambda} kv:(kv[1], kv[0]), reverse=\textcolor{keyword}{True})[0:25]] \textcolor{comment}{\#top 25 potential keyword (enough)}}
+\DoxyCodeLine{172     keywords+=other\_chars                                                                           \textcolor{comment}{\#other\_chars(global variable)}}
+\DoxyCodeLine{173 }
+\DoxyCodeLine{174 }
 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespacecore_a6cdf2fdfd3999cbf9708533eb5806e37}\label{namespacecore_a6cdf2fdfd3999cbf9708533eb5806e37}} 
@@ -134,35 +141,35 @@ processed\+\_\+code returns resulting string after processing
 \end{DoxyReturn}
 
 
-Definition at line 53 of file core.\+py.
+Definition at line 58 of file core.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{53 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecore_a6cdf2fdfd3999cbf9708533eb5806e37}{identify\_special\_characters}}(code, remove=False):}
-\DoxyCodeLine{54     \textcolor{stringliteral}{"{}"{}"{}!Either removes special characters from string or }}
-\DoxyCodeLine{55 \textcolor{stringliteral}{        adds a preceeding and trailing whitespace so that }}
-\DoxyCodeLine{56 \textcolor{stringliteral}{        each special character gets recognised as a separate }}
-\DoxyCodeLine{57 \textcolor{stringliteral}{        word in future.}}
-\DoxyCodeLine{58 \textcolor{stringliteral}{}}
-\DoxyCodeLine{59 \textcolor{stringliteral}{        @param code             code file data as string}}
-\DoxyCodeLine{60 \textcolor{stringliteral}{        @param remove           remove special characters if true, else add whitespaces as discribed}}
-\DoxyCodeLine{61 \textcolor{stringliteral}{        @return processed\_code  returns resulting string after processing}}
-\DoxyCodeLine{62 \textcolor{stringliteral}{    "{}"{}"{}}}
-\DoxyCodeLine{63     processed\_code=\textcolor{stringliteral}{"{}"{}}}
-\DoxyCodeLine{64     \textcolor{keywordflow}{for} char \textcolor{keywordflow}{in} list(code):}
-\DoxyCodeLine{65         \textcolor{keywordflow}{if} char \textcolor{keywordflow}{in} special\_char:}
-\DoxyCodeLine{66             \textcolor{keywordflow}{if} remove:}
-\DoxyCodeLine{67                 e=\textcolor{stringliteral}{"{} "{}}}
-\DoxyCodeLine{68             \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{69                 e=\textcolor{stringliteral}{"{} "{}}+char+\textcolor{stringliteral}{"{} "{}}}
-\DoxyCodeLine{70             processed\_code+=e}
-\DoxyCodeLine{71         \textcolor{keywordflow}{elif} char \textcolor{keywordflow}{in} other\_chars:}
-\DoxyCodeLine{72             \textcolor{keywordflow}{if} remove:}
-\DoxyCodeLine{73                 processed\_code+=\textcolor{stringliteral}{"{} "{}}}
-\DoxyCodeLine{74         \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{75             processed\_code+=char}
-\DoxyCodeLine{76     \textcolor{keywordflow}{return} processed\_code}
-\DoxyCodeLine{77 }
+\DoxyCodeLine{58 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecore_a6cdf2fdfd3999cbf9708533eb5806e37}{identify\_special\_characters}}(code, remove=False):}
+\DoxyCodeLine{59     \textcolor{stringliteral}{"{}"{}"{}!Either removes special characters from string or }}
+\DoxyCodeLine{60 \textcolor{stringliteral}{        adds a preceeding and trailing whitespace so that }}
+\DoxyCodeLine{61 \textcolor{stringliteral}{        each special character gets recognised as a separate }}
+\DoxyCodeLine{62 \textcolor{stringliteral}{        word in future.}}
+\DoxyCodeLine{63 \textcolor{stringliteral}{}}
+\DoxyCodeLine{64 \textcolor{stringliteral}{        @param code             code file data as string}}
+\DoxyCodeLine{65 \textcolor{stringliteral}{        @param remove           remove special characters if true, else add whitespaces as discribed}}
+\DoxyCodeLine{66 \textcolor{stringliteral}{        @return processed\_code  returns resulting string after processing}}
+\DoxyCodeLine{67 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{68     processed\_code=\textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{69     \textcolor{keywordflow}{for} char \textcolor{keywordflow}{in} list(code):}
+\DoxyCodeLine{70         \textcolor{keywordflow}{if} char \textcolor{keywordflow}{in} special\_char:}
+\DoxyCodeLine{71             \textcolor{keywordflow}{if} remove:}
+\DoxyCodeLine{72                 e=\textcolor{stringliteral}{"{} "{}}}
+\DoxyCodeLine{73             \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{74                 e=\textcolor{stringliteral}{"{} "{}}+char+\textcolor{stringliteral}{"{} "{}}}
+\DoxyCodeLine{75             processed\_code+=e}
+\DoxyCodeLine{76         \textcolor{keywordflow}{elif} char \textcolor{keywordflow}{in} other\_chars:}
+\DoxyCodeLine{77             \textcolor{keywordflow}{if} remove:}
+\DoxyCodeLine{78                 processed\_code+=\textcolor{stringliteral}{"{} "{}}}
+\DoxyCodeLine{79         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{80             processed\_code+=char}
+\DoxyCodeLine{81     \textcolor{keywordflow}{return} processed\_code}
+\DoxyCodeLine{82 }
 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespacecore_a71d6891306fa079e686bd7d735184547}\label{namespacecore_a71d6891306fa079e686bd7d735184547}} 
@@ -187,27 +194,27 @@ kgram\+\_\+set set of kgrams
 \end{DoxyReturn}
 
 
-Definition at line 102 of file core.\+py.
+Definition at line 107 of file core.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{102 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecore_a71d6891306fa079e686bd7d735184547}{kgram}}(words,k):}
-\DoxyCodeLine{103     \textcolor{stringliteral}{'''!Takes the encoded list(representing a code file data) as input }}
-\DoxyCodeLine{104 \textcolor{stringliteral}{        and returns a set of k-\/grams of the encoded file.}}
-\DoxyCodeLine{105 \textcolor{stringliteral}{}}
-\DoxyCodeLine{106 \textcolor{stringliteral}{        @param words        encoded list (output of word\_list function)}}
-\DoxyCodeLine{107 \textcolor{stringliteral}{        @param k            k in k-\/grams}}
-\DoxyCodeLine{108 \textcolor{stringliteral}{        @return kgram\_set   set of kgrams}}
-\DoxyCodeLine{109 \textcolor{stringliteral}{    '''}}
-\DoxyCodeLine{110     kgram\_set=set()}
-\DoxyCodeLine{111     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(words)-\/k+1):}
-\DoxyCodeLine{112         s=\textcolor{stringliteral}{"{}"{}}}
-\DoxyCodeLine{113         \textcolor{keywordflow}{for} j \textcolor{keywordflow}{in} range(k):}
-\DoxyCodeLine{114             s=s+words[i+j]}
-\DoxyCodeLine{115         kgram\_set.add(s)}
-\DoxyCodeLine{116     \textcolor{keywordflow}{return} kgram\_set}
-\DoxyCodeLine{117 }
-\DoxyCodeLine{118 }
+\DoxyCodeLine{107 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecore_a71d6891306fa079e686bd7d735184547}{kgram}}(words,k):}
+\DoxyCodeLine{108     \textcolor{stringliteral}{'''!Takes the encoded list(representing a code file data) as input }}
+\DoxyCodeLine{109 \textcolor{stringliteral}{        and returns a set of k-\/grams of the encoded file.}}
+\DoxyCodeLine{110 \textcolor{stringliteral}{}}
+\DoxyCodeLine{111 \textcolor{stringliteral}{        @param words        encoded list (output of word\_list function)}}
+\DoxyCodeLine{112 \textcolor{stringliteral}{        @param k            k in k-\/grams}}
+\DoxyCodeLine{113 \textcolor{stringliteral}{        @return kgram\_set   set of kgrams}}
+\DoxyCodeLine{114 \textcolor{stringliteral}{    '''}}
+\DoxyCodeLine{115     kgram\_set=set()}
+\DoxyCodeLine{116     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(words)-\/k+1):}
+\DoxyCodeLine{117         s=\textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{118         \textcolor{keywordflow}{for} j \textcolor{keywordflow}{in} range(k):}
+\DoxyCodeLine{119             s=s+words[i+j]}
+\DoxyCodeLine{120         kgram\_set.add(s)}
+\DoxyCodeLine{121     \textcolor{keywordflow}{return} kgram\_set}
+\DoxyCodeLine{122 }
+\DoxyCodeLine{123 }
 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespacecore_ab05c0b37878602eb4a9f4aea994c941b}\label{namespacecore_ab05c0b37878602eb4a9f4aea994c941b}} 
@@ -218,84 +225,125 @@ Definition at line 102 of file core.\+py.
 
 
 
-Definition at line 188 of file core.\+py.
+The core functionality is defined in this function. 
+
+It first removes single-\/line and multiline comments, Identifies special characters, tokenises the code and stores kgrams of each code file. Next it identifies kgrams which are common to most of the files (They represent our base code file). So, we take each pair of files and calculate the k-\/grams which are common to the files but not common to most of the files. They form our suspicious set and will be used to calculate a score lying in 0-\/1, a metric which quantifies the probability that the pair is plagiarised.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & path to the target directory \\
+\hline
+{\em user\+\_\+id} & to identify the user \\
+\hline
+{\em language} & language input by user \\
+\hline
+{\em one\+\_\+line\+\_\+comment} & language specific symbol to remove single line comments \\
+\hline
+{\em multiline\+\_\+begin} & language specific symbol to remove multiline comments \\
+\hline
+{\em multiline\+\_\+end} & language specific symbol to remove muliline comments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+final The final dictionary containing the filenames and resultant 2-\/D matrix 
+\end{DoxyReturn}
+
+
+Definition at line 193 of file core.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{188 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecore_ab05c0b37878602eb4a9f4aea994c941b}{logic}}(path,user\_id, lang='',one\_line\_comment='',multiline\_begin='',multiline\_end=''):}
-\DoxyCodeLine{189     \textcolor{keyword}{global} multi\_begin,multi\_end,onelinecomment,language}
-\DoxyCodeLine{190     language=lang}
-\DoxyCodeLine{191     \textcolor{keywordflow}{if} lang==\textcolor{stringliteral}{'C++'}:}
-\DoxyCodeLine{192         multi\_begin=\textcolor{stringliteral}{'/*'}}
-\DoxyCodeLine{193         multi\_end=\textcolor{stringliteral}{'*/'}}
-\DoxyCodeLine{194         onelinecomment=\textcolor{stringliteral}{'//'}}
-\DoxyCodeLine{195     \textcolor{keywordflow}{elif} lang==\textcolor{stringliteral}{'Python'}:}
-\DoxyCodeLine{196         multi\_begin=\textcolor{stringliteral}{'"{}"{}"{}'}}
-\DoxyCodeLine{197         multi\_end=\textcolor{stringliteral}{'"{}"{}"{}'}}
-\DoxyCodeLine{198         onelinecomment=\textcolor{stringliteral}{'\#'}}
-\DoxyCodeLine{199     \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{200         multi\_begin=multiline\_begin}
-\DoxyCodeLine{201         multi\_end=multiline\_end}
-\DoxyCodeLine{202         onelinecomment=one\_line\_comment}
-\DoxyCodeLine{203         }
-\DoxyCodeLine{204 }
-\DoxyCodeLine{205     dir=os.path.join(path,\textcolor{stringliteral}{"{}src"{}},\mbox{\hyperlink{namespacebagwords_a2cb5df95818340380eeeb015b9398c41}{str}}(user\_id))}
-\DoxyCodeLine{206     k=10}
-\DoxyCodeLine{207     final=dict()}
-\DoxyCodeLine{208     final[\textcolor{stringliteral}{"{}filenames"{}}]=[]}
-\DoxyCodeLine{209     final[\textcolor{stringliteral}{"{}data"{}}]=[]}
-\DoxyCodeLine{210     files\_in\_dir=[]}
-\DoxyCodeLine{211     \textcolor{comment}{\# print("{}hello"{})}}
-\DoxyCodeLine{212     \textcolor{keywordflow}{for} r, d, f \textcolor{keywordflow}{in} os.walk(dir):}
-\DoxyCodeLine{213         \textcolor{keywordflow}{for} item \textcolor{keywordflow}{in} f:}
-\DoxyCodeLine{214             files\_in\_dir.append(os.path.join(r, item))}
-\DoxyCodeLine{215 }
-\DoxyCodeLine{216     \textcolor{comment}{\# print(files\_in\_dir)}}
-\DoxyCodeLine{217     files\_in\_dir.sort(key=\textcolor{keyword}{lambda} x:int(x.split(os.path.sep)[-\/1][0:-\/4]))}
-\DoxyCodeLine{218 }
-\DoxyCodeLine{219     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(files\_in\_dir)):}
-\DoxyCodeLine{220         final[\textcolor{stringliteral}{"{}filenames"{}}].append(files\_in\_dir[i].split(os.path.sep)[-\/1])}
-\DoxyCodeLine{221         \textcolor{comment}{\# print (i,files\_in\_dir[i].split('/')[-\/1])}}
-\DoxyCodeLine{222     }
-\DoxyCodeLine{223     \mbox{\hyperlink{namespacecore_a024d976aea43275b9de6e268b8f8335f}{find\_keywords}}(files\_in\_dir,50)}
-\DoxyCodeLine{224 }
-\DoxyCodeLine{225     kgrams=[]}
-\DoxyCodeLine{226     \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} range(len(files\_in\_dir)):}
-\DoxyCodeLine{227         kgrams.append(\mbox{\hyperlink{namespacekgram}{kgram}}(\mbox{\hyperlink{namespacecore_a604f22ae6deb2981f460275b87a1df4d}{word\_list}}(files\_in\_dir[x]),k))}
-\DoxyCodeLine{228 }
-\DoxyCodeLine{229     z=np.zeros((len(files\_in\_dir),len(files\_in\_dir)))}
-\DoxyCodeLine{230     common=dict()}
-\DoxyCodeLine{231     \textcolor{keywordflow}{for} xt \textcolor{keywordflow}{in} range(len(files\_in\_dir)):}
-\DoxyCodeLine{232         \textcolor{comment}{\#l1=kgram(word\_list(xt),k)}}
-\DoxyCodeLine{233         \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} kgrams[xt]:}
-\DoxyCodeLine{234             \textcolor{keywordflow}{if} w \textcolor{keywordflow}{in} common.keys():}
-\DoxyCodeLine{235                 common[w]+=1}
-\DoxyCodeLine{236             \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{237                 common[w]=1}
-\DoxyCodeLine{238     commonset=[\{e \textcolor{keywordflow}{for} e \textcolor{keywordflow}{in} common.keys() \textcolor{keywordflow}{if} common[e]>0.5*len(files\_in\_dir)\}]}
-\DoxyCodeLine{239 }
-\DoxyCodeLine{240     \textcolor{keywordflow}{for} xt \textcolor{keywordflow}{in} range(len(files\_in\_dir)):}
-\DoxyCodeLine{241         \textcolor{keywordflow}{print} (xt)}
-\DoxyCodeLine{242         \textcolor{keywordflow}{for} yt \textcolor{keywordflow}{in} range(xt+1,len(files\_in\_dir)):}
-\DoxyCodeLine{243 }
-\DoxyCodeLine{244             count=0}
-\DoxyCodeLine{245             common\_words=0}
-\DoxyCodeLine{246             \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} kgrams[xt]:}
-\DoxyCodeLine{247                 \textcolor{keywordflow}{if} w \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} commonset:}
-\DoxyCodeLine{248                     \textcolor{keywordflow}{if} w \textcolor{keywordflow}{in} kgrams[yt]:}
-\DoxyCodeLine{249                         count+=1}
-\DoxyCodeLine{250                 \textcolor{keywordflow}{elif} w \textcolor{keywordflow}{in} kgrams[yt]:}
-\DoxyCodeLine{251                     common\_words+=1}
-\DoxyCodeLine{252             \textcolor{keywordflow}{try}:}
-\DoxyCodeLine{253                 z[xt][yt]=count/((len(kgrams[xt])+len(kgrams[yt]))/2-\/common\_words)}
-\DoxyCodeLine{254             \textcolor{keywordflow}{except}:}
-\DoxyCodeLine{255                 z[xt][yt]=0}
-\DoxyCodeLine{256 }
-\DoxyCodeLine{257     \textcolor{keywordflow}{for} xt \textcolor{keywordflow}{in} range(len(files\_in\_dir)):}
-\DoxyCodeLine{258         \textcolor{keywordflow}{for} yt \textcolor{keywordflow}{in} range(len(files\_in\_dir)):}
-\DoxyCodeLine{259             final[\textcolor{stringliteral}{"{}data"{}}].append(z[xt][yt])}
-\DoxyCodeLine{260     \textcolor{comment}{\#print(result(final,0.35))}}
-\DoxyCodeLine{261     \textcolor{keywordflow}{return} final}
+\DoxyCodeLine{193 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecore_ab05c0b37878602eb4a9f4aea994c941b}{logic}}(path,user\_id, lang='',one\_line\_comment='',multiline\_begin='',multiline\_end=''):}
+\DoxyCodeLine{194     \textcolor{stringliteral}{"{}"{}"{}!The core functionality is defined in this function. It first removes single-\/line and multiline comments, }}
+\DoxyCodeLine{195 \textcolor{stringliteral}{    Identifies special characters, tokenises the code and stores kgrams of each code file. }}
+\DoxyCodeLine{196 \textcolor{stringliteral}{    Next it identifies kgrams which are common to most of the files (They represent our base code file).}}
+\DoxyCodeLine{197 \textcolor{stringliteral}{    So, we take each pair of files and calculate the k-\/grams which are common to the files but not common to most }}
+\DoxyCodeLine{198 \textcolor{stringliteral}{    of the files.}}
+\DoxyCodeLine{199 \textcolor{stringliteral}{    They form our suspicious set and will be used to calculate a score lying in 0-\/1, a metric}}
+\DoxyCodeLine{200 \textcolor{stringliteral}{    which quantifies the probability that the pair is plagiarised.}}
+\DoxyCodeLine{201 \textcolor{stringliteral}{}}
+\DoxyCodeLine{202 \textcolor{stringliteral}{    @param path                 path to the target directory}}
+\DoxyCodeLine{203 \textcolor{stringliteral}{    @param user\_id              to identify the user}}
+\DoxyCodeLine{204 \textcolor{stringliteral}{    @param language             language input by user}}
+\DoxyCodeLine{205 \textcolor{stringliteral}{    @param one\_line\_comment     language specific symbol to remove single line comments}}
+\DoxyCodeLine{206 \textcolor{stringliteral}{    @param multiline\_begin      language specific symbol to remove multiline comments}}
+\DoxyCodeLine{207 \textcolor{stringliteral}{    @param multiline\_end        language specific symbol to remove muliline comments}}
+\DoxyCodeLine{208 \textcolor{stringliteral}{    @return final               The final dictionary containing the filenames and resultant 2-\/D matrix}}
+\DoxyCodeLine{209 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{210 }
+\DoxyCodeLine{211     \textcolor{keyword}{global} multi\_begin,multi\_end,onelinecomment,language}
+\DoxyCodeLine{212     language=lang}
+\DoxyCodeLine{213     \textcolor{keywordflow}{if} lang==\textcolor{stringliteral}{'C++'}:}
+\DoxyCodeLine{214         multi\_begin=\textcolor{stringliteral}{'/*'}}
+\DoxyCodeLine{215         multi\_end=\textcolor{stringliteral}{'*/'}}
+\DoxyCodeLine{216         onelinecomment=\textcolor{stringliteral}{'//'}}
+\DoxyCodeLine{217     \textcolor{keywordflow}{elif} lang==\textcolor{stringliteral}{'Python'}:}
+\DoxyCodeLine{218         multi\_begin=\textcolor{stringliteral}{'"{}"{}"{}'}}
+\DoxyCodeLine{219         multi\_end=\textcolor{stringliteral}{'"{}"{}"{}'}}
+\DoxyCodeLine{220         onelinecomment=\textcolor{stringliteral}{'\#'}}
+\DoxyCodeLine{221     \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{222         multi\_begin=multiline\_begin}
+\DoxyCodeLine{223         multi\_end=multiline\_end}
+\DoxyCodeLine{224         onelinecomment=one\_line\_comment}
+\DoxyCodeLine{225         }
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227     dir=os.path.join(path,\textcolor{stringliteral}{"{}src"{}},\mbox{\hyperlink{namespacebagwords_a2cb5df95818340380eeeb015b9398c41}{str}}(user\_id))}
+\DoxyCodeLine{228     k=10}
+\DoxyCodeLine{229     final=dict()}
+\DoxyCodeLine{230     final[\textcolor{stringliteral}{"{}filenames"{}}]=[]}
+\DoxyCodeLine{231     final[\textcolor{stringliteral}{"{}data"{}}]=[]}
+\DoxyCodeLine{232     files\_in\_dir=[]}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{234     \textcolor{keywordflow}{for} r, d, f \textcolor{keywordflow}{in} os.walk(dir):}
+\DoxyCodeLine{235         \textcolor{keywordflow}{for} item \textcolor{keywordflow}{in} f:}
+\DoxyCodeLine{236             files\_in\_dir.append(os.path.join(r, item))}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238     }
+\DoxyCodeLine{239     files\_in\_dir.sort(key=\textcolor{keyword}{lambda} x:int(x.split(os.path.sep)[-\/1][0:-\/4]))}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{241     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(files\_in\_dir)):}
+\DoxyCodeLine{242         final[\textcolor{stringliteral}{"{}filenames"{}}].append(files\_in\_dir[i].split(os.path.sep)[-\/1])}
+\DoxyCodeLine{243         }
+\DoxyCodeLine{244     }
+\DoxyCodeLine{245     \mbox{\hyperlink{namespacecore_a024d976aea43275b9de6e268b8f8335f}{find\_keywords}}(files\_in\_dir,50)}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{247     kgrams=[]}
+\DoxyCodeLine{248     \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} range(len(files\_in\_dir)):}
+\DoxyCodeLine{249         kgrams.append(\mbox{\hyperlink{namespacekgram}{kgram}}(\mbox{\hyperlink{namespacecore_a604f22ae6deb2981f460275b87a1df4d}{word\_list}}(files\_in\_dir[x]),k))}
+\DoxyCodeLine{250 }
+\DoxyCodeLine{251     z=np.zeros((len(files\_in\_dir),len(files\_in\_dir)))}
+\DoxyCodeLine{252     common=dict()}
+\DoxyCodeLine{253     \textcolor{keywordflow}{for} xt \textcolor{keywordflow}{in} range(len(files\_in\_dir)):}
+\DoxyCodeLine{254         }
+\DoxyCodeLine{255         \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} kgrams[xt]:}
+\DoxyCodeLine{256             \textcolor{keywordflow}{if} w \textcolor{keywordflow}{in} common.keys():}
+\DoxyCodeLine{257                 common[w]+=1}
+\DoxyCodeLine{258             \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{259                 common[w]=1}
+\DoxyCodeLine{260     commonset=[\{e \textcolor{keywordflow}{for} e \textcolor{keywordflow}{in} common.keys() \textcolor{keywordflow}{if} common[e]>0.5*len(files\_in\_dir)\}]}
+\DoxyCodeLine{261 }
+\DoxyCodeLine{262     \textcolor{keywordflow}{for} xt \textcolor{keywordflow}{in} range(len(files\_in\_dir)):}
+\DoxyCodeLine{263         \textcolor{keywordflow}{print} (xt)}
+\DoxyCodeLine{264         \textcolor{keywordflow}{for} yt \textcolor{keywordflow}{in} range(xt+1,len(files\_in\_dir)):}
+\DoxyCodeLine{265 }
+\DoxyCodeLine{266             count=0}
+\DoxyCodeLine{267             common\_words=0}
+\DoxyCodeLine{268             \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} kgrams[xt]:}
+\DoxyCodeLine{269                 \textcolor{keywordflow}{if} w \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} commonset:}
+\DoxyCodeLine{270                     \textcolor{keywordflow}{if} w \textcolor{keywordflow}{in} kgrams[yt]:}
+\DoxyCodeLine{271                         count+=1}
+\DoxyCodeLine{272                 \textcolor{keywordflow}{elif} w \textcolor{keywordflow}{in} kgrams[yt]:}
+\DoxyCodeLine{273                     common\_words+=1}
+\DoxyCodeLine{274             \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{275                 z[xt][yt]=count/((len(kgrams[xt])+len(kgrams[yt]))/2-\/common\_words)}
+\DoxyCodeLine{276             \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{277                 z[xt][yt]=0}
+\DoxyCodeLine{278 }
+\DoxyCodeLine{279     \textcolor{keywordflow}{for} xt \textcolor{keywordflow}{in} range(len(files\_in\_dir)):}
+\DoxyCodeLine{280         \textcolor{keywordflow}{for} yt \textcolor{keywordflow}{in} range(len(files\_in\_dir)):}
+\DoxyCodeLine{281             final[\textcolor{stringliteral}{"{}data"{}}].append(z[xt][yt])}
+\DoxyCodeLine{282     }
+\DoxyCodeLine{283     \textcolor{keywordflow}{return} final}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespacecore_a42f36ba32aa9d59fb6b2f29dbdeef055}\label{namespacecore_a42f36ba32aa9d59fb6b2f29dbdeef055}} 
@@ -313,35 +361,35 @@ Removes single and multiline comments from a code file.
 \end{DoxyVerb}
  
 
-Definition at line 28 of file core.\+py.
+Definition at line 33 of file core.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{28 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecore_a42f36ba32aa9d59fb6b2f29dbdeef055}{remove\_comments}}(path):}
-\DoxyCodeLine{29     \textcolor{stringliteral}{"{}"{}"{}!Removes single and multiline comments from a code file}}
-\DoxyCodeLine{30 \textcolor{stringliteral}{    }}
-\DoxyCodeLine{31 \textcolor{stringliteral}{    @param path    path of code file}}
-\DoxyCodeLine{32 \textcolor{stringliteral}{    @return text   code file data as string(after removing comments)}}
-\DoxyCodeLine{33 \textcolor{stringliteral}{    "{}"{}"{}}}
-\DoxyCodeLine{34     file = open(path,\textcolor{stringliteral}{"{}r"{}})}
-\DoxyCodeLine{35     text = file.read()}
-\DoxyCodeLine{36     \textcolor{keywordflow}{if} multi\_begin!=\textcolor{stringliteral}{''}:}
-\DoxyCodeLine{37         \textcolor{comment}{\#Regular Expression for multiline comments}}
-\DoxyCodeLine{38         multi\_exp=re.escape(multi\_begin)+\textcolor{stringliteral}{r'.+?'}+re.escape(multi\_end)}
-\DoxyCodeLine{39         pat=re.compile(multi\_exp,re.DOTALL)}
-\DoxyCodeLine{40         text = re.sub(pat,\textcolor{stringliteral}{''},text)}
-\DoxyCodeLine{41 }
-\DoxyCodeLine{42     \textcolor{keywordflow}{if} onelinecomment!=\textcolor{stringliteral}{''}:}
-\DoxyCodeLine{43         text1=\textcolor{stringliteral}{"{}"{}}}
-\DoxyCodeLine{44         \textcolor{comment}{\#Regular Expression for singleline comments}}
-\DoxyCodeLine{45         single\_exp=re.escape(onelinecomment)}
-\DoxyCodeLine{46         \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} text.split(\textcolor{stringliteral}{"{}\(\backslash\)n"{}}):}
-\DoxyCodeLine{47             l=line.split(single\_exp,1)}
-\DoxyCodeLine{48             text1+=l[0]+\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
-\DoxyCodeLine{49         text=text1}
-\DoxyCodeLine{50     \textcolor{keywordflow}{return} text}
-\DoxyCodeLine{51 }
-\DoxyCodeLine{52 }
+\DoxyCodeLine{33 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecore_a42f36ba32aa9d59fb6b2f29dbdeef055}{remove\_comments}}(path):}
+\DoxyCodeLine{34     \textcolor{stringliteral}{"{}"{}"{}!Removes single and multiline comments from a code file}}
+\DoxyCodeLine{35 \textcolor{stringliteral}{    }}
+\DoxyCodeLine{36 \textcolor{stringliteral}{    @param path    path of code file}}
+\DoxyCodeLine{37 \textcolor{stringliteral}{    @return text   code file data as string(after removing comments)}}
+\DoxyCodeLine{38 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{39     file = open(path,\textcolor{stringliteral}{"{}r"{}})}
+\DoxyCodeLine{40     text = file.read()}
+\DoxyCodeLine{41     \textcolor{keywordflow}{if} multi\_begin!=\textcolor{stringliteral}{''}:}
+\DoxyCodeLine{42         \textcolor{comment}{\#Regular Expression for multiline comments}}
+\DoxyCodeLine{43         multi\_exp=re.escape(multi\_begin)+\textcolor{stringliteral}{r'.+?'}+re.escape(multi\_end)}
+\DoxyCodeLine{44         pat=re.compile(multi\_exp,re.DOTALL)}
+\DoxyCodeLine{45         text = re.sub(pat,\textcolor{stringliteral}{''},text)}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47     \textcolor{keywordflow}{if} onelinecomment!=\textcolor{stringliteral}{''}:}
+\DoxyCodeLine{48         text1=\textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{49         \textcolor{comment}{\#Regular Expression for singleline comments}}
+\DoxyCodeLine{50         single\_exp=re.escape(onelinecomment)}
+\DoxyCodeLine{51         \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} text.split(\textcolor{stringliteral}{"{}\(\backslash\)n"{}}):}
+\DoxyCodeLine{52             l=line.split(single\_exp,1)}
+\DoxyCodeLine{53             text1+=l[0]+\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{54         text=text1}
+\DoxyCodeLine{55     \textcolor{keywordflow}{return} text}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 }
 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespacecore_a62946155b08710f13e2f3ff2a3b5e924}\label{namespacecore_a62946155b08710f13e2f3ff2a3b5e924}} 
@@ -352,28 +400,28 @@ Definition at line 28 of file core.\+py.
 
 
 
-Definition at line 170 of file core.\+py.
+Definition at line 175 of file core.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{170 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecore_a62946155b08710f13e2f3ff2a3b5e924}{result}}(final, threshold):}
-\DoxyCodeLine{171     l = []}
-\DoxyCodeLine{172     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(final[\textcolor{stringliteral}{'data'}])):}
-\DoxyCodeLine{173         \textcolor{keywordflow}{if} final[\textcolor{stringliteral}{"{}data"{}}][i] >= threshold:}
-\DoxyCodeLine{174             l.append(i)}
-\DoxyCodeLine{175     resultlist=[]}
-\DoxyCodeLine{176     n = len(final[\textcolor{stringliteral}{"{}filenames"{}}])}
-\DoxyCodeLine{177     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} l:}
-\DoxyCodeLine{178         file1 = i//n}
-\DoxyCodeLine{179         file2 = i-\/file1*n}
-\DoxyCodeLine{180         resultlist.append((final[\textcolor{stringliteral}{"{}filenames"{}}][file1],final[\textcolor{stringliteral}{"{}filenames"{}}][file2],final[\textcolor{stringliteral}{"{}data"{}}][i]*100))}
-\DoxyCodeLine{181     resultlist.sort(key=\textcolor{keyword}{lambda} x:x[2],reverse=\textcolor{keyword}{True})}
-\DoxyCodeLine{182     }
-\DoxyCodeLine{183     res = \textcolor{stringliteral}{"{}File1          File2          Score\(\backslash\)n"{}}}
-\DoxyCodeLine{184     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} resultlist:}
-\DoxyCodeLine{185         res += i[0]+(15-\/len(i[0]))*\textcolor{stringliteral}{' '}+i[1]+(15-\/len(i[1]))*\textcolor{stringliteral}{' '}+\mbox{\hyperlink{namespacebagwords_a2cb5df95818340380eeeb015b9398c41}{str}}(i[2])+\textcolor{stringliteral}{'\%\(\backslash\)n'}}
-\DoxyCodeLine{186     \textcolor{keywordflow}{return} res}
-\DoxyCodeLine{187 }
+\DoxyCodeLine{175 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecore_a62946155b08710f13e2f3ff2a3b5e924}{result}}(final, threshold):}
+\DoxyCodeLine{176     l = []}
+\DoxyCodeLine{177     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(final[\textcolor{stringliteral}{'data'}])):}
+\DoxyCodeLine{178         \textcolor{keywordflow}{if} final[\textcolor{stringliteral}{"{}data"{}}][i] >= threshold:}
+\DoxyCodeLine{179             l.append(i)}
+\DoxyCodeLine{180     resultlist=[]}
+\DoxyCodeLine{181     n = len(final[\textcolor{stringliteral}{"{}filenames"{}}])}
+\DoxyCodeLine{182     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} l:}
+\DoxyCodeLine{183         file1 = i//n}
+\DoxyCodeLine{184         file2 = i-\/file1*n}
+\DoxyCodeLine{185         resultlist.append((final[\textcolor{stringliteral}{"{}filenames"{}}][file1],final[\textcolor{stringliteral}{"{}filenames"{}}][file2],final[\textcolor{stringliteral}{"{}data"{}}][i]*100))}
+\DoxyCodeLine{186     resultlist.sort(key=\textcolor{keyword}{lambda} x:x[2],reverse=\textcolor{keyword}{True})}
+\DoxyCodeLine{187     }
+\DoxyCodeLine{188     res = \textcolor{stringliteral}{"{}File1          File2          Score\(\backslash\)n"{}}}
+\DoxyCodeLine{189     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} resultlist:}
+\DoxyCodeLine{190         res += i[0]+(15-\/len(i[0]))*\textcolor{stringliteral}{' '}+i[1]+(15-\/len(i[1]))*\textcolor{stringliteral}{' '}+\mbox{\hyperlink{namespacebagwords_a2cb5df95818340380eeeb015b9398c41}{str}}(i[2])+\textcolor{stringliteral}{'\%\(\backslash\)n'}}
+\DoxyCodeLine{191     \textcolor{keywordflow}{return} res}
+\DoxyCodeLine{192 }
 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespacecore_a604f22ae6deb2981f460275b87a1df4d}\label{namespacecore_a604f22ae6deb2981f460275b87a1df4d}} 
@@ -394,34 +442,34 @@ removes comments, identifies special characters, removes keywords, encodes the f
 \end{DoxyParams}
 
 
-Definition at line 78 of file core.\+py.
+Definition at line 83 of file core.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{78 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecore_a604f22ae6deb2981f460275b87a1df4d}{word\_list}}(path):}
-\DoxyCodeLine{79     \textcolor{stringliteral}{"{}"{}"{}!Preprocess the code file whose path is provided i.e.}}
-\DoxyCodeLine{80 \textcolor{stringliteral}{        removes comments, identifies special characters,}}
-\DoxyCodeLine{81 \textcolor{stringliteral}{        removes keywords, encodes the file data and returns }}
-\DoxyCodeLine{82 \textcolor{stringliteral}{        the output as list  }}
-\DoxyCodeLine{83 \textcolor{stringliteral}{        @param path    path of code file}}
-\DoxyCodeLine{84 \textcolor{stringliteral}{    "{}"{}"{}}}
-\DoxyCodeLine{85     s1 = \mbox{\hyperlink{namespacecore_a42f36ba32aa9d59fb6b2f29dbdeef055}{remove\_comments}}(path)               \textcolor{comment}{\#remove comments}}
-\DoxyCodeLine{86     s2 = \mbox{\hyperlink{namespacecore_a6cdf2fdfd3999cbf9708533eb5806e37}{identify\_special\_characters}}(s1) \textcolor{comment}{\#identify special characters and add preceeding and trailing whitespace }}
-\DoxyCodeLine{87     }
-\DoxyCodeLine{88     sfinal=\textcolor{stringliteral}{"{}"{}}}
-\DoxyCodeLine{89     \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} s2.split(\textcolor{stringliteral}{"{}\(\backslash\)n"{}}):}
-\DoxyCodeLine{90         \textcolor{keywordflow}{for} word \textcolor{keywordflow}{in} line.split():}
-\DoxyCodeLine{91             \textcolor{keywordflow}{if} word \textcolor{keywordflow}{in} keywords:}
-\DoxyCodeLine{92                 \textcolor{keywordflow}{pass}                        \textcolor{comment}{\#remove keywords}}
-\DoxyCodeLine{93             \textcolor{keywordflow}{elif} word \textcolor{keywordflow}{in} special\_char:      }
-\DoxyCodeLine{94                 sfinal+=(word+\textcolor{stringliteral}{"{} "{}})          \textcolor{comment}{\#special character remains as it is }}
-\DoxyCodeLine{95             \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{96                 sfinal+=\textcolor{stringliteral}{"{}r "{}}                \textcolor{comment}{\#all other words(variable names, function names etc) are encoded with character r}}
-\DoxyCodeLine{97         sfinal+=\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
-\DoxyCodeLine{98     \textcolor{comment}{\#print (sf)}}
-\DoxyCodeLine{99     \textcolor{keywordflow}{return} sfinal.split()                   \textcolor{comment}{\#return encoded data as list}}
-\DoxyCodeLine{100 }
-\DoxyCodeLine{101 }
+\DoxyCodeLine{83 \textcolor{keyword}{def }\mbox{\hyperlink{namespacecore_a604f22ae6deb2981f460275b87a1df4d}{word\_list}}(path):}
+\DoxyCodeLine{84     \textcolor{stringliteral}{"{}"{}"{}!Preprocess the code file whose path is provided i.e.}}
+\DoxyCodeLine{85 \textcolor{stringliteral}{        removes comments, identifies special characters,}}
+\DoxyCodeLine{86 \textcolor{stringliteral}{        removes keywords, encodes the file data and returns }}
+\DoxyCodeLine{87 \textcolor{stringliteral}{        the output as list  }}
+\DoxyCodeLine{88 \textcolor{stringliteral}{        @param path    path of code file}}
+\DoxyCodeLine{89 \textcolor{stringliteral}{    "{}"{}"{}}}
+\DoxyCodeLine{90     s1 = \mbox{\hyperlink{namespacecore_a42f36ba32aa9d59fb6b2f29dbdeef055}{remove\_comments}}(path)               \textcolor{comment}{\#remove comments}}
+\DoxyCodeLine{91     s2 = \mbox{\hyperlink{namespacecore_a6cdf2fdfd3999cbf9708533eb5806e37}{identify\_special\_characters}}(s1) \textcolor{comment}{\#identify special characters and add preceeding and trailing whitespace }}
+\DoxyCodeLine{92     }
+\DoxyCodeLine{93     sfinal=\textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{94     \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} s2.split(\textcolor{stringliteral}{"{}\(\backslash\)n"{}}):}
+\DoxyCodeLine{95         \textcolor{keywordflow}{for} word \textcolor{keywordflow}{in} line.split():}
+\DoxyCodeLine{96             \textcolor{keywordflow}{if} word \textcolor{keywordflow}{in} keywords:}
+\DoxyCodeLine{97                 \textcolor{keywordflow}{pass}                        \textcolor{comment}{\#remove keywords}}
+\DoxyCodeLine{98             \textcolor{keywordflow}{elif} word \textcolor{keywordflow}{in} special\_char:      }
+\DoxyCodeLine{99                 sfinal+=(word+\textcolor{stringliteral}{"{} "{}})          \textcolor{comment}{\#special character remains as it is }}
+\DoxyCodeLine{100             \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{101                 sfinal+=\textcolor{stringliteral}{"{}r "{}}                \textcolor{comment}{\#all other words(variable names, function names etc) are encoded with character r}}
+\DoxyCodeLine{102         sfinal+=\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{103     \textcolor{comment}{\#print (sf)}}
+\DoxyCodeLine{104     \textcolor{keywordflow}{return} sfinal.split()                   \textcolor{comment}{\#return encoded data as list}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 }
 
 \end{DoxyCode}
 
@@ -439,7 +487,7 @@ Keywords are the list of reserved words of the language.
 
 
 
-Definition at line 17 of file core.\+py.
+Definition at line 22 of file core.\+py.
 
 \mbox{\Hypertarget{namespacecore_a214f14e2f8382861c8edba0cf65173ce}\label{namespacecore_a214f14e2f8382861c8edba0cf65173ce}} 
 \index{core@{core}!language@{language}}
@@ -453,7 +501,7 @@ Programming language of test code data.
 
 
 
-Definition at line 25 of file core.\+py.
+Definition at line 30 of file core.\+py.
 
 \mbox{\Hypertarget{namespacecore_ab0e4f7ef79e718a980275105a40dff33}\label{namespacecore_ab0e4f7ef79e718a980275105a40dff33}} 
 \index{core@{core}!multi\_begin@{multi\_begin}}
@@ -467,7 +515,7 @@ Syntax for beginning of multiline comment in test data.
 
 
 
-Definition at line 19 of file core.\+py.
+Definition at line 24 of file core.\+py.
 
 \mbox{\Hypertarget{namespacecore_a07b710ace1a646a67413fc69b8a9533a}\label{namespacecore_a07b710ace1a646a67413fc69b8a9533a}} 
 \index{core@{core}!multi\_end@{multi\_end}}
@@ -481,7 +529,7 @@ Syntax for ending of multiline comment in test data.
 
 
 
-Definition at line 21 of file core.\+py.
+Definition at line 26 of file core.\+py.
 
 \mbox{\Hypertarget{namespacecore_a01e4f55cd55381b220fff23c590b2d21}\label{namespacecore_a01e4f55cd55381b220fff23c590b2d21}} 
 \index{core@{core}!onelinecomment@{onelinecomment}}
@@ -495,7 +543,7 @@ Syntax for singleline comment in test data.
 
 
 
-Definition at line 23 of file core.\+py.
+Definition at line 28 of file core.\+py.
 
 \mbox{\Hypertarget{namespacecore_a2d514c55fa1366f4105a8ce4d82d7aba}\label{namespacecore_a2d514c55fa1366f4105a8ce4d82d7aba}} 
 \index{core@{core}!other\_chars@{other\_chars}}
@@ -509,7 +557,7 @@ These are non alphanumeric character that contain no/low logical information.
 
 
 
-Definition at line 15 of file core.\+py.
+Definition at line 20 of file core.\+py.
 
 \mbox{\Hypertarget{namespacecore_abe368b7aa890ed8b5008fa11cb50b4cb}\label{namespacecore_abe368b7aa890ed8b5008fa11cb50b4cb}} 
 \index{core@{core}!special\_char@{special\_char}}
@@ -523,5 +571,5 @@ Special\+\_\+char are non\+\_\+alphanumeric characters which build the logic of 
 
 
 
-Definition at line 13 of file core.\+py.
+Definition at line 18 of file core.\+py.
 

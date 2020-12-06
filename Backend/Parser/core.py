@@ -1,3 +1,8 @@
+"""@package docstring
+This module describes the main logic used to find plagiarism 
+for code files
+"""
+
 from mpl_toolkits import mplot3d
 import matplotlib.pyplot as plt
 import matplotlib
@@ -164,7 +169,7 @@ def find_keywords(files_in_dir, sample_size):
 					l[word]=1
 					current_set.add(word)			
 	keywords+=[i[0] for i in sorted(l.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)[0:25]] #top 25 potential keyword (enough)
-	keywords+=other_chars					#other_chars(global variable)
+	keywords+=other_chars																			#other_chars(global variable)
 
 
 def result(final, threshold):
@@ -186,6 +191,23 @@ def result(final, threshold):
 	return res
 
 def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline_end=''):
+    """!The core functionality is defined in this function. It first removes single-line and multiline comments, 
+	Identifies special characters, tokenises the code and stores kgrams of each code file. 
+	Next it identifies kgrams which are common to most of the files (They represent our base code file).
+	So, we take each pair of files and calculate the k-grams which are common to the files but not common to most 
+	of the files.
+	They form our suspicious set and will be used to calculate a score lying in 0-1, a metric
+	which quantifies the probability that the pair is plagiarised.
+
+	@param path					path to the target directory
+	@param user_id				to identify the user
+	@param language 			language input by user
+	@param one_line_comment 	language specific symbol to remove single line comments
+	@param multiline_begin 		language specific symbol to remove multiline comments
+	@param multiline_end		language specific symbol to remove muliline comments
+	@return final 				The final dictionary containing the filenames and resultant 2-D matrix
+	"""
+
     global multi_begin,multi_end,onelinecomment,language
     language=lang
     if lang=='C++':
@@ -208,17 +230,17 @@ def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline
     final["filenames"]=[]
     final["data"]=[]
     files_in_dir=[]
-    # print("hello")
+
     for r, d, f in os.walk(dir):
         for item in f:
             files_in_dir.append(os.path.join(r, item))
 
-    # print(files_in_dir)
+    
     files_in_dir.sort(key=lambda x:int(x.split(os.path.sep)[-1][0:-4]))
 
     for i in range(len(files_in_dir)):
         final["filenames"].append(files_in_dir[i].split(os.path.sep)[-1])
-        # print (i,files_in_dir[i].split('/')[-1])
+        
     
     find_keywords(files_in_dir,50)
 
@@ -229,7 +251,7 @@ def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline
     z=np.zeros((len(files_in_dir),len(files_in_dir)))
     common=dict()
     for xt in range(len(files_in_dir)):
-        #l1=kgram(word_list(xt),k)
+        
         for w in kgrams[xt]:
             if w in common.keys():
                 common[w]+=1
@@ -257,5 +279,5 @@ def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline
     for xt in range(len(files_in_dir)):
         for yt in range(len(files_in_dir)):
             final["data"].append(z[xt][yt])
-    #print(result(final,0.35))
+    
     return final
