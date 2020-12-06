@@ -1,0 +1,65 @@
+\hypertarget{namespaceparser}{}\doxysection{parser Namespace Reference}
+\label{namespaceparser}\index{parser@{parser}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespaceparser_a58bf3d5f14f77c2aafec90eb247cddd4}{word\+\_\+list}} (path)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparser_a58bf3d5f14f77c2aafec90eb247cddd4}\label{namespaceparser_a58bf3d5f14f77c2aafec90eb247cddd4}} 
+\index{parser@{parser}!word\_list@{word\_list}}
+\index{word\_list@{word\_list}!parser@{parser}}
+\doxysubsubsection{\texorpdfstring{word\_list()}{word\_list()}}
+{\footnotesize\ttfamily def parser.\+word\+\_\+list (\begin{DoxyParamCaption}\item[{}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 5 of file parser.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{5 \textcolor{keyword}{def }\mbox{\hyperlink{namespaceparser_a58bf3d5f14f77c2aafec90eb247cddd4}{word\_list}}(path):}
+\DoxyCodeLine{6     f = open(path,\textcolor{stringliteral}{"{}r"{}})}
+\DoxyCodeLine{7     \textcolor{comment}{\#w = open("{}temp"{},"{}w"{})}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9     pat=re.compile(\textcolor{stringliteral}{r'(\(\backslash\)/\(\backslash\)*).+?(\(\backslash\)*\(\backslash\)/)'},re.DOTALL)    \textcolor{comment}{\#remove multiline comments}}
+\DoxyCodeLine{10     s = re.sub(pat,\textcolor{stringliteral}{''},f.read())}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     s1=\textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{13     \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} s.split(\textcolor{stringliteral}{"{}\(\backslash\)n"{}}):}
+\DoxyCodeLine{14         l=line.split(\textcolor{stringliteral}{"{}//"{}},1)   \textcolor{comment}{\#remove single line comments}}
+\DoxyCodeLine{15         s1=s1+l[0]+\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     \textcolor{comment}{\# print(s1)}}
+\DoxyCodeLine{18     special\_char=[\textcolor{stringliteral}{'+'},\textcolor{stringliteral}{'-\/'},\textcolor{stringliteral}{'='},\textcolor{stringliteral}{'*'},\textcolor{stringliteral}{'/'},\textcolor{stringliteral}{'<'},\textcolor{stringliteral}{'>'},\textcolor{stringliteral}{'\#'},\textcolor{stringliteral}{':'},\textcolor{stringliteral}{'.'},\textcolor{stringliteral}{'!'}]}
+\DoxyCodeLine{19     keywords=open(\textcolor{stringliteral}{"{}./ckeywords.txt"{}}).read().split()}
+\DoxyCodeLine{20     \textcolor{comment}{\#digits = ['0','1','2','3','4','5','6','7','8','9']}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     s2=\textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{23     \textcolor{keywordflow}{for} char \textcolor{keywordflow}{in} list(s1):           \textcolor{comment}{\#add whitespace before and after a special character}}
+\DoxyCodeLine{24         \textcolor{keywordflow}{if} char \textcolor{keywordflow}{in} special\_char:}
+\DoxyCodeLine{25             e=\textcolor{stringliteral}{"{} "{}}+char+\textcolor{stringliteral}{"{} "{}}}
+\DoxyCodeLine{26             s2+=e}
+\DoxyCodeLine{27         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{28             s2+=char}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     \textcolor{comment}{\# text = open("{}temp"{},"{}r"{})}}
+\DoxyCodeLine{31     \textcolor{comment}{\# myword="{}r"{}}}
+\DoxyCodeLine{32     sf=\textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{33     \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} s2.split(\textcolor{stringliteral}{"{}\(\backslash\)n"{}}):}
+\DoxyCodeLine{34         \textcolor{keywordflow}{for} word \textcolor{keywordflow}{in} line.split():   \textcolor{comment}{\#remove keywords and replace all words except special\_char with a signature letter 'r' }}
+\DoxyCodeLine{35             \textcolor{keywordflow}{if} word \textcolor{keywordflow}{in} keywords:}
+\DoxyCodeLine{36                 \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{37             \textcolor{keywordflow}{elif} word \textcolor{keywordflow}{in} special\_char:}
+\DoxyCodeLine{38                 sf+=(word+\textcolor{stringliteral}{"{} "{}})}
+\DoxyCodeLine{39             \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{40                 sf+=\textcolor{stringliteral}{"{}r "{}}}
+\DoxyCodeLine{41         sf+=\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{comment}{\# print(sf)}}
+\DoxyCodeLine{44     \textcolor{comment}{\#w.write(sf)}}
+\DoxyCodeLine{45     \textcolor{keywordflow}{return} sf.split()}
+
+\end{DoxyCode}

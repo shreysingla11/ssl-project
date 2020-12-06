@@ -1,0 +1,63 @@
+\hypertarget{main_8py}{}\doxysection{/home/shrey/\+Desktop/\+Project/ssl-\/project/\+Backend/\+Parser/main.py File Reference}
+\label{main_8py}\index{/home/shrey/Desktop/Project/ssl-\/project/Backend/Parser/main.py@{/home/shrey/Desktop/Project/ssl-\/project/Backend/Parser/main.py}}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacemain}{main}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacemain_a7b474992b3d1e4f244e4a343b1a1e13b}{main.\+remove\+\_\+comments}} (path)
+\item 
+def \mbox{\hyperlink{namespacemain_a2024669d2b02738df910eb55d90c9d2b}{main.\+identify\+\_\+special\+\_\+characters}} (s1, remove=False)
+\item 
+def \mbox{\hyperlink{namespacemain_a41bfbdc37cd163b8a1c5452489fd2fbf}{main.\+word\+\_\+list}} (path)
+\item 
+def \mbox{\hyperlink{namespacemain_ae7f2c7a84886467c64292ca1d81fa534}{main.\+kgram}} (words, k)
+\item 
+def \mbox{\hyperlink{namespacemain_a83131d3ea0a5da311ccc64a01e61b4e1}{main.\+find\+\_\+keywords}} (files\+\_\+in\+\_\+dir, sample\+\_\+size)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \mbox{\hyperlink{namespacemain_adfd80b7f838f0962afba5d33d9f3c87b}{main.\+special\+\_\+char}} = \mbox{[}\textquotesingle{}+\textquotesingle{},\textquotesingle{}-\/\textquotesingle{},\textquotesingle{}=\textquotesingle{},\textquotesingle{}$\ast$\textquotesingle{},\textquotesingle{}/\textquotesingle{},\textquotesingle{}$<$\textquotesingle{},\textquotesingle{}$>$\textquotesingle{},\textquotesingle{}\+:\textquotesingle{},\textquotesingle{}.\textquotesingle{},\textquotesingle{}!\textquotesingle{},\textquotesingle{},\textquotesingle{},\textquotesingle{};\textquotesingle{},\textquotesingle{}\char`\"{}\textquotesingle{},\textquotesingle{}\textbackslash{}\textquotesingle{}\textquotesingle{},\textquotesingle{}\&\textquotesingle{},\textquotesingle{}$\vert$\textquotesingle{},\textquotesingle{}$^\wedge$\textquotesingle{},\textquotesingle{}\#\textquotesingle{}\mbox{]}
+\item 
+list \mbox{\hyperlink{namespacemain_adf0e55223c01f2bb661c3db05f3296ce}{main.\+other\+\_\+chars}} = \mbox{[}\textquotesingle{}(\textquotesingle{},\textquotesingle{}\{\textquotesingle{},\textquotesingle{}\}\textquotesingle{},\textquotesingle{})\textquotesingle{},\textquotesingle{}\mbox{[}\textquotesingle{},\textquotesingle{}\mbox{]}\textquotesingle{}\mbox{]}
+\item 
+list \mbox{\hyperlink{namespacemain_a61dae4fa2fb831c443592584c5143889}{main.\+keywords}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacemain_a9f3911118b78333a8f963e063f12c7ed}{main.\+parser}} = argparse.\+Argument\+Parser()
+\item 
+\mbox{\hyperlink{namespacemain_a0bd63a1b2330689929df9dc300943a1a}{main.\+dest}}
+\item 
+\mbox{\hyperlink{namespacemain_a10926d7b7053badc9647defe0abb8adc}{main.\+args}} = parser.\+parse\+\_\+args()
+\item 
+\mbox{\hyperlink{namespacemain_a40a5467a91fc0d6cf6c7551c8fb01ddb}{main.\+k}} = int(args.\+k)
+\item 
+list \mbox{\hyperlink{namespacemain_ac7efdb852a0183837adeae5c96d84c45}{main.\+files\+\_\+in\+\_\+dir}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacemain_a832185a351506083e49f83201cbc8433}{main.\+key}}
+\item 
+list \mbox{\hyperlink{namespacemain_a9eb4c974a79b5393081a07a3e8bfed4e}{main.\+kgrams}} = \mbox{[}$\,$\mbox{]}
+\item 
+int \mbox{\hyperlink{namespacemain_a3c412d5a2fa8fa89ef5be1c6406bdd3d}{main.\+q}} = 0
+\item 
+\mbox{\hyperlink{namespacemain_a3c4b79c8b0452167ee191e813e1c0f9e}{main.\+z}} = np.\+zeros((len(files\+\_\+in\+\_\+dir),len(files\+\_\+in\+\_\+dir)))
+\item 
+\mbox{\hyperlink{namespacemain_a7160b6cdff3458ba4219adac803c4648}{main.\+common}} = dict()
+\item 
+list \mbox{\hyperlink{namespacemain_a6aa65becef1c0172f6b85787b2ab9278}{main.\+commonset}} = \mbox{[}\{e for e in common.\+keys() if common\mbox{[}e\mbox{]}$>$0.\+5$\ast$len(files\+\_\+in\+\_\+dir)\}\mbox{]}
+\item 
+int \mbox{\hyperlink{namespacemain_ace2fede70217ca57d2a06a4e05de84e1}{main.\+count}} = 0
+\item 
+int \mbox{\hyperlink{namespacemain_a9bb15dd4bf5d68953f13e56e6a514e37}{main.\+common\+\_\+words}} = 0
+\item 
+\mbox{\hyperlink{namespacemain_adc1dacfb4a7a4585f28206418afa7c25}{main.\+cmap}} = matplotlib.\+colors.\+Listed\+Colormap(\mbox{[}\textquotesingle{}green\textquotesingle{},\textquotesingle{}yellow\textquotesingle{},\textquotesingle{}orange\textquotesingle{},\textquotesingle{}red\textquotesingle{}\mbox{]})
+\item 
+list \mbox{\hyperlink{namespacemain_ac902a7b4419821d1389f5877270710b2}{main.\+bounds}} = \mbox{[}0,0.\+2,0.\+3,0.\+5,1\mbox{]}
+\item 
+\mbox{\hyperlink{namespacemain_a22a443c0db6cfe79750626e08bd638bb}{main.\+norm}} = matplotlib.\+colors.\+Boundary\+Norm(bounds, cmap.\+N)
+\item 
+\mbox{\hyperlink{namespacemain_ac42fa4e2ae668390fb9733572e6f45ad}{main.\+img}} = plt.\+imshow(z,interpolation=\textquotesingle{}nearest\textquotesingle{},cmap = cmap,norm=norm)
+\end{DoxyCompactItemize}

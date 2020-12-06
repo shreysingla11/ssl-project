@@ -1,0 +1,423 @@
+\hypertarget{namespacemain}{}\doxysection{main Namespace Reference}
+\label{namespacemain}\index{main@{main}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacemain_a7b474992b3d1e4f244e4a343b1a1e13b}{remove\+\_\+comments}} (path)
+\item 
+def \mbox{\hyperlink{namespacemain_a2024669d2b02738df910eb55d90c9d2b}{identify\+\_\+special\+\_\+characters}} (s1, remove=False)
+\item 
+def \mbox{\hyperlink{namespacemain_a41bfbdc37cd163b8a1c5452489fd2fbf}{word\+\_\+list}} (path)
+\item 
+def \mbox{\hyperlink{namespacemain_ae7f2c7a84886467c64292ca1d81fa534}{kgram}} (words, \mbox{\hyperlink{namespacemain_a40a5467a91fc0d6cf6c7551c8fb01ddb}{k}})
+\item 
+def \mbox{\hyperlink{namespacemain_a83131d3ea0a5da311ccc64a01e61b4e1}{find\+\_\+keywords}} (\mbox{\hyperlink{namespacemain_ac7efdb852a0183837adeae5c96d84c45}{files\+\_\+in\+\_\+dir}}, sample\+\_\+size)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \mbox{\hyperlink{namespacemain_adfd80b7f838f0962afba5d33d9f3c87b}{special\+\_\+char}} = \mbox{[}\textquotesingle{}+\textquotesingle{},\textquotesingle{}-\/\textquotesingle{},\textquotesingle{}=\textquotesingle{},\textquotesingle{}$\ast$\textquotesingle{},\textquotesingle{}/\textquotesingle{},\textquotesingle{}$<$\textquotesingle{},\textquotesingle{}$>$\textquotesingle{},\textquotesingle{}\+:\textquotesingle{},\textquotesingle{}.\textquotesingle{},\textquotesingle{}!\textquotesingle{},\textquotesingle{},\textquotesingle{},\textquotesingle{};\textquotesingle{},\textquotesingle{}\char`\"{}\textquotesingle{},\textquotesingle{}\textbackslash{}\textquotesingle{}\textquotesingle{},\textquotesingle{}\&\textquotesingle{},\textquotesingle{}$\vert$\textquotesingle{},\textquotesingle{}$^\wedge$\textquotesingle{},\textquotesingle{}\#\textquotesingle{}\mbox{]}
+\item 
+list \mbox{\hyperlink{namespacemain_adf0e55223c01f2bb661c3db05f3296ce}{other\+\_\+chars}} = \mbox{[}\textquotesingle{}(\textquotesingle{},\textquotesingle{}\{\textquotesingle{},\textquotesingle{}\}\textquotesingle{},\textquotesingle{})\textquotesingle{},\textquotesingle{}\mbox{[}\textquotesingle{},\textquotesingle{}\mbox{]}\textquotesingle{}\mbox{]}
+\item 
+list \mbox{\hyperlink{namespacemain_a61dae4fa2fb831c443592584c5143889}{keywords}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacemain_a9f3911118b78333a8f963e063f12c7ed}{parser}} = argparse.\+Argument\+Parser()
+\item 
+\mbox{\hyperlink{namespacemain_a0bd63a1b2330689929df9dc300943a1a}{dest}}
+\item 
+\mbox{\hyperlink{namespacemain_a10926d7b7053badc9647defe0abb8adc}{args}} = parser.\+parse\+\_\+args()
+\item 
+\mbox{\hyperlink{namespacemain_a40a5467a91fc0d6cf6c7551c8fb01ddb}{k}} = int(args.\+k)
+\item 
+list \mbox{\hyperlink{namespacemain_ac7efdb852a0183837adeae5c96d84c45}{files\+\_\+in\+\_\+dir}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{namespacemain_a832185a351506083e49f83201cbc8433}{key}}
+\item 
+list \mbox{\hyperlink{namespacemain_a9eb4c974a79b5393081a07a3e8bfed4e}{kgrams}} = \mbox{[}$\,$\mbox{]}
+\item 
+int \mbox{\hyperlink{namespacemain_a3c412d5a2fa8fa89ef5be1c6406bdd3d}{q}} = 0
+\item 
+\mbox{\hyperlink{namespacemain_a3c4b79c8b0452167ee191e813e1c0f9e}{z}} = np.\+zeros((len(\mbox{\hyperlink{namespacemain_ac7efdb852a0183837adeae5c96d84c45}{files\+\_\+in\+\_\+dir}}),len(\mbox{\hyperlink{namespacemain_ac7efdb852a0183837adeae5c96d84c45}{files\+\_\+in\+\_\+dir}})))
+\item 
+\mbox{\hyperlink{namespacemain_a7160b6cdff3458ba4219adac803c4648}{common}} = dict()
+\item 
+list \mbox{\hyperlink{namespacemain_a6aa65becef1c0172f6b85787b2ab9278}{commonset}} = \mbox{[}\{e for e in common.\+keys() if \mbox{\hyperlink{namespacemain_a7160b6cdff3458ba4219adac803c4648}{common}}\mbox{[}e\mbox{]}$>$0.\+5$\ast$len(\mbox{\hyperlink{namespacemain_ac7efdb852a0183837adeae5c96d84c45}{files\+\_\+in\+\_\+dir}})\}\mbox{]}
+\item 
+int \mbox{\hyperlink{namespacemain_ace2fede70217ca57d2a06a4e05de84e1}{count}} = 0
+\item 
+int \mbox{\hyperlink{namespacemain_a9bb15dd4bf5d68953f13e56e6a514e37}{common\+\_\+words}} = 0
+\item 
+\mbox{\hyperlink{namespacemain_adc1dacfb4a7a4585f28206418afa7c25}{cmap}} = matplotlib.\+colors.\+Listed\+Colormap(\mbox{[}\textquotesingle{}green\textquotesingle{},\textquotesingle{}yellow\textquotesingle{},\textquotesingle{}orange\textquotesingle{},\textquotesingle{}red\textquotesingle{}\mbox{]})
+\item 
+list \mbox{\hyperlink{namespacemain_ac902a7b4419821d1389f5877270710b2}{bounds}} = \mbox{[}0,0.\+2,0.\+3,0.\+5,1\mbox{]}
+\item 
+\mbox{\hyperlink{namespacemain_a22a443c0db6cfe79750626e08bd638bb}{norm}} = matplotlib.\+colors.\+Boundary\+Norm(\mbox{\hyperlink{namespacemain_ac902a7b4419821d1389f5877270710b2}{bounds}}, cmap.\+N)
+\item 
+\mbox{\hyperlink{namespacemain_ac42fa4e2ae668390fb9733572e6f45ad}{img}} = plt.\+imshow(\mbox{\hyperlink{namespacemain_a3c4b79c8b0452167ee191e813e1c0f9e}{z}},interpolation=\textquotesingle{}nearest\textquotesingle{},\mbox{\hyperlink{namespacemain_adc1dacfb4a7a4585f28206418afa7c25}{cmap}} = \mbox{\hyperlink{namespacemain_adc1dacfb4a7a4585f28206418afa7c25}{cmap}},\mbox{\hyperlink{namespacemain_a22a443c0db6cfe79750626e08bd638bb}{norm}}=\mbox{\hyperlink{namespacemain_a22a443c0db6cfe79750626e08bd638bb}{norm}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacemain_a83131d3ea0a5da311ccc64a01e61b4e1}\label{namespacemain_a83131d3ea0a5da311ccc64a01e61b4e1}} 
+\index{main@{main}!find\_keywords@{find\_keywords}}
+\index{find\_keywords@{find\_keywords}!main@{main}}
+\doxysubsubsection{\texorpdfstring{find\_keywords()}{find\_keywords()}}
+{\footnotesize\ttfamily def main.\+find\+\_\+keywords (\begin{DoxyParamCaption}\item[{}]{files\+\_\+in\+\_\+dir,  }\item[{}]{sample\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Definition at line 83 of file main.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{83 \textcolor{keyword}{def }\mbox{\hyperlink{namespacemain_a83131d3ea0a5da311ccc64a01e61b4e1}{find\_keywords}}(files\_in\_dir, sample\_size):}
+\DoxyCodeLine{84     l=dict()}
+\DoxyCodeLine{85     sampling = random.choices(files\_in\_dir, k=min(sample\_size,len(files\_in\_dir)))}
+\DoxyCodeLine{86     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} sampling:}
+\DoxyCodeLine{87         s1=\mbox{\hyperlink{namespacemain_a7b474992b3d1e4f244e4a343b1a1e13b}{remove\_comments}}(i)}
+\DoxyCodeLine{88         s2=\mbox{\hyperlink{namespacemain_a2024669d2b02738df910eb55d90c9d2b}{identify\_special\_characters}}(s1, remove=\textcolor{keyword}{True})}
+\DoxyCodeLine{89         current\_set=set()}
+\DoxyCodeLine{90         \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} s2.split(\textcolor{stringliteral}{"{}\(\backslash\)n"{}}):}
+\DoxyCodeLine{91             \textcolor{keywordflow}{for} word \textcolor{keywordflow}{in} line.split():}
+\DoxyCodeLine{92                 \textcolor{keywordflow}{if} len(word)==1:}
+\DoxyCodeLine{93                     \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{94                 \textcolor{keywordflow}{elif} word \textcolor{keywordflow}{in} current\_set:}
+\DoxyCodeLine{95                     \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{96                 \textcolor{keywordflow}{elif} word \textcolor{keywordflow}{in} l.keys():}
+\DoxyCodeLine{97                     l[word]+=1}
+\DoxyCodeLine{98                     current\_set.add(word)}
+\DoxyCodeLine{99                 \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{100                     l[word]=1}
+\DoxyCodeLine{101                     current\_set.add(word)}
+\DoxyCodeLine{102     \textcolor{keyword}{global} keywords             }
+\DoxyCodeLine{103     keywords+=[i[0] \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} sorted(l.items(), key = \textcolor{keyword}{lambda} kv:(kv[1], kv[0]), reverse=\textcolor{keyword}{True})[0:25]]}
+\DoxyCodeLine{104     keywords+=other\_chars}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacemain_a2024669d2b02738df910eb55d90c9d2b}\label{namespacemain_a2024669d2b02738df910eb55d90c9d2b}} 
+\index{main@{main}!identify\_special\_characters@{identify\_special\_characters}}
+\index{identify\_special\_characters@{identify\_special\_characters}!main@{main}}
+\doxysubsubsection{\texorpdfstring{identify\_special\_characters()}{identify\_special\_characters()}}
+{\footnotesize\ttfamily def main.\+identify\+\_\+special\+\_\+characters (\begin{DoxyParamCaption}\item[{}]{s1,  }\item[{}]{remove = {\ttfamily False} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 32 of file main.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{32 \textcolor{keyword}{def }\mbox{\hyperlink{namespacemain_a2024669d2b02738df910eb55d90c9d2b}{identify\_special\_characters}}(s1, remove=False):}
+\DoxyCodeLine{33     s2=\textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{34     \textcolor{keywordflow}{for} char \textcolor{keywordflow}{in} list(s1):}
+\DoxyCodeLine{35         }
+\DoxyCodeLine{36         \textcolor{keywordflow}{if} char \textcolor{keywordflow}{in} special\_char:}
+\DoxyCodeLine{37             \textcolor{keywordflow}{if} remove:}
+\DoxyCodeLine{38                 e=\textcolor{stringliteral}{"{} "{}}}
+\DoxyCodeLine{39             \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{40                 e=\textcolor{stringliteral}{"{} "{}}+char+\textcolor{stringliteral}{"{} "{}}}
+\DoxyCodeLine{41             s2+=e}
+\DoxyCodeLine{42         \textcolor{keywordflow}{elif} char \textcolor{keywordflow}{in} other\_chars:}
+\DoxyCodeLine{43             \textcolor{keywordflow}{if} remove:}
+\DoxyCodeLine{44                 s2+=\textcolor{stringliteral}{"{} "{}}}
+\DoxyCodeLine{45         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{46             s2+=char}
+\DoxyCodeLine{47     \textcolor{keywordflow}{return} s2}
+\DoxyCodeLine{48 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacemain_ae7f2c7a84886467c64292ca1d81fa534}\label{namespacemain_ae7f2c7a84886467c64292ca1d81fa534}} 
+\index{main@{main}!kgram@{kgram}}
+\index{kgram@{kgram}!main@{main}}
+\doxysubsubsection{\texorpdfstring{kgram()}{kgram()}}
+{\footnotesize\ttfamily def main.\+kgram (\begin{DoxyParamCaption}\item[{}]{words,  }\item[{}]{k }\end{DoxyParamCaption})}
+
+
+
+Definition at line 73 of file main.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{73 \textcolor{keyword}{def }\mbox{\hyperlink{namespacemain_ae7f2c7a84886467c64292ca1d81fa534}{kgram}}(words,k):}
+\DoxyCodeLine{74     l=set()}
+\DoxyCodeLine{75     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(words)-\/k+1):}
+\DoxyCodeLine{76         s=\textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{77         \textcolor{keywordflow}{for} j \textcolor{keywordflow}{in} range(k):}
+\DoxyCodeLine{78             s=s+words[i+j]}
+\DoxyCodeLine{79         l.add(s)}
+\DoxyCodeLine{80     \textcolor{keywordflow}{return} l}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacemain_a7b474992b3d1e4f244e4a343b1a1e13b}\label{namespacemain_a7b474992b3d1e4f244e4a343b1a1e13b}} 
+\index{main@{main}!remove\_comments@{remove\_comments}}
+\index{remove\_comments@{remove\_comments}!main@{main}}
+\doxysubsubsection{\texorpdfstring{remove\_comments()}{remove\_comments()}}
+{\footnotesize\ttfamily def main.\+remove\+\_\+comments (\begin{DoxyParamCaption}\item[{}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 18 of file main.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{18 \textcolor{keyword}{def }\mbox{\hyperlink{namespacemain_a7b474992b3d1e4f244e4a343b1a1e13b}{remove\_comments}}(path):}
+\DoxyCodeLine{19     f = open(path,\textcolor{stringliteral}{"{}r"{}})}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     pat=re.compile(\textcolor{stringliteral}{r'(\(\backslash\)/\(\backslash\)*).+?(\(\backslash\)*\(\backslash\)/)'},re.DOTALL)}
+\DoxyCodeLine{22     s = re.sub(pat,\textcolor{stringliteral}{''},f.read())}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     s1=\textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{25     \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} s.split(\textcolor{stringliteral}{"{}\(\backslash\)n"{}}):}
+\DoxyCodeLine{26         l=line.split(\textcolor{stringliteral}{"{}//"{}},1)}
+\DoxyCodeLine{27         s1=s1+l[0]+\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{keywordflow}{return} s1}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 }
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacemain_a41bfbdc37cd163b8a1c5452489fd2fbf}\label{namespacemain_a41bfbdc37cd163b8a1c5452489fd2fbf}} 
+\index{main@{main}!word\_list@{word\_list}}
+\index{word\_list@{word\_list}!main@{main}}
+\doxysubsubsection{\texorpdfstring{word\_list()}{word\_list()}}
+{\footnotesize\ttfamily def main.\+word\+\_\+list (\begin{DoxyParamCaption}\item[{}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 49 of file main.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{49 \textcolor{keyword}{def }\mbox{\hyperlink{namespacemain_a41bfbdc37cd163b8a1c5452489fd2fbf}{word\_list}}(path):}
+\DoxyCodeLine{50     s1 = \mbox{\hyperlink{namespacemain_a7b474992b3d1e4f244e4a343b1a1e13b}{remove\_comments}}(path)}
+\DoxyCodeLine{51     }
+\DoxyCodeLine{52     \textcolor{comment}{\#keywords=open("{}./ckeywords.txt"{}).read().split()}}
+\DoxyCodeLine{53     \textcolor{comment}{\#keywords=[]}}
+\DoxyCodeLine{54     \textcolor{comment}{\#digits = ['0','1','2','3','4','5','6','7','8','9']}}
+\DoxyCodeLine{55     s2=\mbox{\hyperlink{namespacemain_a2024669d2b02738df910eb55d90c9d2b}{identify\_special\_characters}}(s1)}
+\DoxyCodeLine{56     }
+\DoxyCodeLine{57     text = open(\textcolor{stringliteral}{"{}temp"{}},\textcolor{stringliteral}{"{}r"{}}) }
+\DoxyCodeLine{58     myword=\textcolor{stringliteral}{"{}r"{}}}
+\DoxyCodeLine{59     sf=\textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{60     \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} s2.split(\textcolor{stringliteral}{"{}\(\backslash\)n"{}}):}
+\DoxyCodeLine{61         \textcolor{keywordflow}{for} word \textcolor{keywordflow}{in} line.split():}
+\DoxyCodeLine{62             \textcolor{keywordflow}{if} word \textcolor{keywordflow}{in} keywords:}
+\DoxyCodeLine{63                 \textcolor{keywordflow}{pass}}
+\DoxyCodeLine{64             \textcolor{keywordflow}{elif} word \textcolor{keywordflow}{in} special\_char:}
+\DoxyCodeLine{65                 sf+=(word+\textcolor{stringliteral}{"{} "{}})}
+\DoxyCodeLine{66             \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{67                 sf+=\textcolor{stringliteral}{"{}r "{}}}
+\DoxyCodeLine{68         sf+=\textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \textcolor{keywordflow}{return} sf.split()}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacemain_a10926d7b7053badc9647defe0abb8adc}\label{namespacemain_a10926d7b7053badc9647defe0abb8adc}} 
+\index{main@{main}!args@{args}}
+\index{args@{args}!main@{main}}
+\doxysubsubsection{\texorpdfstring{args}{args}}
+{\footnotesize\ttfamily main.\+args = parser.\+parse\+\_\+args()}
+
+
+
+Definition at line 110 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_ac902a7b4419821d1389f5877270710b2}\label{namespacemain_ac902a7b4419821d1389f5877270710b2}} 
+\index{main@{main}!bounds@{bounds}}
+\index{bounds@{bounds}!main@{main}}
+\doxysubsubsection{\texorpdfstring{bounds}{bounds}}
+{\footnotesize\ttfamily list main.\+bounds = \mbox{[}0,0.\+2,0.\+3,0.\+5,1\mbox{]}}
+
+
+
+Definition at line 163 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_adc1dacfb4a7a4585f28206418afa7c25}\label{namespacemain_adc1dacfb4a7a4585f28206418afa7c25}} 
+\index{main@{main}!cmap@{cmap}}
+\index{cmap@{cmap}!main@{main}}
+\doxysubsubsection{\texorpdfstring{cmap}{cmap}}
+{\footnotesize\ttfamily main.\+cmap = matplotlib.\+colors.\+Listed\+Colormap(\mbox{[}\textquotesingle{}green\textquotesingle{},\textquotesingle{}yellow\textquotesingle{},\textquotesingle{}orange\textquotesingle{},\textquotesingle{}red\textquotesingle{}\mbox{]})}
+
+
+
+Definition at line 162 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_a7160b6cdff3458ba4219adac803c4648}\label{namespacemain_a7160b6cdff3458ba4219adac803c4648}} 
+\index{main@{main}!common@{common}}
+\index{common@{common}!main@{main}}
+\doxysubsubsection{\texorpdfstring{common}{common}}
+{\footnotesize\ttfamily main.\+common = dict()}
+
+
+
+Definition at line 134 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_a9bb15dd4bf5d68953f13e56e6a514e37}\label{namespacemain_a9bb15dd4bf5d68953f13e56e6a514e37}} 
+\index{main@{main}!common\_words@{common\_words}}
+\index{common\_words@{common\_words}!main@{main}}
+\doxysubsubsection{\texorpdfstring{common\_words}{common\_words}}
+{\footnotesize\ttfamily int main.\+common\+\_\+words = 0}
+
+
+
+Definition at line 150 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_a6aa65becef1c0172f6b85787b2ab9278}\label{namespacemain_a6aa65becef1c0172f6b85787b2ab9278}} 
+\index{main@{main}!commonset@{commonset}}
+\index{commonset@{commonset}!main@{main}}
+\doxysubsubsection{\texorpdfstring{commonset}{commonset}}
+{\footnotesize\ttfamily list main.\+commonset = \mbox{[}\{e for e in common.\+keys() if \mbox{\hyperlink{namespacemain_a7160b6cdff3458ba4219adac803c4648}{common}}\mbox{[}e\mbox{]}$>$0.\+5$\ast$len(\mbox{\hyperlink{namespacemain_ac7efdb852a0183837adeae5c96d84c45}{files\+\_\+in\+\_\+dir}})\}\mbox{]}}
+
+
+
+Definition at line 142 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_ace2fede70217ca57d2a06a4e05de84e1}\label{namespacemain_ace2fede70217ca57d2a06a4e05de84e1}} 
+\index{main@{main}!count@{count}}
+\index{count@{count}!main@{main}}
+\doxysubsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily int main.\+count = 0}
+
+
+
+Definition at line 149 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_a0bd63a1b2330689929df9dc300943a1a}\label{namespacemain_a0bd63a1b2330689929df9dc300943a1a}} 
+\index{main@{main}!dest@{dest}}
+\index{dest@{dest}!main@{main}}
+\doxysubsubsection{\texorpdfstring{dest}{dest}}
+{\footnotesize\ttfamily main.\+dest}
+
+
+
+Definition at line 108 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_ac7efdb852a0183837adeae5c96d84c45}\label{namespacemain_ac7efdb852a0183837adeae5c96d84c45}} 
+\index{main@{main}!files\_in\_dir@{files\_in\_dir}}
+\index{files\_in\_dir@{files\_in\_dir}!main@{main}}
+\doxysubsubsection{\texorpdfstring{files\_in\_dir}{files\_in\_dir}}
+{\footnotesize\ttfamily list main.\+files\+\_\+in\+\_\+dir = \mbox{[}$\,$\mbox{]}}
+
+
+
+Definition at line 113 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_ac42fa4e2ae668390fb9733572e6f45ad}\label{namespacemain_ac42fa4e2ae668390fb9733572e6f45ad}} 
+\index{main@{main}!img@{img}}
+\index{img@{img}!main@{main}}
+\doxysubsubsection{\texorpdfstring{img}{img}}
+{\footnotesize\ttfamily main.\+img = plt.\+imshow(\mbox{\hyperlink{namespacemain_a3c4b79c8b0452167ee191e813e1c0f9e}{z}},interpolation=\textquotesingle{}nearest\textquotesingle{},\mbox{\hyperlink{namespacemain_adc1dacfb4a7a4585f28206418afa7c25}{cmap}} = \mbox{\hyperlink{namespacemain_adc1dacfb4a7a4585f28206418afa7c25}{cmap}},\mbox{\hyperlink{namespacemain_a22a443c0db6cfe79750626e08bd638bb}{norm}}=\mbox{\hyperlink{namespacemain_a22a443c0db6cfe79750626e08bd638bb}{norm}})}
+
+
+
+Definition at line 165 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_a40a5467a91fc0d6cf6c7551c8fb01ddb}\label{namespacemain_a40a5467a91fc0d6cf6c7551c8fb01ddb}} 
+\index{main@{main}!k@{k}}
+\index{k@{k}!main@{main}}
+\doxysubsubsection{\texorpdfstring{k}{k}}
+{\footnotesize\ttfamily main.\+k = int(args.\+k)}
+
+
+
+Definition at line 112 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_a832185a351506083e49f83201cbc8433}\label{namespacemain_a832185a351506083e49f83201cbc8433}} 
+\index{main@{main}!key@{key}}
+\index{key@{key}!main@{main}}
+\doxysubsubsection{\texorpdfstring{key}{key}}
+{\footnotesize\ttfamily main.\+key}
+
+
+
+Definition at line 119 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_a61dae4fa2fb831c443592584c5143889}\label{namespacemain_a61dae4fa2fb831c443592584c5143889}} 
+\index{main@{main}!keywords@{keywords}}
+\index{keywords@{keywords}!main@{main}}
+\doxysubsubsection{\texorpdfstring{keywords}{keywords}}
+{\footnotesize\ttfamily list main.\+keywords = \mbox{[}$\,$\mbox{]}}
+
+
+
+Definition at line 16 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_a9eb4c974a79b5393081a07a3e8bfed4e}\label{namespacemain_a9eb4c974a79b5393081a07a3e8bfed4e}} 
+\index{main@{main}!kgrams@{kgrams}}
+\index{kgrams@{kgrams}!main@{main}}
+\doxysubsubsection{\texorpdfstring{kgrams}{kgrams}}
+{\footnotesize\ttfamily list main.\+kgrams = \mbox{[}$\,$\mbox{]}}
+
+
+
+Definition at line 127 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_a22a443c0db6cfe79750626e08bd638bb}\label{namespacemain_a22a443c0db6cfe79750626e08bd638bb}} 
+\index{main@{main}!norm@{norm}}
+\index{norm@{norm}!main@{main}}
+\doxysubsubsection{\texorpdfstring{norm}{norm}}
+{\footnotesize\ttfamily main.\+norm = matplotlib.\+colors.\+Boundary\+Norm(\mbox{\hyperlink{namespacemain_ac902a7b4419821d1389f5877270710b2}{bounds}}, cmap.\+N)}
+
+
+
+Definition at line 164 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_adf0e55223c01f2bb661c3db05f3296ce}\label{namespacemain_adf0e55223c01f2bb661c3db05f3296ce}} 
+\index{main@{main}!other\_chars@{other\_chars}}
+\index{other\_chars@{other\_chars}!main@{main}}
+\doxysubsubsection{\texorpdfstring{other\_chars}{other\_chars}}
+{\footnotesize\ttfamily list main.\+other\+\_\+chars = \mbox{[}\textquotesingle{}(\textquotesingle{},\textquotesingle{}\{\textquotesingle{},\textquotesingle{}\}\textquotesingle{},\textquotesingle{})\textquotesingle{},\textquotesingle{}\mbox{[}\textquotesingle{},\textquotesingle{}\mbox{]}\textquotesingle{}\mbox{]}}
+
+
+
+Definition at line 14 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_a9f3911118b78333a8f963e063f12c7ed}\label{namespacemain_a9f3911118b78333a8f963e063f12c7ed}} 
+\index{main@{main}!parser@{parser}}
+\index{parser@{parser}!main@{main}}
+\doxysubsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily main.\+parser = argparse.\+Argument\+Parser()}
+
+
+
+Definition at line 107 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_a3c412d5a2fa8fa89ef5be1c6406bdd3d}\label{namespacemain_a3c412d5a2fa8fa89ef5be1c6406bdd3d}} 
+\index{main@{main}!q@{q}}
+\index{q@{q}!main@{main}}
+\doxysubsubsection{\texorpdfstring{q}{q}}
+{\footnotesize\ttfamily int main.\+q = 0}
+
+
+
+Definition at line 132 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_adfd80b7f838f0962afba5d33d9f3c87b}\label{namespacemain_adfd80b7f838f0962afba5d33d9f3c87b}} 
+\index{main@{main}!special\_char@{special\_char}}
+\index{special\_char@{special\_char}!main@{main}}
+\doxysubsubsection{\texorpdfstring{special\_char}{special\_char}}
+{\footnotesize\ttfamily list main.\+special\+\_\+char = \mbox{[}\textquotesingle{}+\textquotesingle{},\textquotesingle{}-\/\textquotesingle{},\textquotesingle{}=\textquotesingle{},\textquotesingle{}$\ast$\textquotesingle{},\textquotesingle{}/\textquotesingle{},\textquotesingle{}$<$\textquotesingle{},\textquotesingle{}$>$\textquotesingle{},\textquotesingle{}\+:\textquotesingle{},\textquotesingle{}.\textquotesingle{},\textquotesingle{}!\textquotesingle{},\textquotesingle{},\textquotesingle{},\textquotesingle{};\textquotesingle{},\textquotesingle{}\char`\"{}\textquotesingle{},\textquotesingle{}\textbackslash{}\textquotesingle{}\textquotesingle{},\textquotesingle{}\&\textquotesingle{},\textquotesingle{}$\vert$\textquotesingle{},\textquotesingle{}$^\wedge$\textquotesingle{},\textquotesingle{}\#\textquotesingle{}\mbox{]}}
+
+
+
+Definition at line 13 of file main.\+py.
+
+\mbox{\Hypertarget{namespacemain_a3c4b79c8b0452167ee191e813e1c0f9e}\label{namespacemain_a3c4b79c8b0452167ee191e813e1c0f9e}} 
+\index{main@{main}!z@{z}}
+\index{z@{z}!main@{main}}
+\doxysubsubsection{\texorpdfstring{z}{z}}
+{\footnotesize\ttfamily main.\+z = np.\+zeros((len(\mbox{\hyperlink{namespacemain_ac7efdb852a0183837adeae5c96d84c45}{files\+\_\+in\+\_\+dir}}),len(\mbox{\hyperlink{namespacemain_ac7efdb852a0183837adeae5c96d84c45}{files\+\_\+in\+\_\+dir}})))}
+
+
+
+Definition at line 133 of file main.\+py.
+

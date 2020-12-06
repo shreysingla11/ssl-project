@@ -1,0 +1,159 @@
+\hypertarget{namespacemain2}{}\doxysection{main2 Namespace Reference}
+\label{namespacemain2}\index{main2@{main2}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacemain2_af7cacb36f6e89e7ccbf9e87b4a685bb7}{kgram}} (words, \mbox{\hyperlink{namespacemain2_a4bf7c7203822846817750558a036f31f}{k}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacemain2_a925081bd331f8bd874ef2588641d9c41}{parser}} = argparse.\+Argument\+Parser()
+\item 
+\mbox{\hyperlink{namespacemain2_a24ada18dab42ac15820dc1cad0a2ec07}{dest}}
+\item 
+\mbox{\hyperlink{namespacemain2_a00a5a29c0decb75ecda2284ee781440f}{args}} = parser.\+parse\+\_\+args()
+\item 
+\mbox{\hyperlink{namespacemain2_a4bf7c7203822846817750558a036f31f}{k}} = int(args.\+k)
+\item 
+def \mbox{\hyperlink{namespacemain2_a64c1b4b908e307ec349862a15a305b8e}{l2}} = \mbox{\hyperlink{namespacemain2_af7cacb36f6e89e7ccbf9e87b4a685bb7}{kgram}}(word\+\_\+list(args.\+inn1),\mbox{\hyperlink{namespacemain2_a4bf7c7203822846817750558a036f31f}{k}})
+\item 
+def \mbox{\hyperlink{namespacemain2_adf34066091d5b4109b1efe4b87b2bafc}{l1}} = \mbox{\hyperlink{namespacemain2_af7cacb36f6e89e7ccbf9e87b4a685bb7}{kgram}}(word\+\_\+list(args.\+inn2),\mbox{\hyperlink{namespacemain2_a4bf7c7203822846817750558a036f31f}{k}})
+\item 
+\mbox{\hyperlink{namespacemain2_af0c0e825cc516a6fe303a00e234a99a8}{x}} = np.\+linspace(0,len(\mbox{\hyperlink{namespacemain2_adf34066091d5b4109b1efe4b87b2bafc}{l1}}),len(\mbox{\hyperlink{namespacemain2_adf34066091d5b4109b1efe4b87b2bafc}{l1}})+1)
+\item 
+\mbox{\hyperlink{namespacemain2_a9900ae10849fc2a465b981d51c3926d2}{y}} = np.\+zeros(len(\mbox{\hyperlink{namespacemain2_adf34066091d5b4109b1efe4b87b2bafc}{l1}})+1)
+\item 
+int \mbox{\hyperlink{namespacemain2_a0ee233ac57343abb9021d91bd57d5685}{num}} = 0
+\item 
+\mbox{\hyperlink{namespacemain2_acd616784ff29c4a85cc9d102c5ebee6a}{s}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacemain2_af7cacb36f6e89e7ccbf9e87b4a685bb7}\label{namespacemain2_af7cacb36f6e89e7ccbf9e87b4a685bb7}} 
+\index{main2@{main2}!kgram@{kgram}}
+\index{kgram@{kgram}!main2@{main2}}
+\doxysubsubsection{\texorpdfstring{kgram()}{kgram()}}
+{\footnotesize\ttfamily def main2.\+kgram (\begin{DoxyParamCaption}\item[{}]{words,  }\item[{}]{k }\end{DoxyParamCaption})}
+
+
+
+Definition at line 9 of file main2.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{9 \textcolor{keyword}{def }\mbox{\hyperlink{namespacemain2_af7cacb36f6e89e7ccbf9e87b4a685bb7}{kgram}}(words,k):        \textcolor{comment}{\#returns a set of kgrams from a list of words}}
+\DoxyCodeLine{10     l=set()}
+\DoxyCodeLine{11     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(words)-\/k+1):}
+\DoxyCodeLine{12         s=\textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{13         \textcolor{keywordflow}{for} j \textcolor{keywordflow}{in} range(k):}
+\DoxyCodeLine{14             s=s+words[i+j]}
+\DoxyCodeLine{15         l.add(s)}
+\DoxyCodeLine{16     \textcolor{keywordflow}{return} l}
+\DoxyCodeLine{17 }
+
+\end{DoxyCode}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacemain2_a00a5a29c0decb75ecda2284ee781440f}\label{namespacemain2_a00a5a29c0decb75ecda2284ee781440f}} 
+\index{main2@{main2}!args@{args}}
+\index{args@{args}!main2@{main2}}
+\doxysubsubsection{\texorpdfstring{args}{args}}
+{\footnotesize\ttfamily main2.\+args = parser.\+parse\+\_\+args()}
+
+
+
+Definition at line 23 of file main2.\+py.
+
+\mbox{\Hypertarget{namespacemain2_a24ada18dab42ac15820dc1cad0a2ec07}\label{namespacemain2_a24ada18dab42ac15820dc1cad0a2ec07}} 
+\index{main2@{main2}!dest@{dest}}
+\index{dest@{dest}!main2@{main2}}
+\doxysubsubsection{\texorpdfstring{dest}{dest}}
+{\footnotesize\ttfamily main2.\+dest}
+
+
+
+Definition at line 19 of file main2.\+py.
+
+\mbox{\Hypertarget{namespacemain2_a4bf7c7203822846817750558a036f31f}\label{namespacemain2_a4bf7c7203822846817750558a036f31f}} 
+\index{main2@{main2}!k@{k}}
+\index{k@{k}!main2@{main2}}
+\doxysubsubsection{\texorpdfstring{k}{k}}
+{\footnotesize\ttfamily main2.\+k = int(args.\+k)}
+
+
+
+Definition at line 25 of file main2.\+py.
+
+\mbox{\Hypertarget{namespacemain2_adf34066091d5b4109b1efe4b87b2bafc}\label{namespacemain2_adf34066091d5b4109b1efe4b87b2bafc}} 
+\index{main2@{main2}!l1@{l1}}
+\index{l1@{l1}!main2@{main2}}
+\doxysubsubsection{\texorpdfstring{l1}{l1}}
+{\footnotesize\ttfamily def main2.\+l1 = \mbox{\hyperlink{namespacemain2_af7cacb36f6e89e7ccbf9e87b4a685bb7}{kgram}}(word\+\_\+list(args.\+inn2),\mbox{\hyperlink{namespacemain2_a4bf7c7203822846817750558a036f31f}{k}})}
+
+
+
+Definition at line 28 of file main2.\+py.
+
+\mbox{\Hypertarget{namespacemain2_a64c1b4b908e307ec349862a15a305b8e}\label{namespacemain2_a64c1b4b908e307ec349862a15a305b8e}} 
+\index{main2@{main2}!l2@{l2}}
+\index{l2@{l2}!main2@{main2}}
+\doxysubsubsection{\texorpdfstring{l2}{l2}}
+{\footnotesize\ttfamily def main2.\+l2 = \mbox{\hyperlink{namespacemain2_af7cacb36f6e89e7ccbf9e87b4a685bb7}{kgram}}(word\+\_\+list(args.\+inn1),\mbox{\hyperlink{namespacemain2_a4bf7c7203822846817750558a036f31f}{k}})}
+
+
+
+Definition at line 27 of file main2.\+py.
+
+\mbox{\Hypertarget{namespacemain2_a0ee233ac57343abb9021d91bd57d5685}\label{namespacemain2_a0ee233ac57343abb9021d91bd57d5685}} 
+\index{main2@{main2}!num@{num}}
+\index{num@{num}!main2@{main2}}
+\doxysubsubsection{\texorpdfstring{num}{num}}
+{\footnotesize\ttfamily int main2.\+num = 0}
+
+
+
+Definition at line 35 of file main2.\+py.
+
+\mbox{\Hypertarget{namespacemain2_a925081bd331f8bd874ef2588641d9c41}\label{namespacemain2_a925081bd331f8bd874ef2588641d9c41}} 
+\index{main2@{main2}!parser@{parser}}
+\index{parser@{parser}!main2@{main2}}
+\doxysubsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily main2.\+parser = argparse.\+Argument\+Parser()}
+
+
+
+Definition at line 18 of file main2.\+py.
+
+\mbox{\Hypertarget{namespacemain2_acd616784ff29c4a85cc9d102c5ebee6a}\label{namespacemain2_acd616784ff29c4a85cc9d102c5ebee6a}} 
+\index{main2@{main2}!s@{s}}
+\index{s@{s}!main2@{main2}}
+\doxysubsubsection{\texorpdfstring{s}{s}}
+{\footnotesize\ttfamily main2.\+s}
+
+
+
+Definition at line 42 of file main2.\+py.
+
+\mbox{\Hypertarget{namespacemain2_af0c0e825cc516a6fe303a00e234a99a8}\label{namespacemain2_af0c0e825cc516a6fe303a00e234a99a8}} 
+\index{main2@{main2}!x@{x}}
+\index{x@{x}!main2@{main2}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily main2.\+x = np.\+linspace(0,len(\mbox{\hyperlink{namespacemain2_adf34066091d5b4109b1efe4b87b2bafc}{l1}}),len(\mbox{\hyperlink{namespacemain2_adf34066091d5b4109b1efe4b87b2bafc}{l1}})+1)}
+
+
+
+Definition at line 32 of file main2.\+py.
+
+\mbox{\Hypertarget{namespacemain2_a9900ae10849fc2a465b981d51c3926d2}\label{namespacemain2_a9900ae10849fc2a465b981d51c3926d2}} 
+\index{main2@{main2}!y@{y}}
+\index{y@{y}!main2@{main2}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily main2.\+y = np.\+zeros(len(\mbox{\hyperlink{namespacemain2_adf34066091d5b4109b1efe4b87b2bafc}{l1}})+1)}
+
+
+
+Definition at line 33 of file main2.\+py.
+

@@ -1,0 +1,41 @@
+\hypertarget{core_8py}{}\doxysection{/home/shrey/\+Desktop/\+Project/ssl-\/project/\+Backend/\+Parser/core.py File Reference}
+\label{core_8py}\index{/home/shrey/Desktop/Project/ssl-\/project/Backend/Parser/core.py@{/home/shrey/Desktop/Project/ssl-\/project/Backend/Parser/core.py}}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacecore}{core}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacecore_a42f36ba32aa9d59fb6b2f29dbdeef055}{core.\+remove\+\_\+comments}} (path)
+\begin{DoxyCompactList}\small\item\em Removes single and multiline comments from a code file. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecore_a6cdf2fdfd3999cbf9708533eb5806e37}{core.\+identify\+\_\+special\+\_\+characters}} (code, remove=False)
+\begin{DoxyCompactList}\small\item\em Either removes special characters from string or adds a preceeding and trailing whitespace so that each special character gets recognised as a separate word in future. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecore_a604f22ae6deb2981f460275b87a1df4d}{core.\+word\+\_\+list}} (path)
+\begin{DoxyCompactList}\small\item\em Preprocess the code file whose path is provided i.\+e. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecore_a71d6891306fa079e686bd7d735184547}{core.\+kgram}} (words, k)
+\begin{DoxyCompactList}\small\item\em Takes the encoded list(representing a code file data) as input and returns a set of k-\/grams of the encoded file. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecore_a024d976aea43275b9de6e268b8f8335f}{core.\+find\+\_\+keywords}} (files\+\_\+in\+\_\+dir, sample\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Predicts keywords of test file programming language (general case) based on Documents Frequency scores of words occuring in test files. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespacecore_a62946155b08710f13e2f3ff2a3b5e924}{core.\+result}} (final, threshold)
+\item 
+def \mbox{\hyperlink{namespacecore_ab05c0b37878602eb4a9f4aea994c941b}{core.\+logic}} (path, user\+\_\+id, lang=\textquotesingle{}\textquotesingle{}, one\+\_\+line\+\_\+comment=\textquotesingle{}\textquotesingle{}, multiline\+\_\+begin=\textquotesingle{}\textquotesingle{}, multiline\+\_\+end=\textquotesingle{}\textquotesingle{})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \mbox{\hyperlink{namespacecore_abe368b7aa890ed8b5008fa11cb50b4cb}{core.\+special\+\_\+char}} = \mbox{[}\textquotesingle{}+\textquotesingle{},\textquotesingle{}-\/\textquotesingle{},\textquotesingle{}=\textquotesingle{},\textquotesingle{}$\ast$\textquotesingle{},\textquotesingle{}/\textquotesingle{},\textquotesingle{}$<$\textquotesingle{},\textquotesingle{}$>$\textquotesingle{},\textquotesingle{}\+:\textquotesingle{},\textquotesingle{}.\textquotesingle{},\textquotesingle{}!\textquotesingle{},\textquotesingle{}\char`\"{}\textquotesingle{},\textquotesingle{}\textbackslash{}\textquotesingle{}\textquotesingle{},\textquotesingle{}\&\textquotesingle{},\textquotesingle{}$\vert$\textquotesingle{},\textquotesingle{}$^\wedge$\textquotesingle{},\textquotesingle{}\#\textquotesingle{}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Special\+\_\+char are non\+\_\+alphanumeric characters which build the logic of the program. \end{DoxyCompactList}\item 
+list \mbox{\hyperlink{namespacecore_a2d514c55fa1366f4105a8ce4d82d7aba}{core.\+other\+\_\+chars}} = \mbox{[}\textquotesingle{}(\textquotesingle{},\textquotesingle{}\{\textquotesingle{},\textquotesingle{}\}\textquotesingle{},\textquotesingle{})\textquotesingle{},\textquotesingle{}\mbox{[}\textquotesingle{},\textquotesingle{}\mbox{]}\textquotesingle{},\textquotesingle{},\textquotesingle{},\textquotesingle{};\textquotesingle{}\mbox{]}
+\begin{DoxyCompactList}\small\item\em These are non alphanumeric character that contain no/low logical information. \end{DoxyCompactList}\item 
+list \mbox{\hyperlink{namespacecore_a6bb063cb921f3de8c317e8353bbd779c}{core.\+keywords}} = \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Keywords are the list of reserved words of the language. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{namespacecore_ab0e4f7ef79e718a980275105a40dff33}{core.\+multi\+\_\+begin}} = \textquotesingle{}\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Syntax for beginning of multiline comment in test data. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{namespacecore_a07b710ace1a646a67413fc69b8a9533a}{core.\+multi\+\_\+end}} = \textquotesingle{}\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Syntax for ending of multiline comment in test data. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{namespacecore_a01e4f55cd55381b220fff23c590b2d21}{core.\+onelinecomment}} = \textquotesingle{}\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Syntax for singleline comment in test data. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{namespacecore_a214f14e2f8382861c8edba0cf65173ce}{core.\+language}} = \textquotesingle{}\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Programming language of test code data. \end{DoxyCompactList}\end{DoxyCompactItemize}
