@@ -101,7 +101,10 @@ class DownloadResult(APIView):
                 threshold = float(request.query_params.get('threshold'))
             else:
                 threshold = 0.5
-            res = result(json.loads(batch.result),threshold)
+            try:
+                res = result(json.loads(batch.result),threshold)
+            except:
+                res = "Invalid files"
             f = io.BytesIO(bytes(res,encoding='utf-8'))
             return FileResponse(f,filename='result.txt',as_attachment=True)
         else:

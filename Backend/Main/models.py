@@ -26,8 +26,11 @@ class Batch(models.Model):
     
     def computeResult(self):
         print("In compute result2")
-        result = logic(os.getcwd(),str(self.id),self.language,self.inline_comment,self.multi_begin,self.multi_end)
-        self.result = json.dumps(result)
+        try:
+            result = logic(os.getcwd(),str(self.id),self.language,self.inline_comment,self.multi_begin,self.multi_end)
+            self.result = json.dumps(result)
+        except:
+            self.result = json.dumps({"data":[],"files":[]})
         self.save()
 
 
