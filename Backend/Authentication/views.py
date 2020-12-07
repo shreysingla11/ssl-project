@@ -16,6 +16,7 @@ from rest_framework.generics import UpdateAPIView,RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import login, authenticate,logout
 from rest_framework.parsers import MultiPartParser,FormParser
+from Main.models import Batch,CodeFile
 
 class UserViewSet(viewsets.ModelViewSet):
     
@@ -25,7 +26,7 @@ class UserViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return MyUser.objects.filter(username=self.request.user.username)
 
-class OrganisationViewSet(viewsets.ModelViewSet):
+class OrganisationViewSet(viewsets.ReadOnlyModelViewSet):
     """!
     @brief This is the class controlling the /auth/orgs endpoint
 
@@ -90,7 +91,7 @@ class LoginView(APIView):
             if creds.is_valid():
                 print(creds.data.get('username'),creds.data.get('password'))
                 user = authenticate(username=creds.data.get('username'), password=creds.data.get('password'))
-                print(user.org.org_pass)
+                #print(user.org.org_pass)
                 if user is not None and creds.data.get('org_pass') == user.org.org_pass:
                     login(request,user)
                     return Response({"username":user.username},status=status.HTTP_202_ACCEPTED)
@@ -122,7 +123,12 @@ class ProfileView(RetrieveAPIView):
         """
         print(request.user)
         if request.user.is_authenticated:
-            return Response(MyUserSerializer(request.user,context={'request':request}).data,status=status.HTTP_200_OK)
+            data = MyUserSerializer(request.user,context={'request':request}).data
+            data["bcount"] = Batch.objects.filter(user=request.user).count()
+            data["ccount"] = 0
+            for b in Batch.objects.filter(user=request.user):
+                data["ccount"] += CodeFile.objects.filter(batch=b).count()
+            return Response(data,status=status.HTTP_200_OK)
         else:
             return Response({"error":"User not logged in"},status=status.HTTP_404_NOT_FOUND)
 

@@ -29,6 +29,9 @@ export class DashboardComponent implements OnInit {
 
     disable(){
      if(this.languages.includes(this.createForm.get('language').value)){
+      this.createForm.get('inline_comment').setValue('');
+      this.createForm.get('multi_begin').setValue('');
+      this.createForm.get('multi_end').setValue('');
       this.createForm.get('inline_comment').disable();
       this.createForm.get('multi_begin').disable();
       this.createForm.get('multi_end').disable();

@@ -13,6 +13,8 @@ export class ProfileComponent implements OnInit {
   name: string;
   email: string;
   org:string;
+  bcount:number;
+  ccount:number;
   pass_form;
   constructor(private auth: AuthService,private formBuilder:FormBuilder) {
     this.pass_form = this.formBuilder.group({
@@ -26,7 +28,9 @@ export class ProfileComponent implements OnInit {
         this.name = data["first_name"] + " " + data["last_name"];
         this.username = data["username"];
         this.email = data["email"];
-        this.org = data["org"]["name"]
+        this.org = data["org"]["name"];
+        this.bcount = data["bcount"];
+        this.ccount = data["ccount"];
     });
   }
 
