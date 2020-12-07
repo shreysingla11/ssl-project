@@ -1,9 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.crypto import get_random_string
-from django.db.models.signals import post_save
+from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.core.mail import send_mail
+from django.contrib.auth.hashers import make_password
 # Create your models here.
 class Organisation(models.Model):
     name = models.CharField(max_length=50)
@@ -17,13 +18,7 @@ class MyUser(AbstractUser):
     pass
 
 
-# @receiver(post_save,sender=MyUser)
-# def sendOrgPass(sender,instance,**kwargs):
-#     send_mail(
-#         'Your organisation passcode for RedPlag',
-#         f"Your passcode is {instance.org_pass}",
-#         None,
-#         [instance.email],
-#         fail_silently=False,
-#         )
+# @receiver(pre_save,sender=Organisation)
+# def hashOrgPass(sender,instance,**kwargs):
+#     instance.org_pass = make_password(instance.org_pass)
 

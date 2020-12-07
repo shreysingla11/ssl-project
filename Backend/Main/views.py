@@ -103,6 +103,7 @@ class DownloadResult(APIView):
                 threshold = 0.5
             try:
                 res = result(json.loads(batch.result),threshold)
+                res = f"Name: {batch.name}\nDescription: {batch.description}\nDate created: {batch.created_at.strftime('%a, %d %b %Y')}\n\n\n" + res
             except:
                 res = "Invalid files"
             f = io.BytesIO(bytes(res,encoding='utf-8'))
