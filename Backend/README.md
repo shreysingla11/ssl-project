@@ -4,14 +4,14 @@ This folder contains the implementation for the backend API for the RedPlag weba
 ## API
 The API consists of two major parts -:
 
-### Authentication API
-This API uses session authentication to authenticate users
+### <u>Authentication API</u>
+This API provides endpoints for session as well token authentication to authenticate users
 The routes offered by the API are :
 
 ```
 # The base path is /auth
 router = DefaultRouter()
-router.register(r'users', views.UserViewSet)
+router.register(r'orgs',views.OrganisationViewSet,basename='organisation')
 
 urlpatterns = [
     path('',include(router.urls)),
@@ -20,26 +20,107 @@ urlpatterns = [
     path('profile/',ProfileView.as_view()),
     path('logout/',LogoutView.as_view()),
     path('changepassword/',ChangePasswordView.as_view()),
+    path('token/',CustomAuthToken.as_view()),
+    path('token-logout/',TokenLogoutView.as_view())
 ]
 ```
 
-| Route | Http methods allowed|
-|---|---|
-| register  | POST  |
-|  login |  POST |
-| profile  |  GET |
-|  logout |  GET |
-|  changepassword |  UPDATE |
-| users  |  GET, POST, DELETE, UPDATE |
+1. ### Register
 
-- The ***register*** route provides functionality for user registration
-- The ***login*** and ***logout*** route provides functionality for user authentication
-- The ***profile*** route returns the current users general information
-- The ***changepassword*** routes provides functionality to chage user password
+    | Route | Method | Description |
+    |---|---|---|
+    | /register  | POST | Registraion of new users |
 
-**Note**- This API also provides unauthenticated route ***/auth/users/*** which provides details of all registered users. This route is only for development and must be removed during production
+    <br>This is the request 
 
-### Batch API
+    | Name | Datatype | Description |
+    |---|---|---|
+    | username  | string | Username for loggin in (unique) |
+    | first_name  | string | First name of user |
+    | last_name  | string | Last name of user |
+    | email  | string | User's email address |
+    | password  | string | Login Password |
+    | org_pass  | string | Passcode of a registered organisation  |
+
+    <br>This is the request body in JSON
+
+2. ### Login
+
+    | Route | Method | Description |
+    |---|---|---|
+    | /login  | POST | Login into your account |
+
+    <br>This is the request 
+
+    | Name | Datatype | Description |
+    |---|---|---|
+    | username  | string | Username |
+    | password  | string | Login Password |
+    | org_pass  | string | Passcode of user's organisation  |
+
+    <br>This is the request body in JSON
+
+3. ### Logout
+
+    | Route | Method | Description |
+    |---|---|---|
+    | /logout  | GET | Logout your session |
+
+    <br>This is the request 
+    <br>This request does not have search parameters but must be sent with session headers
+
+4. ### Profile
+
+    | Route | Method | Description |
+    |---|---|---|
+    | /profile  | POST | Return's the current user's data|
+
+    <br>This is the request 
+    <br>This request does not have search parameters but must be sent with session headers. 
+    <br>Return' user data in JSON format
+
+4. ### Change password
+
+    | Route | Method | Description |
+    |---|---|---|
+    | /changepassword  | POST | Change the current user's password |
+
+    <br>This is the request 
+
+    | Name | Datatype | Description |
+    |---|---|---|
+    | old_password  | string | Current Password |
+    | new_password  | string | New password |
+
+    <br>This is the request body in JSON. This nust also be sent with user session headers
+
+6. ### Token
+
+    | Route | Method | Description |
+    |---|---|---|
+    | /token  | POST | Get the user's token |
+
+    <br>This is the request 
+
+    | Name | Datatype | Description |
+    |---|---|---|
+    | username  | string | Username |
+    | password  | string | Login Password |
+    | org_pass  | string | Passcode of user's organisation  |
+
+    <br>This is the request body in JSON.. Return a token for authentication on other views
+
+6. ### LogoutToken
+
+    | Route | Method | Description |
+    |---|---|---|
+    | /token-logout  | POST | Delete the user's token if present |
+
+    <br>This is the request 
+    <br>This request does not have any params. Returns a JSON response with success message
+
+
+## <u>Batch API</u>
 This API handles operations on batches of source code files submitted for evaluation
 The routes offered by the API are :
 
@@ -47,25 +128,58 @@ The routes offered by the API are :
 # The base path is /rp
 router = DefaultRouter()
 router.register(r'batch', BatchViewSet,basename='batch')
-router.register(r'src',CodeFileViewSet,basename='codefile')
 
 urlpatterns = [
     path('',include(router.urls)),
     path('download/<uuid:id>',DownloadResult.as_view()),
 ]
 ```
+1. ### List Batch
 
-| Route | Http methods allowed|
-|---|---|
-| batch  | GET, POST, UPDATE, DELETE  |
-|  src | GET, POST, UPDATE, DELETE |
-| download  |  GET |
+    | Route | Method | Description |
+    |---|---|---|
+    | /batch/:uid(optional)  | GET | Returns a list of users batches or a particular batch with ID=uid |
 
-- The ***batch*** route provides functionality for CRUD operations on the Batch model
-- The ***download*** route returns the results file corresponding to a given batch(using batch_id)
-- The ***src*** route provides functonality to view the source code files uploaded
+    <br>This is the request 
+    <br>It returns JSON response with information about the current user's batches
 
-**Note**- This API also an unauthenticated route ***/rp/src/*** which provides details of all code files submitted. This route is only for development and must be removed during production
+2. ### Create Batch
+
+    | Route | Method | Description |
+    |---|---|---|
+    | /batch  | POST | Create a new batch for the current user |
+
+    <br>This is the request 
+
+    | Name | Datatype | Description |
+    |---|---|---|
+    | name  | string | Name of the batch |
+    | description  | string | Short description for the batch |
+    | language  | ["C++","Python","Other"] | Language used in code files |
+    | inline_comment  | string | Character(s) to start an inline comment |
+    | multi_begin | string | Character(s) to start a multiline comment |
+    | multi_end  | string | Character(s) to end a multiline comment  |
+    | files | File[] | List of files to be uploaded  |
+
+    <br>This is the request body in ***multipart/form-data***
+
+3. ### Delete Batch
+
+    | Route | Method | Description |
+    |---|---|---|
+    | /batch/:uid  | DELETE | Deletes the batch with ID=uid |
+
+    <br>This is the request 
+    <br>Can only destroy the request's user's batches.Returns a success or failure message accordingly.
+
+4. ### Download Result
+
+    | Route | Method | Description |
+    |---|---|---|
+    | /download/:uid  | GET | Returns a file containing results of plagiarism check on the specified batch |
+
+    <br>This is the request 
+    <br>This must also be sent with session or token headers. It return a File response.
 
 ## Usage
 
