@@ -15,7 +15,7 @@ import random
 
 #Global Constants
 ##Special_char are non_alphanumeric characters which build the logic of the program
-special_char=['+','-','=','*','/','<','>',':','.','!','"','\'','&','|','^','#']
+special_char=['+','-','=','*','/','<','>',':','.','!','"','\'','&','|','^',]
 ##These are non alphanumeric character that contain no/low logical information
 other_chars=['(','{','}',')','[',']',',',';']
 ##Keywords are the list of reserved words of the language
@@ -36,8 +36,10 @@ def remove_comments(path):
 	@param path    path of code file
 	@return text   code file data as string(after removing comments)
 	"""
+	print(path)
 	file = open(path,"r")
 	text = file.read()
+	print(text)
 	if multi_begin!='':
 		#Regular Expression for multiline comments
 		multi_exp=re.escape(multi_begin)+r'.+?'+re.escape(multi_end)
@@ -100,7 +102,7 @@ def word_list(path):
 			else:
 				sfinal+="r "				#all other words(variable names, function names etc) are encoded with character r
 		sfinal+="\n"
-	#print (sf)
+	#print (sfinal)
 	return sfinal.split()					#return encoded data as list
 
 
@@ -168,8 +170,10 @@ def find_keywords(files_in_dir, sample_size):
 				else:
 					l[word]=1
 					current_set.add(word)			
-	keywords+=[i[0] for i in sorted(l.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)[0:25]] #top 25 potential keyword (enough)
-	keywords+=other_chars																			#other_chars(global variable)
+	keywords+=[i[0] for i in sorted(l.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)]
+	keywords=keywords[0:min(25,len(keywords))] #top 25 potential keyword (enough)
+	keywords+=other_chars					#other_chars(global variable)
+	print(keywords)
 
 
 def result(final, threshold):
@@ -192,22 +196,20 @@ def result(final, threshold):
 
 def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline_end=''):
     """!The core functionality is defined in this function. It first removes single-line and multiline comments, 
-	Identifies special characters, tokenises the code and stores kgrams of each code file. 
-	Next it identifies kgrams which are common to most of the files (They represent our base code file).
-	So, we take each pair of files and calculate the k-grams which are common to the files but not common to most 
-	of the files.
-	They form our suspicious set and will be used to calculate a score lying in 0-1, a metric
-	which quantifies the probability that the pair is plagiarised.
-
-	@param path					path to the target directory
-	@param user_id				to identify the user
-	@param language 			language input by user
-	@param one_line_comment 	language specific symbol to remove single line comments
-	@param multiline_begin 		language specific symbol to remove multiline comments
-	@param multiline_end		language specific symbol to remove muliline comments
-	@return final 				The final dictionary containing the filenames and resultant 2-D matrix
-	"""
-
+    Identifies special characters, tokenises the code and stores kgrams of each code file. 
+    Next it identifies kgrams which are common to most of the files (They represent our base code file).
+    So, we take each pair of files and calculate the k-grams which are common to the files but not common to most 
+    of the files.
+    They form our suspicious set and will be used to calculate a score lying in 0-1, a metric
+    which quantifies the probability that the pair is plagiarised.
+    @param path					path to the target directory
+    @param user_id				to identify the user
+    @param language 			language input by user
+    @param one_line_comment 	language specific symbol to remove single line comments
+    @param multiline_begin 		language specific symbol to remove multiline comments
+    @param multiline_end		language specific symbol to remove muliline comments
+    @return final 				The final dictionary containing the filenames and resultant 2-D matrix
+    """
     global multi_begin,multi_end,onelinecomment,language
     language=lang
     if lang=='C++':
@@ -230,17 +232,17 @@ def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline
     final["filenames"]=[]
     final["data"]=[]
     files_in_dir=[]
-
+    # print("hello")
     for r, d, f in os.walk(dir):
         for item in f:
             files_in_dir.append(os.path.join(r, item))
 
-    
-    files_in_dir.sort(key=lambda x:int(x.split(os.path.sep)[-1][0:-4]))
+    # print(files_in_dir)
+    files_in_dir.sort(key=lambda x:x.split(os.path.sep)[-1])
 
     for i in range(len(files_in_dir)):
         final["filenames"].append(files_in_dir[i].split(os.path.sep)[-1])
-        
+        print (i,files_in_dir[i].split('/')[-1])
     
     find_keywords(files_in_dir,50)
 
@@ -251,7 +253,7 @@ def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline
     z=np.zeros((len(files_in_dir),len(files_in_dir)))
     common=dict()
     for xt in range(len(files_in_dir)):
-        
+        #l1=kgram(word_list(xt),k)
         for w in kgrams[xt]:
             if w in common.keys():
                 common[w]+=1
@@ -279,5 +281,5 @@ def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline
     for xt in range(len(files_in_dir)):
         for yt in range(len(files_in_dir)):
             final["data"].append(z[xt][yt])
-    
+    #print(result(final,0.35))
     return final
