@@ -51,7 +51,8 @@ class BatchViewSet(viewsets.ModelViewSet):
         @return JSON response with created batch's data or error response in case of failure
         """
         if request.user.is_authenticated:
-            print(request.data)
+            request.data._mutable = True
+            print(request.data,request.data._mutable)
             files = request.data.pop('files',None)
             serializer = self.get_serializer(data=request.data,context={'user':request.user,'files':files})
             serializer.is_valid(raise_exception=True)
