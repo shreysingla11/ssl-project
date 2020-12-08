@@ -58,7 +58,7 @@ class BatchViewSet(viewsets.ModelViewSet):
             serializer.is_valid(raise_exception=True)
             self.perform_create(serializer)
             #headers = self.get_success_headers(serializer.data)
-            print("Yessss")
+            #print("Yessss")
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response({"error":"Unauthorized access"},status=status.HTTP_404_NOT_FOUND)
 
@@ -96,7 +96,7 @@ class DownloadResult(APIView):
         batch = Batch.objects.filter(user=request.user,id=id).exists()
         if batch:
             batch = Batch.objects.get(id=id)
-            print(batch.result,'\n\n\n')
+            #print(batch.result,'\n\n\n')
             if 'threshold' in request.query_params:
                 threshold = float(request.query_params.get('threshold'))
             else:

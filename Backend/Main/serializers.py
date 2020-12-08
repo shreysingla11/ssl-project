@@ -14,7 +14,7 @@ class BatchSerializer(serializers.HyperlinkedModelSerializer):
         print(instance)
         if self.context['files'] is not None:
             for f in self.context['files']:
-                print('Yes')
+                #print('Yes')
                 obj = CodeFile(batch=instance,file=f)
                 obj.save()
         instance.computeResult()
