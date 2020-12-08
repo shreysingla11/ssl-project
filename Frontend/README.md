@@ -10,7 +10,7 @@ The user is asked to register to use the services of the app. If the credentials
 The user is asked to sign in using his/her credentials and the organisational passcode. If the user is registered, (s)he is redirected to the dashboard page.
 
 ### Dashboard Component
-The user can view previous results of batches of code files uploaded before as well as make a new batch. (s)he can also navigate to the profile page.
+The user can view previous results of batches of code files uploaded before as well as make a new batch. (s)he can also navigate to the profile page. The user has to provide a heading to the batch and a short description. The language also has to be provided in addition to the symbol the language uses to comment the code.
 
 ### Batch Compenent
 It is a child component of the dashboard component. It shows the result obtained by running the plagiarism detection algorithm on the bunch of code files. The user is given control over the number of suspicious files by a slider representing a threshold above which the files are considered to be plagiarised. The corresponding files are shown as a scatterplot with each point representing a pair of code files.
@@ -23,6 +23,6 @@ Clone the repository, navigate into the project directory and run the following 
 
 ```
 $ cd Frontend
-$ npm installThe batch can be deleteThe batch can be deleted from the database using the button provided and the rd from the database using the button provided and the r
+$ npm install
 $ ng serve --open
 ```
