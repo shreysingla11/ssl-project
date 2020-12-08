@@ -1,7 +1,15 @@
-"""!
-@package core
-This module describes the main logic used to find plagiarism 
-for code files
+"""@package docstring
+This module describes the logic used to find plagiarism for code files.
+We have used k-grams models for computing similarity scores.
+Note that the logic autodetects Basefile efficiently and neutralises it's 
+affect. Hence giving an option to add base file snippet was redundant, but 
+we dont want this bonus feature to be ignored while evaluation.
+
+Authors:
+Bhavnoor Singh Marok	190050027
+Jayesh Singla			190050053
+Shrey Singla			190050114
+Tanu Goyal				190050123
 """
 
 from mpl_toolkits import mplot3d
@@ -109,7 +117,9 @@ def word_list(path):
 
 def kgram(words,k):
 	'''!Takes the encoded list(representing a code file data) as input 
-		and returns a set of k-grams of the encoded file.
+		and returns a set of k-grams of the encoded file. Note that K-grams 
+		are stored as a set. Hence shuffling functions/ code blocks will 
+		not affect the similarity score.
 
 		@param words		encoded list (output of word_list function)
 		@param k			k in k-grams
@@ -178,6 +188,13 @@ def find_keywords(files_in_dir, sample_size):
 
 
 def result(final, threshold):
+	'''!returns pairs of files along with their scores, which are above a threshold
+	set by the user in the form of a string which will be downloaded as a .txt file.
+
+	@param final		output of logic function(score matrix and list of filenames)
+	@param threshold	threshold for similarity score set by the user
+	@return res			result string to be downloaded as .txt file
+	'''
 	l = []
 	for i in range(len(final['data'])):
 		if final["data"][i] >= threshold:
@@ -212,6 +229,7 @@ def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline
     @return final 				The final dictionary containing the filenames and resultant 2-D matrix
     """
     global multi_begin,multi_end,onelinecomment,language
+    #Set Global variables
     language=lang
     if lang=='C++':
         multi_begin='/*'
@@ -228,12 +246,18 @@ def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline
         
 
     dir=os.path.join(path,"src",str(user_id))
+    ##k in Kgrams
     k=10
+    ##Final result
     final=dict()
+
+    ##Stores the list of filenames
     final["filenames"]=[]
-    final["data"]=[]
+    ##Store the list of file paths
     files_in_dir=[]
-    # print("hello")
+    ##stores the list of pairwise scores
+    final["data"]=[]
+
     for r, d, f in os.walk(dir):
         for item in f:
             files_in_dir.append(os.path.join(r, item))
@@ -245,13 +269,28 @@ def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline
         final["filenames"].append(files_in_dir[i].split(os.path.sep)[-1])
         print (i,files_in_dir[i].split('/')[-1])
     
+    ## Set the global list keywords
     find_keywords(files_in_dir,50)
 
+    ##list of sets of k-grams corresponding to each file
     kgrams=[]
     for x in range(len(files_in_dir)):
         kgrams.append(kgram(word_list(files_in_dir[x]),k))
 
+    ##result_matrix
     z=np.zeros((len(files_in_dir),len(files_in_dir)))
+
+    '''!This part of code is dedecated for autodetection of base file.
+    If we had a base file then we would have computed its set of k-grams
+	and subtracted this set from the set of common kgrams of two files
+	which contribute towards similarity score. But here we are preparing 
+	a list of most common k-grams(in terms of doc-frequency) which will 
+	include the base file if any. It may also contain kgrams which were 
+	not a part of base file. But as these k-grams are quite frequent, they 
+	should be given less weightage for similarity, and hence excluding them 
+	will also improve our accuracy. 
+   '''
+    ##map of k-grams to their doc-frequencies in the corpus
     common=dict()
     for xt in range(len(files_in_dir)):
         #l1=kgram(word_list(xt),k)
@@ -260,13 +299,18 @@ def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline
                 common[w]+=1
             else:
                 common[w]=1
+
+    ##list of k-grams with high doc-frequency; these k-grams will likely come from the base file
     commonset=[{e for e in common.keys() if common[e]>0.5*len(files_in_dir)}]
 
-    for xt in range(len(files_in_dir)):
-        print (xt)
-        for yt in range(xt+1,len(files_in_dir)):
 
+
+    for xt in range(len(files_in_dir)):
+        print (xt)						#just to get idea of progress/speed
+        for yt in range(xt+1,len(files_in_dir)):
+            ##number of common k-grams in file 'xt' and 'yt' which DONOT occur in commonset/basefile
             count=0
+            ##number of common k-grams in file 'xt' and 'yt' which occur in commonset/basefile
             common_words=0
             for w in kgrams[xt]:
                 if w not in commonset:
@@ -275,7 +319,19 @@ def logic(path,user_id, lang='',one_line_comment='',multiline_begin='',multiline
                 elif w in kgrams[yt]:
                     common_words+=1
             try:
+                '''!The Similarity score is proportional to the number of common/matching k-grams
+                in the two files which are not present int the basefile i.e commonset. In other words,
+                similarity is proportional to count. The denominator is the normalising constant.
+                Ideally denominator should be the min(len(kgrams[xt]),len(kgrams[yt])-common_words,i.e.
+                the maximum value 'count' could have attained. However it may cause unwanted cases 
+                (eg two codes with large difference in lengths and one is subset of the other) to get high
+                similarity score. Dividing by average surpresses such false positives but distorts the 
+                normalising scale. However the order remains more or less the same and hence we prefer to 
+                use average as divisor even though the result is not prefectly normalised.
+                '''
+                #But the choice is always yours to toggle and see the difference :)
                 z[xt][yt]=count/((len(kgrams[xt])+len(kgrams[yt]))/2-common_words)
+                #z[xt][yt]=count/(min(len(kgrams[xt]),len(kgrams[yt]))-common_words)
             except:
                 z[xt][yt]=0
 
