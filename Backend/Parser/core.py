@@ -11,9 +11,6 @@ Shrey Singla			190050114
 Tanu Goyal				190050123
 """
 
-from mpl_toolkits import mplot3d
-import matplotlib.pyplot as plt
-import matplotlib
 import numpy as np
 import argparse
 import os
