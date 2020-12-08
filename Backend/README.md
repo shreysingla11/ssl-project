@@ -120,7 +120,7 @@ urlpatterns = [
     <br>This request does not have any params. Returns a JSON response with success message
 
 
-## <u>Batch API</u>
+### <u>Batch API</u>
 This API handles operations on batches of source code files submitted for evaluation
 The routes offered by the API are :
 
