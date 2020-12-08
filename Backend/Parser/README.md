@@ -4,7 +4,7 @@ A K-gram based model for computing code similarity matrix capable of auto detect
 <ol>
   <li>Keyword detection: The programme traverses through a number of file in the batch and computes the document frequency of each frequency of each word it traverses.
     Then selects the top 25 words with highest doc-frequency as keywords.</li>
-  <li> *Preprocessing*: This involves 
+  <li> Preprocessing: This involves 
     <ul>
       <li>Removing Comments</li>
       <li>Removing Keywords</li>
