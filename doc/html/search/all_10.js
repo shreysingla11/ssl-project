@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['update_49',['update',['../classAuthentication_1_1views_1_1ChangePasswordView.html#a24eee992009b8a4bc7d1c63a6310f789',1,'Authentication::views::ChangePasswordView']]],
-  ['userviewset_50',['UserViewSet',['../classAuthentication_1_1views_1_1UserViewSet.html',1,'Authentication::views']]]
+  ['views_2epy_44',['views.py',['../Authentication_2views_8py.html',1,'(Global Namespace)'],['../Main_2views_8py.html',1,'(Global Namespace)']]]
 ];

@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['red_20plag_41',['Red Plag',['../index.html',1,'']]],
-  ['registerview_42',['RegisterView',['../classAuthentication_1_1views_1_1RegisterView.html',1,'Authentication::views']]],
-  ['remove_5fcomments_43',['remove_comments',['../namespacecore.html#a42f36ba32aa9d59fb6b2f29dbdeef055',1,'core']]],
-  ['result_44',['result',['../namespacecore.html#a62946155b08710f13e2f3ff2a3b5e924',1,'core']]],
-  ['redplag_20terminal_20client_45',['RedPlag Terminal Client',['../terminal.html',1,'']]]
+  ['serializer_5fclass_39',['serializer_class',['../classAuthentication_1_1views_1_1UserViewSet.html#a737cb0ebf3420c716259148653d13977',1,'Authentication.views.UserViewSet.serializer_class()'],['../classAuthentication_1_1views_1_1OrganisationViewSet.html#a4e93293d265c73539e89d4a17dda375b',1,'Authentication.views.OrganisationViewSet.serializer_class()'],['../classAuthentication_1_1views_1_1ProfileView.html#aad4ec8dff5b6051a83a1a1e79a5cf1f0',1,'Authentication.views.ProfileView.serializer_class()'],['../classAuthentication_1_1views_1_1ChangePasswordView.html#aa8348fe2e55f64496d0bcf3f57f1bf57',1,'Authentication.views.ChangePasswordView.serializer_class()'],['../classMain_1_1views_1_1BatchViewSet.html#a61ef80503f6db47f98a551c3c5feb9da',1,'Main.views.BatchViewSet.serializer_class()'],['../classMain_1_1views_1_1CodeFileViewSet.html#a187bc888e6e81fcfff819bf2eeffe0f8',1,'Main.views.CodeFileViewSet.serializer_class()']]],
+  ['special_5fchar_40',['special_char',['../namespacecore.html#abe368b7aa890ed8b5008fa11cb50b4cb',1,'core']]]
 ];
