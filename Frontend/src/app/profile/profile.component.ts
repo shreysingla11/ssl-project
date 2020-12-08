@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class ProfileComponent implements OnInit {
   bcount:number;
   ccount:number;
   pass_form;
-  constructor(private auth: AuthService,private formBuilder:FormBuilder) {
+  constructor(private auth: AuthService,private formBuilder:FormBuilder,private router:Router) {
     this.pass_form = this.formBuilder.group({
       old_password:'',
       new_password:'',
@@ -37,10 +38,12 @@ export class ProfileComponent implements OnInit {
   onSubmit(){
     this.auth.changePassword(this.pass_form.value).subscribe(
       (data) => {
-        alert(data["message"])
+        alert(data["message"]);
+        this.router.navigate(['login'])
       },
       (error) => {
-        alert(error["error"]);
+        //console.log(error)
+        alert(error["error"]["error"]);
       }
     )
   }
