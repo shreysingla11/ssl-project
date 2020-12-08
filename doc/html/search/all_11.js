@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['text_81',['text',['../namespacebagwords.html#a401d355cb7a78ca72a8a173218ca3553',1,'bagwords.text()'],['../namespacekgram.html#a3676e337f449f51af9fff72524b13ce1',1,'kgram.text()']]]
+  ['word_5flist_50',['word_list',['../namespacecore.html#a604f22ae6deb2981f460275b87a1df4d',1,'core']]]
 ];

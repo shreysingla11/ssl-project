@@ -1,4 +1,5 @@
-"""@package docstring
+"""!
+@package core
 This module describes the main logic used to find plagiarism 
 for code files
 """

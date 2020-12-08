@@ -32,7 +32,7 @@ This viewset supports GET request to obtain current user\textquotesingle{}s info
  ~\newline
  GET /auth/profile Get current user\textquotesingle{}s info 
 
-Definition at line 104 of file views.\+py.
+Definition at line 105 of file views.\+py.
 
 
 
@@ -59,25 +59,30 @@ JSON response with current user\textquotesingle{}s data or error response in cas
 \end{DoxyReturn}
 
 
-Definition at line 114 of file views.\+py.
+Definition at line 115 of file views.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{114     \textcolor{keyword}{def }get(self,request):}
-\DoxyCodeLine{115         \textcolor{stringliteral}{"{}"{}"{}!}}
-\DoxyCodeLine{116 \textcolor{stringliteral}{        @brief This is the function for handling the GET request}}
-\DoxyCodeLine{117 \textcolor{stringliteral}{}}
-\DoxyCodeLine{118 \textcolor{stringliteral}{        @param self Default object parameter}}
-\DoxyCodeLine{119 \textcolor{stringliteral}{        @param request Request object}}
-\DoxyCodeLine{120 \textcolor{stringliteral}{}}
-\DoxyCodeLine{121 \textcolor{stringliteral}{        @return JSON response with current user's data or error response in case of failure}}
-\DoxyCodeLine{122 \textcolor{stringliteral}{        "{}"{}"{}}}
-\DoxyCodeLine{123         print(request.user)}
-\DoxyCodeLine{124         \textcolor{keywordflow}{if} request.user.is\_authenticated:}
-\DoxyCodeLine{125             \textcolor{keywordflow}{return} Response(MyUserSerializer(request.user,context=\{\textcolor{stringliteral}{'request'}:request\}).data,status=status.HTTP\_200\_OK)}
-\DoxyCodeLine{126         \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{127             \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}error"{}}:\textcolor{stringliteral}{"{}User not logged in"{}}\},status=status.HTTP\_404\_NOT\_FOUND)}
-\DoxyCodeLine{128 }
+\DoxyCodeLine{115     \textcolor{keyword}{def }get(self,request):}
+\DoxyCodeLine{116         \textcolor{stringliteral}{"{}"{}"{}!}}
+\DoxyCodeLine{117 \textcolor{stringliteral}{        @brief This is the function for handling the GET request}}
+\DoxyCodeLine{118 \textcolor{stringliteral}{}}
+\DoxyCodeLine{119 \textcolor{stringliteral}{        @param self Default object parameter}}
+\DoxyCodeLine{120 \textcolor{stringliteral}{        @param request Request object}}
+\DoxyCodeLine{121 \textcolor{stringliteral}{}}
+\DoxyCodeLine{122 \textcolor{stringliteral}{        @return JSON response with current user's data or error response in case of failure}}
+\DoxyCodeLine{123 \textcolor{stringliteral}{        "{}"{}"{}}}
+\DoxyCodeLine{124         print(request.user)}
+\DoxyCodeLine{125         \textcolor{keywordflow}{if} request.user.is\_authenticated:}
+\DoxyCodeLine{126             data = MyUserSerializer(request.user,context=\{\textcolor{stringliteral}{'request'}:request\}).data}
+\DoxyCodeLine{127             data[\textcolor{stringliteral}{"{}bcount"{}}] = Batch.objects.filter(user=request.user).count()}
+\DoxyCodeLine{128             data[\textcolor{stringliteral}{"{}ccount"{}}] = 0}
+\DoxyCodeLine{129             \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} Batch.objects.filter(user=request.user):}
+\DoxyCodeLine{130                 data[\textcolor{stringliteral}{"{}ccount"{}}] += CodeFile.objects.filter(batch=b).count()}
+\DoxyCodeLine{131             \textcolor{keywordflow}{return} Response(data,status=status.HTTP\_200\_OK)}
+\DoxyCodeLine{132         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{133             \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}error"{}}:\textcolor{stringliteral}{"{}User not logged in"{}}\},status=status.HTTP\_404\_NOT\_FOUND)}
+\DoxyCodeLine{134 }
 
 \end{DoxyCode}
 
@@ -91,7 +96,7 @@ Definition at line 114 of file views.\+py.
 
 
 
-Definition at line 112 of file views.\+py.
+Definition at line 113 of file views.\+py.
 
 \mbox{\Hypertarget{classAuthentication_1_1views_1_1ProfileView_aad4ec8dff5b6051a83a1a1e79a5cf1f0}\label{classAuthentication_1_1views_1_1ProfileView_aad4ec8dff5b6051a83a1a1e79a5cf1f0}} 
 \index{Authentication.views.ProfileView@{Authentication.views.ProfileView}!serializer\_class@{serializer\_class}}
@@ -101,7 +106,7 @@ Definition at line 112 of file views.\+py.
 
 
 
-Definition at line 111 of file views.\+py.
+Definition at line 112 of file views.\+py.
 
 
 

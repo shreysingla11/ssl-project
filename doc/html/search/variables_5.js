@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['file_144',['file',['../namespacebagwords.html#a06552176be7e560187b9f42ce2945348',1,'bagwords.file()'],['../namespacekgram.html#a7277aa72f8b4c01fd37500c2478daf05',1,'kgram.file()']]],
-  ['files_5fin_5fdir_145',['files_in_dir',['../namespacemain.html#ac7efdb852a0183837adeae5c96d84c45',1,'main']]]
+  ['model_92',['model',['../classAuthentication_1_1views_1_1ProfileView.html#a958c218d3ba9e22ad70be49eaa69b8ea',1,'Authentication.views.ProfileView.model()'],['../classAuthentication_1_1views_1_1ChangePasswordView.html#a0c65f941ea0553384161f72688c0ee54',1,'Authentication.views.ChangePasswordView.model()']]],
+  ['multi_5fbegin_93',['multi_begin',['../namespacecore.html#ab0e4f7ef79e718a980275105a40dff33',1,'core']]],
+  ['multi_5fend_94',['multi_end',['../namespacecore.html#a07b710ace1a646a67413fc69b8a9533a',1,'core']]]
 ];

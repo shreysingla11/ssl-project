@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bagwords_104',['bagwords',['../namespacebagwords.html',1,'']]]
+  ['core_64',['core',['../namespacecore.html',1,'']]]
 ];

@@ -123,70 +123,75 @@ $(function() {
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="stringliteral">        @return JSON response with created batch&#39;s data or error response in case of failure</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">if</span> request.user.is_authenticated:</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            print(request.data)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            files = request.data.pop(<span class="stringliteral">&#39;files&#39;</span>,<span class="keywordtype">None</span>)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            serializer = self.get_serializer(data=request.data,context={<span class="stringliteral">&#39;user&#39;</span>:request.user,<span class="stringliteral">&#39;files&#39;</span>:files})</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            serializer.is_valid(raise_exception=<span class="keyword">True</span>)</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            self.perform_create(serializer)</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="comment">#headers = self.get_success_headers(serializer.data)</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            print(<span class="stringliteral">&quot;Yessss&quot;</span>)</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">return</span> Response(serializer.data, status=status.HTTP_201_CREATED)</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> Response({<span class="stringliteral">&quot;error&quot;</span>:<span class="stringliteral">&quot;Unauthorized access&quot;</span>},status=status.HTTP_404_NOT_FOUND)</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            request.data._mutable = <span class="keyword">True</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            print(request.data,request.data._mutable)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            files = request.data.pop(<span class="stringliteral">&#39;files&#39;</span>,<span class="keywordtype">None</span>)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            serializer = self.get_serializer(data=request.data,context={<span class="stringliteral">&#39;user&#39;</span>:request.user,<span class="stringliteral">&#39;files&#39;</span>:files})</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            serializer.is_valid(raise_exception=<span class="keyword">True</span>)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            self.perform_create(serializer)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="comment">#headers = self.get_success_headers(serializer.data)</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            print(<span class="stringliteral">&quot;Yessss&quot;</span>)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">return</span> Response(serializer.data, status=status.HTTP_201_CREATED)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> Response({<span class="stringliteral">&quot;error&quot;</span>:<span class="stringliteral">&quot;Unauthorized access&quot;</span>},status=status.HTTP_404_NOT_FOUND)</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classMain_1_1views_1_1CodeFileViewSet.html">   65</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMain_1_1views_1_1CodeFileViewSet.html">CodeFileViewSet</a>(viewsets.ModelViewSet):</div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classMain_1_1views_1_1CodeFileViewSet.html#a187bc888e6e81fcfff819bf2eeffe0f8">   66</a></span>&#160;    serializer_class = CodeFileSerializer</div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classMain_1_1views_1_1CodeFileViewSet.html#a2295226ead46b240d39c657938c6d629">   67</a></span>&#160;    permission_classes = (IsAuthenticated,)</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    </div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classMain_1_1views_1_1CodeFileViewSet.html#ae7fddc5f424156911cd3d6e653e8e230">   69</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classMain_1_1views_1_1CodeFileViewSet.html#ae7fddc5f424156911cd3d6e653e8e230">get_queryset</a>(self):</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        btchs = Batch.objects.filter(user = self.request.user)</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        qs = CodeFile.objects.none()</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">for</span> bt <span class="keywordflow">in</span> btchs:</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            qs = qs.union(CodeFile.objects.filter(batch=bt))</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">return</span> qs</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classMain_1_1views_1_1DownloadResult.html">   76</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMain_1_1views_1_1DownloadResult.html">DownloadResult</a>(APIView):</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="stringliteral">    @brief This is the class controlling the authenticated /rp/download endpoint</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="stringliteral">    This viewset supports GET request to download a particular batch&#39;s result\n  </span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="stringliteral">    GET /rp/download/:uid Returns file response with the required batch&#39;s result</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classMain_1_1views_1_1DownloadResult.html#a17580ceb97423edbcc9e32a1178e42a5">   83</a></span>&#160;    permission_classes = (IsAuthenticated,)</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="classMain_1_1views_1_1DownloadResult.html#aec0741f93ee70ae95327ea7976929cff">   85</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classMain_1_1views_1_1DownloadResult.html#aec0741f93ee70ae95327ea7976929cff">get</a>(self,request,id):</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="stringliteral">        @brief This is the function for handling the GET request</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="stringliteral">        @param self Default object parameter</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="stringliteral">        @param request Request object</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="stringliteral">        @param id The batch ID</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="stringliteral">        @return File response with the request batch&#39;s result</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        batch = Batch.objects.filter(user=request.user,id=id).exists()</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">if</span> batch:</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            batch = Batch.objects.get(id=id)</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            print(batch.result,<span class="stringliteral">&#39;\n\n\n&#39;</span>)</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">if</span> <span class="stringliteral">&#39;threshold&#39;</span> <span class="keywordflow">in</span> request.query_params:</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                threshold = float(request.query_params.get(<span class="stringliteral">&#39;threshold&#39;</span>))</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                threshold = 0.5</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            res = <a class="code" href="namespacecore.html#a62946155b08710f13e2f3ff2a3b5e924">result</a>(json.loads(batch.result),threshold)</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            f = io.BytesIO(bytes(res,encoding=<span class="stringliteral">&#39;utf-8&#39;</span>))</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">return</span> FileResponse(f,filename=<span class="stringliteral">&#39;result.txt&#39;</span>,as_attachment=<span class="keyword">True</span>)</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">return</span> Response({<span class="stringliteral">&quot;error&quot;</span>:<span class="stringliteral">&quot;Unknown batch&quot;</span>},status=status.HTTP_404_NOT_FOUND)</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classMain_1_1views_1_1CodeFileViewSet.html">   66</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMain_1_1views_1_1CodeFileViewSet.html">CodeFileViewSet</a>(viewsets.ModelViewSet):</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classMain_1_1views_1_1CodeFileViewSet.html#a187bc888e6e81fcfff819bf2eeffe0f8">   67</a></span>&#160;    serializer_class = CodeFileSerializer</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classMain_1_1views_1_1CodeFileViewSet.html#a2295226ead46b240d39c657938c6d629">   68</a></span>&#160;    permission_classes = (IsAuthenticated,)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classMain_1_1views_1_1CodeFileViewSet.html#ae7fddc5f424156911cd3d6e653e8e230">   70</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classMain_1_1views_1_1CodeFileViewSet.html#ae7fddc5f424156911cd3d6e653e8e230">get_queryset</a>(self):</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        btchs = Batch.objects.filter(user = self.request.user)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        qs = CodeFile.objects.none()</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">for</span> bt <span class="keywordflow">in</span> btchs:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            qs = qs.union(CodeFile.objects.filter(batch=bt))</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> qs</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classMain_1_1views_1_1DownloadResult.html">   77</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMain_1_1views_1_1DownloadResult.html">DownloadResult</a>(APIView):</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="stringliteral">    @brief This is the class controlling the authenticated /rp/download endpoint</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="stringliteral">    This viewset supports GET request to download a particular batch&#39;s result\n  </span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="stringliteral">    GET /rp/download/:uid Returns file response with the required batch&#39;s result</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="classMain_1_1views_1_1DownloadResult.html#a17580ceb97423edbcc9e32a1178e42a5">   84</a></span>&#160;    permission_classes = (IsAuthenticated,)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="classMain_1_1views_1_1DownloadResult.html#aec0741f93ee70ae95327ea7976929cff">   86</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classMain_1_1views_1_1DownloadResult.html#aec0741f93ee70ae95327ea7976929cff">get</a>(self,request,id):</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="stringliteral">        @brief This is the function for handling the GET request</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="stringliteral">        @param self Default object parameter</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="stringliteral">        @param request Request object</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="stringliteral">        @param id The batch ID</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="stringliteral">        @return File response with the request batch&#39;s result</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        batch = Batch.objects.filter(user=request.user,id=id).exists()</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span> batch:</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            batch = Batch.objects.get(id=id)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            print(batch.result,<span class="stringliteral">&#39;\n\n\n&#39;</span>)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">if</span> <span class="stringliteral">&#39;threshold&#39;</span> <span class="keywordflow">in</span> request.query_params:</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                threshold = float(request.query_params.get(<span class="stringliteral">&#39;threshold&#39;</span>))</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                threshold = 0.5</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">try</span>:</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                res = <a class="code" href="namespacecore.html#a62946155b08710f13e2f3ff2a3b5e924">result</a>(json.loads(batch.result),threshold)</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                res = f<span class="stringliteral">&quot;Name: {batch.name}\nDescription: {batch.description}\nDate created: {batch.created_at.strftime(&#39;%a, %d %b %Y&#39;)}\n\n\n&quot;</span> + res</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">except</span>:</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                res = <span class="stringliteral">&quot;Invalid files&quot;</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            f = io.BytesIO(bytes(res,encoding=<span class="stringliteral">&#39;utf-8&#39;</span>))</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">return</span> FileResponse(f,filename=<span class="stringliteral">&#39;result.txt&#39;</span>,as_attachment=<span class="keyword">True</span>)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordflow">return</span> Response({<span class="stringliteral">&quot;error&quot;</span>:<span class="stringliteral">&quot;Unknown batch&quot;</span>},status=status.HTTP_404_NOT_FOUND)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    </div>
 <div class="ttc" id="aclassMain_1_1views_1_1BatchViewSet_html"><div class="ttname"><a href="classMain_1_1views_1_1BatchViewSet.html">Main.views.BatchViewSet</a></div><div class="ttdoc">This is the class controlling the authenticated /rp/batch endpoint.</div><div class="ttdef"><b>Definition:</b> <a href="Main_2views_8py_source.html#l00024">views.py:24</a></div></div>
 <div class="ttc" id="aclassMain_1_1views_1_1BatchViewSet_html_a47ec2845608e6c206b3708fca85b733f"><div class="ttname"><a href="classMain_1_1views_1_1BatchViewSet.html#a47ec2845608e6c206b3708fca85b733f">Main.views.BatchViewSet.get_queryset</a></div><div class="ttdeci">def get_queryset(self)</div><div class="ttdoc">Filters the batches to only show the authenticated users batches.</div><div class="ttdef"><b>Definition:</b> <a href="Main_2views_8py_source.html#l00038">views.py:38</a></div></div>
 <div class="ttc" id="aclassMain_1_1views_1_1BatchViewSet_html_a56db3cf157451764fdf69381e9821d5d"><div class="ttname"><a href="classMain_1_1views_1_1BatchViewSet.html#a56db3cf157451764fdf69381e9821d5d">Main.views.BatchViewSet.create</a></div><div class="ttdeci">def create(self, request, *args, **kwargs)</div><div class="ttdoc">This is the function for handling the POST request to create a batch.</div><div class="ttdef"><b>Definition:</b> <a href="Main_2views_8py_source.html#l00044">views.py:44</a></div></div>
-<div class="ttc" id="aclassMain_1_1views_1_1CodeFileViewSet_html"><div class="ttname"><a href="classMain_1_1views_1_1CodeFileViewSet.html">Main.views.CodeFileViewSet</a></div><div class="ttdef"><b>Definition:</b> <a href="Main_2views_8py_source.html#l00065">views.py:65</a></div></div>
-<div class="ttc" id="aclassMain_1_1views_1_1CodeFileViewSet_html_ae7fddc5f424156911cd3d6e653e8e230"><div class="ttname"><a href="classMain_1_1views_1_1CodeFileViewSet.html#ae7fddc5f424156911cd3d6e653e8e230">Main.views.CodeFileViewSet.get_queryset</a></div><div class="ttdeci">def get_queryset(self)</div><div class="ttdef"><b>Definition:</b> <a href="Main_2views_8py_source.html#l00069">views.py:69</a></div></div>
-<div class="ttc" id="aclassMain_1_1views_1_1DownloadResult_html"><div class="ttname"><a href="classMain_1_1views_1_1DownloadResult.html">Main.views.DownloadResult</a></div><div class="ttdoc">This is the class controlling the authenticated /rp/download endpoint.</div><div class="ttdef"><b>Definition:</b> <a href="Main_2views_8py_source.html#l00076">views.py:76</a></div></div>
-<div class="ttc" id="aclassMain_1_1views_1_1DownloadResult_html_aec0741f93ee70ae95327ea7976929cff"><div class="ttname"><a href="classMain_1_1views_1_1DownloadResult.html#aec0741f93ee70ae95327ea7976929cff">Main.views.DownloadResult.get</a></div><div class="ttdeci">def get(self, request, id)</div><div class="ttdoc">This is the function for handling the GET request.</div><div class="ttdef"><b>Definition:</b> <a href="Main_2views_8py_source.html#l00085">views.py:85</a></div></div>
-<div class="ttc" id="anamespacecore_html_a62946155b08710f13e2f3ff2a3b5e924"><div class="ttname"><a href="namespacecore.html#a62946155b08710f13e2f3ff2a3b5e924">core.result</a></div><div class="ttdeci">def result(final, threshold)</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00175">core.py:175</a></div></div>
+<div class="ttc" id="aclassMain_1_1views_1_1CodeFileViewSet_html"><div class="ttname"><a href="classMain_1_1views_1_1CodeFileViewSet.html">Main.views.CodeFileViewSet</a></div><div class="ttdef"><b>Definition:</b> <a href="Main_2views_8py_source.html#l00066">views.py:66</a></div></div>
+<div class="ttc" id="aclassMain_1_1views_1_1CodeFileViewSet_html_ae7fddc5f424156911cd3d6e653e8e230"><div class="ttname"><a href="classMain_1_1views_1_1CodeFileViewSet.html#ae7fddc5f424156911cd3d6e653e8e230">Main.views.CodeFileViewSet.get_queryset</a></div><div class="ttdeci">def get_queryset(self)</div><div class="ttdef"><b>Definition:</b> <a href="Main_2views_8py_source.html#l00070">views.py:70</a></div></div>
+<div class="ttc" id="aclassMain_1_1views_1_1DownloadResult_html"><div class="ttname"><a href="classMain_1_1views_1_1DownloadResult.html">Main.views.DownloadResult</a></div><div class="ttdoc">This is the class controlling the authenticated /rp/download endpoint.</div><div class="ttdef"><b>Definition:</b> <a href="Main_2views_8py_source.html#l00077">views.py:77</a></div></div>
+<div class="ttc" id="aclassMain_1_1views_1_1DownloadResult_html_aec0741f93ee70ae95327ea7976929cff"><div class="ttname"><a href="classMain_1_1views_1_1DownloadResult.html#aec0741f93ee70ae95327ea7976929cff">Main.views.DownloadResult.get</a></div><div class="ttdeci">def get(self, request, id)</div><div class="ttdoc">This is the function for handling the GET request.</div><div class="ttdef"><b>Definition:</b> <a href="Main_2views_8py_source.html#l00086">views.py:86</a></div></div>
+<div class="ttc" id="anamespacecore_html_a62946155b08710f13e2f3ff2a3b5e924"><div class="ttname"><a href="namespacecore.html#a62946155b08710f13e2f3ff2a3b5e924">core.result</a></div><div class="ttdeci">def result(final, threshold)</div><div class="ttdef"><b>Definition:</b> <a href="core_8py_source.html#l00180">core.py:180</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

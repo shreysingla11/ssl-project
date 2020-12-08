@@ -103,7 +103,7 @@ Static Public Attributes</h2></td></tr>
  <br  />
  GET /auth/profile Get current user's info </p>
 
-<p class="definition">Definition at line <a class="el" href="Authentication_2views_8py_source.html#l00104">104</a> of file <a class="el" href="Authentication_2views_8py_source.html">views.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Authentication_2views_8py_source.html#l00105">105</a> of file <a class="el" href="Authentication_2views_8py_source.html">views.py</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a19cc5755b68b523d87ca59f8c6cfd62c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a19cc5755b68b523d87ca59f8c6cfd62c">&#9670;&nbsp;</a></span>get()</h2>
@@ -141,22 +141,27 @@ Static Public Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>JSON response with current user's data or error response in case of failure </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Authentication_2views_8py_source.html#l00114">114</a> of file <a class="el" href="Authentication_2views_8py_source.html">views.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keyword">def </span>get(self,request):</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="stringliteral">        @brief This is the function for handling the GET request</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="stringliteral">        @param self Default object parameter</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="stringliteral">        @param request Request object</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="stringliteral">        @return JSON response with current user&#39;s data or error response in case of failure</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        print(request.user)</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">if</span> request.user.is_authenticated:</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordflow">return</span> Response(MyUserSerializer(request.user,context={<span class="stringliteral">&#39;request&#39;</span>:request}).data,status=status.HTTP_200_OK)</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordflow">return</span> Response({<span class="stringliteral">&quot;error&quot;</span>:<span class="stringliteral">&quot;User not logged in&quot;</span>},status=status.HTTP_404_NOT_FOUND)</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<p class="definition">Definition at line <a class="el" href="Authentication_2views_8py_source.html#l00115">115</a> of file <a class="el" href="Authentication_2views_8py_source.html">views.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keyword">def </span>get(self,request):</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="stringliteral">        @brief This is the function for handling the GET request</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="stringliteral">        @param self Default object parameter</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="stringliteral">        @param request Request object</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="stringliteral">        @return JSON response with current user&#39;s data or error response in case of failure</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        print(request.user)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">if</span> request.user.is_authenticated:</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            data = MyUserSerializer(request.user,context={<span class="stringliteral">&#39;request&#39;</span>:request}).data</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            data[<span class="stringliteral">&quot;bcount&quot;</span>] = Batch.objects.filter(user=request.user).count()</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            data[<span class="stringliteral">&quot;ccount&quot;</span>] = 0</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keywordflow">for</span> b <span class="keywordflow">in</span> Batch.objects.filter(user=request.user):</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                data[<span class="stringliteral">&quot;ccount&quot;</span>] += CodeFile.objects.filter(batch=b).count()</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordflow">return</span> Response(data,status=status.HTTP_200_OK)</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordflow">return</span> Response({<span class="stringliteral">&quot;error&quot;</span>:<span class="stringliteral">&quot;User not logged in&quot;</span>},status=status.HTTP_404_NOT_FOUND)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -181,7 +186,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Authentication_2views_8py_source.html#l00112">112</a> of file <a class="el" href="Authentication_2views_8py_source.html">views.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Authentication_2views_8py_source.html#l00113">113</a> of file <a class="el" href="Authentication_2views_8py_source.html">views.py</a>.</p>
 
 </div>
 </div>
@@ -205,7 +210,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Authentication_2views_8py_source.html#l00111">111</a> of file <a class="el" href="Authentication_2views_8py_source.html">views.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Authentication_2views_8py_source.html#l00112">112</a> of file <a class="el" href="Authentication_2views_8py_source.html">views.py</a>.</p>
 
 </div>
 </div>

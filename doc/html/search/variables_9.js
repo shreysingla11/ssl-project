@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['model_162',['model',['../classAuthentication_1_1views_1_1ProfileView.html#a958c218d3ba9e22ad70be49eaa69b8ea',1,'Authentication.views.ProfileView.model()'],['../classAuthentication_1_1views_1_1ChangePasswordView.html#a0c65f941ea0553384161f72688c0ee54',1,'Authentication.views.ChangePasswordView.model()']]],
-  ['multi_5fbegin_163',['multi_begin',['../namespacecore.html#ab0e4f7ef79e718a980275105a40dff33',1,'core']]],
-  ['multi_5fend_164',['multi_end',['../namespacecore.html#a07b710ace1a646a67413fc69b8a9533a',1,'core']]],
-  ['myword_165',['myword',['../namespacebagwords.html#a9bf6107d54637129cff258d84c279cff',1,'bagwords.myword()'],['../namespacekgram.html#ae2f3284cd42d2425ae4a0f2a05bd8304',1,'kgram.myword()']]]
+  ['serializer_5fclass_99',['serializer_class',['../classAuthentication_1_1views_1_1UserViewSet.html#a737cb0ebf3420c716259148653d13977',1,'Authentication.views.UserViewSet.serializer_class()'],['../classAuthentication_1_1views_1_1OrganisationViewSet.html#a4e93293d265c73539e89d4a17dda375b',1,'Authentication.views.OrganisationViewSet.serializer_class()'],['../classAuthentication_1_1views_1_1ProfileView.html#aad4ec8dff5b6051a83a1a1e79a5cf1f0',1,'Authentication.views.ProfileView.serializer_class()'],['../classAuthentication_1_1views_1_1ChangePasswordView.html#aa8348fe2e55f64496d0bcf3f57f1bf57',1,'Authentication.views.ChangePasswordView.serializer_class()'],['../classMain_1_1views_1_1BatchViewSet.html#a61ef80503f6db47f98a551c3c5feb9da',1,'Main.views.BatchViewSet.serializer_class()'],['../classMain_1_1views_1_1CodeFileViewSet.html#a187bc888e6e81fcfff819bf2eeffe0f8',1,'Main.views.CodeFileViewSet.serializer_class()']]],
+  ['special_5fchar_100',['special_char',['../namespacecore.html#abe368b7aa890ed8b5008fa11cb50b4cb',1,'core']]]
 ];

@@ -95,7 +95,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="Main_2views_8py_source.html#l00065">65</a> of file <a class="el" href="Main_2views_8py_source.html">views.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Main_2views_8py_source.html#l00066">66</a> of file <a class="el" href="Main_2views_8py_source.html">views.py</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae7fddc5f424156911cd3d6e653e8e230"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae7fddc5f424156911cd3d6e653e8e230">&#9670;&nbsp;</a></span>get_queryset()</h2>
@@ -113,14 +113,14 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Main_2views_8py_source.html#l00069">69</a> of file <a class="el" href="Main_2views_8py_source.html">views.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">def </span>get_queryset(self):</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        btchs = Batch.objects.filter(user = self.request.user)</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        qs = CodeFile.objects.none()</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">for</span> bt <span class="keywordflow">in</span> btchs:</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            qs = qs.union(CodeFile.objects.filter(batch=bt))</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">return</span> qs</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<p class="definition">Definition at line <a class="el" href="Main_2views_8py_source.html#l00070">70</a> of file <a class="el" href="Main_2views_8py_source.html">views.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">def </span>get_queryset(self):</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        btchs = Batch.objects.filter(user = self.request.user)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        qs = CodeFile.objects.none()</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">for</span> bt <span class="keywordflow">in</span> btchs:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            qs = qs.union(CodeFile.objects.filter(batch=bt))</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> qs</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -145,7 +145,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Main_2views_8py_source.html#l00067">67</a> of file <a class="el" href="Main_2views_8py_source.html">views.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Main_2views_8py_source.html#l00068">68</a> of file <a class="el" href="Main_2views_8py_source.html">views.py</a>.</p>
 
 </div>
 </div>
@@ -169,7 +169,7 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Main_2views_8py_source.html#l00066">66</a> of file <a class="el" href="Main_2views_8py_source.html">views.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Main_2views_8py_source.html#l00067">67</a> of file <a class="el" href="Main_2views_8py_source.html">views.py</a>.</p>
 
 </div>
 </div>

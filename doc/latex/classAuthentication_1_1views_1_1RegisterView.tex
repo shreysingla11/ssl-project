@@ -25,7 +25,7 @@ This viewset supports POST request to create a new user~\newline
  ~\newline
  POST /auth/register Creates a new user 
 
-Definition at line 46 of file views.\+py.
+Definition at line 47 of file views.\+py.
 
 
 
@@ -52,28 +52,28 @@ JSON response with created user\textquotesingle{}s data or errors
 \end{DoxyReturn}
 
 
-Definition at line 53 of file views.\+py.
+Definition at line 54 of file views.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{53     \textcolor{keyword}{def }post(self,request):}
-\DoxyCodeLine{54         \textcolor{stringliteral}{"{}"{}"{}!}}
-\DoxyCodeLine{55 \textcolor{stringliteral}{        @brief This is the function for handling the POST request}}
-\DoxyCodeLine{56 \textcolor{stringliteral}{}}
-\DoxyCodeLine{57 \textcolor{stringliteral}{        @param self Default object parameter}}
-\DoxyCodeLine{58 \textcolor{stringliteral}{        @param request Request object with post data fields -\/ 'username','first\_name','last\_name','email','password','org\_pass'}}
-\DoxyCodeLine{59 \textcolor{stringliteral}{}}
-\DoxyCodeLine{60 \textcolor{stringliteral}{        @return JSON response with created user's data or errors}}
-\DoxyCodeLine{61 \textcolor{stringliteral}{        "{}"{}"{}}}
-\DoxyCodeLine{62         org\_pass = request.data.pop(\textcolor{stringliteral}{'org\_pass'},\textcolor{stringliteral}{''})}
-\DoxyCodeLine{63         \textcolor{keywordflow}{if} Organisation.objects.filter(org\_pass=org\_pass).exists():}
-\DoxyCodeLine{64             user\_ser = RegisterSerializer(data=request.data,context=\{\textcolor{stringliteral}{'org'}:Organisation.objects.get(org\_pass=org\_pass)\})}
-\DoxyCodeLine{65             \textcolor{keywordflow}{if} user\_ser.is\_valid():}
-\DoxyCodeLine{66                 user\_ser.save()}
-\DoxyCodeLine{67                 \textcolor{keywordflow}{return} Response(user\_ser.data,status=status.HTTP\_201\_CREATED)}
-\DoxyCodeLine{68             \textcolor{keywordflow}{return} Response(user\_ser.errors,status = status.HTTP\_400\_BAD\_REQUEST)}
-\DoxyCodeLine{69         \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}msg"{}}:\textcolor{stringliteral}{"{}No organization with this passcode"{}}\})}
-\DoxyCodeLine{70 }
+\DoxyCodeLine{54     \textcolor{keyword}{def }post(self,request):}
+\DoxyCodeLine{55         \textcolor{stringliteral}{"{}"{}"{}!}}
+\DoxyCodeLine{56 \textcolor{stringliteral}{        @brief This is the function for handling the POST request}}
+\DoxyCodeLine{57 \textcolor{stringliteral}{}}
+\DoxyCodeLine{58 \textcolor{stringliteral}{        @param self Default object parameter}}
+\DoxyCodeLine{59 \textcolor{stringliteral}{        @param request Request object with post data fields -\/ 'username','first\_name','last\_name','email','password','org\_pass'}}
+\DoxyCodeLine{60 \textcolor{stringliteral}{}}
+\DoxyCodeLine{61 \textcolor{stringliteral}{        @return JSON response with created user's data or errors}}
+\DoxyCodeLine{62 \textcolor{stringliteral}{        "{}"{}"{}}}
+\DoxyCodeLine{63         org\_pass = request.data.pop(\textcolor{stringliteral}{'org\_pass'},\textcolor{stringliteral}{''})}
+\DoxyCodeLine{64         \textcolor{keywordflow}{if} Organisation.objects.filter(org\_pass=org\_pass).exists():}
+\DoxyCodeLine{65             user\_ser = RegisterSerializer(data=request.data,context=\{\textcolor{stringliteral}{'org'}:Organisation.objects.get(org\_pass=org\_pass)\})}
+\DoxyCodeLine{66             \textcolor{keywordflow}{if} user\_ser.is\_valid():}
+\DoxyCodeLine{67                 user\_ser.save()}
+\DoxyCodeLine{68                 \textcolor{keywordflow}{return} Response(user\_ser.data,status=status.HTTP\_201\_CREATED)}
+\DoxyCodeLine{69             \textcolor{keywordflow}{return} Response(user\_ser.errors,status = status.HTTP\_400\_BAD\_REQUEST)}
+\DoxyCodeLine{70         \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}msg"{}}:\textcolor{stringliteral}{"{}No organization with this passcode"{}}\})}
+\DoxyCodeLine{71 }
 
 \end{DoxyCode}
 

@@ -95,7 +95,7 @@ Public Member Functions</h2></td></tr>
  <br  />
  POST /auth/login Login a user </p>
 
-<p class="definition">Definition at line <a class="el" href="Authentication_2views_8py_source.html#l00071">71</a> of file <a class="el" href="Authentication_2views_8py_source.html">views.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Authentication_2views_8py_source.html#l00072">72</a> of file <a class="el" href="Authentication_2views_8py_source.html">views.py</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a3864557eb04db7e1a75bee8e61f1f61e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3864557eb04db7e1a75bee8e61f1f61e">&#9670;&nbsp;</a></span>post()</h2>
@@ -133,33 +133,33 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>JSON response with user's username or error response in case of failure </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Authentication_2views_8py_source.html#l00078">78</a> of file <a class="el" href="Authentication_2views_8py_source.html">views.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">def </span>post(self,request):</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="stringliteral">        @brief This is the function for handling the POST request</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="stringliteral">        @param self Default object parameter</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="stringliteral">        @param request Request object with post data fields - &#39;username&#39;,&#39;password&#39;,&#39;org_pass&#39;</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="stringliteral"></span> </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="stringliteral">        @return JSON response with user&#39;s username or error response in case of failure</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> request.user.is_authenticated:</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            print(request.data)</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            creds = LoginSerializer(data=request.data)</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">if</span> creds.is_valid():</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                print(creds.data.get(<span class="stringliteral">&#39;username&#39;</span>),creds.data.get(<span class="stringliteral">&#39;password&#39;</span>))</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                user = authenticate(username=creds.data.get(<span class="stringliteral">&#39;username&#39;</span>), password=creds.data.get(<span class="stringliteral">&#39;password&#39;</span>))</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                print(user.org.org_pass)</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keywordflow">if</span> user <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span> <span class="keywordflow">and</span> creds.data.get(<span class="stringliteral">&#39;org_pass&#39;</span>) == user.org.org_pass:</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                    login(request,user)</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                    <span class="keywordflow">return</span> Response({<span class="stringliteral">&quot;username&quot;</span>:user.username},status=status.HTTP_202_ACCEPTED)</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    <span class="keywordflow">return</span> Response({<span class="stringliteral">&quot;error&quot;</span>:<span class="stringliteral">&quot;Wrong credentials&quot;</span>},status=status.HTTP_400_BAD_REQUEST)</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                <span class="keywordflow">return</span> Response(creds.errors,status=status.HTTP_400_BAD_REQUEST)</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">return</span> Response({<span class="stringliteral">&quot;error&quot;</span>:<span class="stringliteral">&quot;Already logged in&quot;</span>},status=status.HTTP_400_BAD_REQUEST)</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<p class="definition">Definition at line <a class="el" href="Authentication_2views_8py_source.html#l00079">79</a> of file <a class="el" href="Authentication_2views_8py_source.html">views.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">def </span>post(self,request):</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;!</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="stringliteral">        @brief This is the function for handling the POST request</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="stringliteral">        @param self Default object parameter</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="stringliteral">        @param request Request object with post data fields - &#39;username&#39;,&#39;password&#39;,&#39;org_pass&#39;</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="stringliteral">        @return JSON response with user&#39;s username or error response in case of failure</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">if</span> <span class="keywordflow">not</span> request.user.is_authenticated:</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            print(request.data)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            creds = LoginSerializer(data=request.data)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">if</span> creds.is_valid():</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                print(creds.data.get(<span class="stringliteral">&#39;username&#39;</span>),creds.data.get(<span class="stringliteral">&#39;password&#39;</span>))</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                user = authenticate(username=creds.data.get(<span class="stringliteral">&#39;username&#39;</span>), password=creds.data.get(<span class="stringliteral">&#39;password&#39;</span>))</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="comment">#print(user.org.org_pass)</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keywordflow">if</span> user <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span> <span class="keywordflow">and</span> creds.data.get(<span class="stringliteral">&#39;org_pass&#39;</span>) == user.org.org_pass:</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                    login(request,user)</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                    <span class="keywordflow">return</span> Response({<span class="stringliteral">&quot;username&quot;</span>:user.username},status=status.HTTP_202_ACCEPTED)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                    <span class="keywordflow">return</span> Response({<span class="stringliteral">&quot;error&quot;</span>:<span class="stringliteral">&quot;Wrong credentials&quot;</span>},status=status.HTTP_400_BAD_REQUEST)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <span class="keywordflow">return</span> Response(creds.errors,status=status.HTTP_400_BAD_REQUEST)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">return</span> Response({<span class="stringliteral">&quot;error&quot;</span>:<span class="stringliteral">&quot;Already logged in&quot;</span>},status=status.HTTP_400_BAD_REQUEST)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
 </div><!-- fragment -->
 </div>
 </div>

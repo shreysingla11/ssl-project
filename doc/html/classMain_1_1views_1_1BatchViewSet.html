@@ -172,17 +172,18 @@ Static Public Attributes</h2></td></tr>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="stringliteral">        @return JSON response with created batch&#39;s data or error response in case of failure</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">if</span> request.user.is_authenticated:</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            print(request.data)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            files = request.data.pop(<span class="stringliteral">&#39;files&#39;</span>,<span class="keywordtype">None</span>)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            serializer = self.get_serializer(data=request.data,context={<span class="stringliteral">&#39;user&#39;</span>:request.user,<span class="stringliteral">&#39;files&#39;</span>:files})</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            serializer.is_valid(raise_exception=<span class="keyword">True</span>)</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            self.perform_create(serializer)</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="comment">#headers = self.get_success_headers(serializer.data)</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            print(<span class="stringliteral">&quot;Yessss&quot;</span>)</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">return</span> Response(serializer.data, status=status.HTTP_201_CREATED)</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> Response({<span class="stringliteral">&quot;error&quot;</span>:<span class="stringliteral">&quot;Unauthorized access&quot;</span>},status=status.HTTP_404_NOT_FOUND)</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            request.data._mutable = <span class="keyword">True</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            print(request.data,request.data._mutable)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            files = request.data.pop(<span class="stringliteral">&#39;files&#39;</span>,<span class="keywordtype">None</span>)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            serializer = self.get_serializer(data=request.data,context={<span class="stringliteral">&#39;user&#39;</span>:request.user,<span class="stringliteral">&#39;files&#39;</span>:files})</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            serializer.is_valid(raise_exception=<span class="keyword">True</span>)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            self.perform_create(serializer)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="comment">#headers = self.get_success_headers(serializer.data)</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            print(<span class="stringliteral">&quot;Yessss&quot;</span>)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">return</span> Response(serializer.data, status=status.HTTP_201_CREATED)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> Response({<span class="stringliteral">&quot;error&quot;</span>:<span class="stringliteral">&quot;Unauthorized access&quot;</span>},status=status.HTTP_404_NOT_FOUND)</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
 </div><!-- fragment -->
 </div>
 </div>

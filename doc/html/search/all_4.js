@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['end_24',['end',['../namespacebagwords.html#a7805597c5d4f6f4017c9511629202692',1,'bagwords.end()'],['../namespacekgram.html#a01e51aebc6be85fa67dd19f21b57500f',1,'kgram.end()']]]
+  ['find_5fkeywords_15',['find_keywords',['../namespacecore.html#a024d976aea43275b9de6e268b8f8335f',1,'core']]]
 ];

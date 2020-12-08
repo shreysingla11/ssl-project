@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['norm_61',['norm',['../namespacedebug.html#a212272fbcce8571de688445b790dba02',1,'debug.norm()'],['../namespacemain.html#a22a443c0db6cfe79750626e08bd638bb',1,'main.norm()']]],
-  ['num_62',['num',['../namespacemain2.html#a0ee233ac57343abb9021d91bd57d5685',1,'main2']]]
+  ['onelinecomment_35',['onelinecomment',['../namespacecore.html#a01e4f55cd55381b220fff23c590b2d21',1,'core']]],
+  ['organisationviewset_36',['OrganisationViewSet',['../classAuthentication_1_1views_1_1OrganisationViewSet.html',1,'Authentication::views']]],
+  ['other_5fchars_37',['other_chars',['../namespacecore.html#a2d514c55fa1366f4105a8ce4d82d7aba',1,'core']]]
 ];

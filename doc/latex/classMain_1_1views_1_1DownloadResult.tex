@@ -30,7 +30,7 @@ This viewset supports GET request to download a particular batch\textquotesingle
  ~\newline
  GET /rp/download/\+:uid Returns file response with the required batch\textquotesingle{}s result 
 
-Definition at line 76 of file views.\+py.
+Definition at line 77 of file views.\+py.
 
 
 
@@ -59,34 +59,38 @@ File response with the request batch\textquotesingle{}s result
 \end{DoxyReturn}
 
 
-Definition at line 85 of file views.\+py.
+Definition at line 86 of file views.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{85     \textcolor{keyword}{def }get(self,request,id):}
-\DoxyCodeLine{86         \textcolor{stringliteral}{"{}"{}"{}!}}
-\DoxyCodeLine{87 \textcolor{stringliteral}{        @brief This is the function for handling the GET request}}
-\DoxyCodeLine{88 \textcolor{stringliteral}{}}
-\DoxyCodeLine{89 \textcolor{stringliteral}{        @param self Default object parameter}}
-\DoxyCodeLine{90 \textcolor{stringliteral}{        @param request Request object}}
-\DoxyCodeLine{91 \textcolor{stringliteral}{        @param id The batch ID}}
-\DoxyCodeLine{92 \textcolor{stringliteral}{}}
-\DoxyCodeLine{93 \textcolor{stringliteral}{        @return File response with the request batch's result}}
-\DoxyCodeLine{94 \textcolor{stringliteral}{        "{}"{}"{}}}
-\DoxyCodeLine{95         batch = Batch.objects.filter(user=request.user,id=id).exists()}
-\DoxyCodeLine{96         \textcolor{keywordflow}{if} batch:}
-\DoxyCodeLine{97             batch = Batch.objects.get(id=id)}
-\DoxyCodeLine{98             print(batch.result,\textcolor{stringliteral}{'\(\backslash\)n\(\backslash\)n\(\backslash\)n'})}
-\DoxyCodeLine{99             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'threshold'} \textcolor{keywordflow}{in} request.query\_params:}
-\DoxyCodeLine{100                 threshold = float(request.query\_params.get(\textcolor{stringliteral}{'threshold'}))}
-\DoxyCodeLine{101             \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{102                 threshold = 0.5}
-\DoxyCodeLine{103             res = \mbox{\hyperlink{namespacecore_a62946155b08710f13e2f3ff2a3b5e924}{result}}(json.loads(batch.result),threshold)}
-\DoxyCodeLine{104             f = io.BytesIO(bytes(res,encoding=\textcolor{stringliteral}{'utf-\/8'}))}
-\DoxyCodeLine{105             \textcolor{keywordflow}{return} FileResponse(f,filename=\textcolor{stringliteral}{'result.txt'},as\_attachment=\textcolor{keyword}{True})}
-\DoxyCodeLine{106         \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{107             \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}error"{}}:\textcolor{stringliteral}{"{}Unknown batch"{}}\},status=status.HTTP\_404\_NOT\_FOUND)}
-\DoxyCodeLine{108 }
+\DoxyCodeLine{86     \textcolor{keyword}{def }get(self,request,id):}
+\DoxyCodeLine{87         \textcolor{stringliteral}{"{}"{}"{}!}}
+\DoxyCodeLine{88 \textcolor{stringliteral}{        @brief This is the function for handling the GET request}}
+\DoxyCodeLine{89 \textcolor{stringliteral}{}}
+\DoxyCodeLine{90 \textcolor{stringliteral}{        @param self Default object parameter}}
+\DoxyCodeLine{91 \textcolor{stringliteral}{        @param request Request object}}
+\DoxyCodeLine{92 \textcolor{stringliteral}{        @param id The batch ID}}
+\DoxyCodeLine{93 \textcolor{stringliteral}{}}
+\DoxyCodeLine{94 \textcolor{stringliteral}{        @return File response with the request batch's result}}
+\DoxyCodeLine{95 \textcolor{stringliteral}{        "{}"{}"{}}}
+\DoxyCodeLine{96         batch = Batch.objects.filter(user=request.user,id=id).exists()}
+\DoxyCodeLine{97         \textcolor{keywordflow}{if} batch:}
+\DoxyCodeLine{98             batch = Batch.objects.get(id=id)}
+\DoxyCodeLine{99             print(batch.result,\textcolor{stringliteral}{'\(\backslash\)n\(\backslash\)n\(\backslash\)n'})}
+\DoxyCodeLine{100             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'threshold'} \textcolor{keywordflow}{in} request.query\_params:}
+\DoxyCodeLine{101                 threshold = float(request.query\_params.get(\textcolor{stringliteral}{'threshold'}))}
+\DoxyCodeLine{102             \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{103                 threshold = 0.5}
+\DoxyCodeLine{104             \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{105                 res = \mbox{\hyperlink{namespacecore_a62946155b08710f13e2f3ff2a3b5e924}{result}}(json.loads(batch.result),threshold)}
+\DoxyCodeLine{106                 res = f\textcolor{stringliteral}{"{}Name: \{batch.name\}\(\backslash\)nDescription: \{batch.description\}\(\backslash\)nDate created: \{batch.created\_at.strftime('\%a, \%d \%b \%Y')\}\(\backslash\)n\(\backslash\)n\(\backslash\)n"{}} + res}
+\DoxyCodeLine{107             \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{108                 res = \textcolor{stringliteral}{"{}Invalid files"{}}}
+\DoxyCodeLine{109             f = io.BytesIO(bytes(res,encoding=\textcolor{stringliteral}{'utf-\/8'}))}
+\DoxyCodeLine{110             \textcolor{keywordflow}{return} FileResponse(f,filename=\textcolor{stringliteral}{'result.txt'},as\_attachment=\textcolor{keyword}{True})}
+\DoxyCodeLine{111         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{112             \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}error"{}}:\textcolor{stringliteral}{"{}Unknown batch"{}}\},status=status.HTTP\_404\_NOT\_FOUND)}
+\DoxyCodeLine{113 }
 
 \end{DoxyCode}
 
@@ -100,7 +104,7 @@ Definition at line 85 of file views.\+py.
 
 
 
-Definition at line 83 of file views.\+py.
+Definition at line 84 of file views.\+py.
 
 
 

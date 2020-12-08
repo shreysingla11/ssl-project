@@ -80,17 +80,18 @@ Definition at line 44 of file views.\+py.
 \DoxyCodeLine{51 \textcolor{stringliteral}{        @return JSON response with created batch's data or error response in case of failure}}
 \DoxyCodeLine{52 \textcolor{stringliteral}{        "{}"{}"{}}}
 \DoxyCodeLine{53         \textcolor{keywordflow}{if} request.user.is\_authenticated:}
-\DoxyCodeLine{54             print(request.data)}
-\DoxyCodeLine{55             files = request.data.pop(\textcolor{stringliteral}{'files'},\textcolor{keywordtype}{None})}
-\DoxyCodeLine{56             serializer = self.get\_serializer(data=request.data,context=\{\textcolor{stringliteral}{'user'}:request.user,\textcolor{stringliteral}{'files'}:files\})}
-\DoxyCodeLine{57             serializer.is\_valid(raise\_exception=\textcolor{keyword}{True})}
-\DoxyCodeLine{58             self.perform\_create(serializer)}
-\DoxyCodeLine{59             \textcolor{comment}{\#headers = self.get\_success\_headers(serializer.data)}}
-\DoxyCodeLine{60             print(\textcolor{stringliteral}{"{}Yessss"{}})}
-\DoxyCodeLine{61             \textcolor{keywordflow}{return} Response(serializer.data, status=status.HTTP\_201\_CREATED)}
-\DoxyCodeLine{62         \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}error"{}}:\textcolor{stringliteral}{"{}Unauthorized access"{}}\},status=status.HTTP\_404\_NOT\_FOUND)}
-\DoxyCodeLine{63 }
+\DoxyCodeLine{54             request.data.\_mutable = \textcolor{keyword}{True}}
+\DoxyCodeLine{55             print(request.data,request.data.\_mutable)}
+\DoxyCodeLine{56             files = request.data.pop(\textcolor{stringliteral}{'files'},\textcolor{keywordtype}{None})}
+\DoxyCodeLine{57             serializer = self.get\_serializer(data=request.data,context=\{\textcolor{stringliteral}{'user'}:request.user,\textcolor{stringliteral}{'files'}:files\})}
+\DoxyCodeLine{58             serializer.is\_valid(raise\_exception=\textcolor{keyword}{True})}
+\DoxyCodeLine{59             self.perform\_create(serializer)}
+\DoxyCodeLine{60             \textcolor{comment}{\#headers = self.get\_success\_headers(serializer.data)}}
+\DoxyCodeLine{61             print(\textcolor{stringliteral}{"{}Yessss"{}})}
+\DoxyCodeLine{62             \textcolor{keywordflow}{return} Response(serializer.data, status=status.HTTP\_201\_CREATED)}
+\DoxyCodeLine{63         \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}error"{}}:\textcolor{stringliteral}{"{}Unauthorized access"{}}\},status=status.HTTP\_404\_NOT\_FOUND)}
 \DoxyCodeLine{64 }
+\DoxyCodeLine{65 }
 
 \end{DoxyCode}
 \mbox{\Hypertarget{classMain_1_1views_1_1BatchViewSet_a47ec2845608e6c206b3708fca85b733f}\label{classMain_1_1views_1_1BatchViewSet_a47ec2845608e6c206b3708fca85b733f}} 

@@ -25,7 +25,7 @@ This viewset supports GET request to log out the current user\textquotesingle{}s
  ~\newline
  GET /auth/logout 
 
-Definition at line 129 of file views.\+py.
+Definition at line 135 of file views.\+py.
 
 
 
@@ -52,24 +52,24 @@ JSON response on successful logging out of the current user
 \end{DoxyReturn}
 
 
-Definition at line 136 of file views.\+py.
+Definition at line 142 of file views.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{136     \textcolor{keyword}{def }get(self,request):}
-\DoxyCodeLine{137         \textcolor{stringliteral}{"{}"{}"{}!}}
-\DoxyCodeLine{138 \textcolor{stringliteral}{        @brief This is the function for handling the GET request}}
-\DoxyCodeLine{139 \textcolor{stringliteral}{}}
-\DoxyCodeLine{140 \textcolor{stringliteral}{        @param self Default object parameter}}
-\DoxyCodeLine{141 \textcolor{stringliteral}{        @param request Request object}}
-\DoxyCodeLine{142 \textcolor{stringliteral}{}}
-\DoxyCodeLine{143 \textcolor{stringliteral}{        @return JSON response on successful logging out of the current user}}
-\DoxyCodeLine{144 \textcolor{stringliteral}{        "{}"{}"{}}}
-\DoxyCodeLine{145         print(request.user)}
-\DoxyCodeLine{146         logout(request)}
-\DoxyCodeLine{147         print(request.user)}
-\DoxyCodeLine{148         \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}message"{}}:\textcolor{stringliteral}{"{}Logged out successfully"{}}\})}
-\DoxyCodeLine{149 }
+\DoxyCodeLine{142     \textcolor{keyword}{def }get(self,request):}
+\DoxyCodeLine{143         \textcolor{stringliteral}{"{}"{}"{}!}}
+\DoxyCodeLine{144 \textcolor{stringliteral}{        @brief This is the function for handling the GET request}}
+\DoxyCodeLine{145 \textcolor{stringliteral}{}}
+\DoxyCodeLine{146 \textcolor{stringliteral}{        @param self Default object parameter}}
+\DoxyCodeLine{147 \textcolor{stringliteral}{        @param request Request object}}
+\DoxyCodeLine{148 \textcolor{stringliteral}{}}
+\DoxyCodeLine{149 \textcolor{stringliteral}{        @return JSON response on successful logging out of the current user}}
+\DoxyCodeLine{150 \textcolor{stringliteral}{        "{}"{}"{}}}
+\DoxyCodeLine{151         print(request.user)}
+\DoxyCodeLine{152         logout(request)}
+\DoxyCodeLine{153         print(request.user)}
+\DoxyCodeLine{154         \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}message"{}}:\textcolor{stringliteral}{"{}Logged out successfully"{}}\})}
+\DoxyCodeLine{155 }
 
 \end{DoxyCode}
 

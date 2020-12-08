@@ -23,7 +23,7 @@ tuple \mbox{\hyperlink{classMain_1_1views_1_1CodeFileViewSet_a2295226ead46b240d3
 \doxysubsection{Detailed Description}
 
 
-Definition at line 65 of file views.\+py.
+Definition at line 66 of file views.\+py.
 
 
 
@@ -36,17 +36,17 @@ Definition at line 65 of file views.\+py.
 
 
 
-Definition at line 69 of file views.\+py.
+Definition at line 70 of file views.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{69     \textcolor{keyword}{def }get\_queryset(self):}
-\DoxyCodeLine{70         btchs = Batch.objects.filter(user = self.request.user)}
-\DoxyCodeLine{71         qs = CodeFile.objects.none()}
-\DoxyCodeLine{72         \textcolor{keywordflow}{for} bt \textcolor{keywordflow}{in} btchs:}
-\DoxyCodeLine{73             qs = qs.union(CodeFile.objects.filter(batch=bt))}
-\DoxyCodeLine{74         \textcolor{keywordflow}{return} qs}
-\DoxyCodeLine{75 }
+\DoxyCodeLine{70     \textcolor{keyword}{def }get\_queryset(self):}
+\DoxyCodeLine{71         btchs = Batch.objects.filter(user = self.request.user)}
+\DoxyCodeLine{72         qs = CodeFile.objects.none()}
+\DoxyCodeLine{73         \textcolor{keywordflow}{for} bt \textcolor{keywordflow}{in} btchs:}
+\DoxyCodeLine{74             qs = qs.union(CodeFile.objects.filter(batch=bt))}
+\DoxyCodeLine{75         \textcolor{keywordflow}{return} qs}
+\DoxyCodeLine{76 }
 
 \end{DoxyCode}
 
@@ -60,7 +60,7 @@ Definition at line 69 of file views.\+py.
 
 
 
-Definition at line 67 of file views.\+py.
+Definition at line 68 of file views.\+py.
 
 \mbox{\Hypertarget{classMain_1_1views_1_1CodeFileViewSet_a187bc888e6e81fcfff819bf2eeffe0f8}\label{classMain_1_1views_1_1CodeFileViewSet_a187bc888e6e81fcfff819bf2eeffe0f8}} 
 \index{Main.views.CodeFileViewSet@{Main.views.CodeFileViewSet}!serializer\_class@{serializer\_class}}
@@ -70,7 +70,7 @@ Definition at line 67 of file views.\+py.
 
 
 
-Definition at line 66 of file views.\+py.
+Definition at line 67 of file views.\+py.
 
 
 

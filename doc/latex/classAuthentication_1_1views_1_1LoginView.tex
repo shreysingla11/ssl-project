@@ -25,7 +25,7 @@ This viewset supports POST request to login a user~\newline
  ~\newline
  POST /auth/login Login a user 
 
-Definition at line 71 of file views.\+py.
+Definition at line 72 of file views.\+py.
 
 
 
@@ -52,36 +52,36 @@ JSON response with user\textquotesingle{}s username or error response in case of
 \end{DoxyReturn}
 
 
-Definition at line 78 of file views.\+py.
+Definition at line 79 of file views.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{78     \textcolor{keyword}{def }post(self,request):}
-\DoxyCodeLine{79         \textcolor{stringliteral}{"{}"{}"{}!}}
-\DoxyCodeLine{80 \textcolor{stringliteral}{        @brief This is the function for handling the POST request}}
-\DoxyCodeLine{81 \textcolor{stringliteral}{}}
-\DoxyCodeLine{82 \textcolor{stringliteral}{        @param self Default object parameter}}
-\DoxyCodeLine{83 \textcolor{stringliteral}{        @param request Request object with post data fields -\/ 'username','password','org\_pass'}}
-\DoxyCodeLine{84 \textcolor{stringliteral}{}}
-\DoxyCodeLine{85 \textcolor{stringliteral}{        @return JSON response with user's username or error response in case of failure}}
-\DoxyCodeLine{86 \textcolor{stringliteral}{        "{}"{}"{}}}
-\DoxyCodeLine{87         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} request.user.is\_authenticated:}
-\DoxyCodeLine{88             print(request.data)}
-\DoxyCodeLine{89             creds = LoginSerializer(data=request.data)}
-\DoxyCodeLine{90             \textcolor{keywordflow}{if} creds.is\_valid():}
-\DoxyCodeLine{91                 print(creds.data.get(\textcolor{stringliteral}{'username'}),creds.data.get(\textcolor{stringliteral}{'password'}))}
-\DoxyCodeLine{92                 user = authenticate(username=creds.data.get(\textcolor{stringliteral}{'username'}), password=creds.data.get(\textcolor{stringliteral}{'password'}))}
-\DoxyCodeLine{93                 print(user.org.org\_pass)}
-\DoxyCodeLine{94                 \textcolor{keywordflow}{if} user \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} creds.data.get(\textcolor{stringliteral}{'org\_pass'}) == user.org.org\_pass:}
-\DoxyCodeLine{95                     login(request,user)}
-\DoxyCodeLine{96                     \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}username"{}}:user.username\},status=status.HTTP\_202\_ACCEPTED)}
-\DoxyCodeLine{97                 \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{98                     \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}error"{}}:\textcolor{stringliteral}{"{}Wrong credentials"{}}\},status=status.HTTP\_400\_BAD\_REQUEST)}
-\DoxyCodeLine{99             \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{100                 \textcolor{keywordflow}{return} Response(creds.errors,status=status.HTTP\_400\_BAD\_REQUEST)}
-\DoxyCodeLine{101         \textcolor{keywordflow}{else}:}
-\DoxyCodeLine{102             \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}error"{}}:\textcolor{stringliteral}{"{}Already logged in"{}}\},status=status.HTTP\_400\_BAD\_REQUEST)}
-\DoxyCodeLine{103 }
+\DoxyCodeLine{79     \textcolor{keyword}{def }post(self,request):}
+\DoxyCodeLine{80         \textcolor{stringliteral}{"{}"{}"{}!}}
+\DoxyCodeLine{81 \textcolor{stringliteral}{        @brief This is the function for handling the POST request}}
+\DoxyCodeLine{82 \textcolor{stringliteral}{}}
+\DoxyCodeLine{83 \textcolor{stringliteral}{        @param self Default object parameter}}
+\DoxyCodeLine{84 \textcolor{stringliteral}{        @param request Request object with post data fields -\/ 'username','password','org\_pass'}}
+\DoxyCodeLine{85 \textcolor{stringliteral}{}}
+\DoxyCodeLine{86 \textcolor{stringliteral}{        @return JSON response with user's username or error response in case of failure}}
+\DoxyCodeLine{87 \textcolor{stringliteral}{        "{}"{}"{}}}
+\DoxyCodeLine{88         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} request.user.is\_authenticated:}
+\DoxyCodeLine{89             print(request.data)}
+\DoxyCodeLine{90             creds = LoginSerializer(data=request.data)}
+\DoxyCodeLine{91             \textcolor{keywordflow}{if} creds.is\_valid():}
+\DoxyCodeLine{92                 print(creds.data.get(\textcolor{stringliteral}{'username'}),creds.data.get(\textcolor{stringliteral}{'password'}))}
+\DoxyCodeLine{93                 user = authenticate(username=creds.data.get(\textcolor{stringliteral}{'username'}), password=creds.data.get(\textcolor{stringliteral}{'password'}))}
+\DoxyCodeLine{94                 \textcolor{comment}{\#print(user.org.org\_pass)}}
+\DoxyCodeLine{95                 \textcolor{keywordflow}{if} user \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} creds.data.get(\textcolor{stringliteral}{'org\_pass'}) == user.org.org\_pass:}
+\DoxyCodeLine{96                     login(request,user)}
+\DoxyCodeLine{97                     \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}username"{}}:user.username\},status=status.HTTP\_202\_ACCEPTED)}
+\DoxyCodeLine{98                 \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{99                     \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}error"{}}:\textcolor{stringliteral}{"{}Wrong credentials"{}}\},status=status.HTTP\_400\_BAD\_REQUEST)}
+\DoxyCodeLine{100             \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{101                 \textcolor{keywordflow}{return} Response(creds.errors,status=status.HTTP\_400\_BAD\_REQUEST)}
+\DoxyCodeLine{102         \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{103             \textcolor{keywordflow}{return} Response(\{\textcolor{stringliteral}{"{}error"{}}:\textcolor{stringliteral}{"{}Already logged in"{}}\},status=status.HTTP\_400\_BAD\_REQUEST)}
+\DoxyCodeLine{104 }
 
 \end{DoxyCode}
 

@@ -32,7 +32,7 @@ This viewset supports GET requests to create objects of the Orgaisation model~\n
  ~\newline
  GET /orgs Returns the current user\textquotesingle{}s organisation 
 
-Definition at line 28 of file views.\+py.
+Definition at line 29 of file views.\+py.
 
 
 
@@ -49,17 +49,17 @@ Filters the organisations to only show the authenticated users organisation.
 
 
 
-Definition at line 39 of file views.\+py.
+Definition at line 40 of file views.\+py.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{39     \textcolor{keyword}{def }get\_queryset(self):}
-\DoxyCodeLine{40         \textcolor{stringliteral}{"{}"{}"{}!}}
-\DoxyCodeLine{41 \textcolor{stringliteral}{        Filters the organisations to only show the authenticated users organisation}}
-\DoxyCodeLine{42 \textcolor{stringliteral}{        "{}"{}"{}}}
-\DoxyCodeLine{43         \textcolor{keywordflow}{return} Organisation.objects.filter(org\_pass=self.request.user.org.org\_pass)}
-\DoxyCodeLine{44 }
+\DoxyCodeLine{40     \textcolor{keyword}{def }get\_queryset(self):}
+\DoxyCodeLine{41         \textcolor{stringliteral}{"{}"{}"{}!}}
+\DoxyCodeLine{42 \textcolor{stringliteral}{        Filters the organisations to only show the authenticated users organisation}}
+\DoxyCodeLine{43 \textcolor{stringliteral}{        "{}"{}"{}}}
+\DoxyCodeLine{44         \textcolor{keywordflow}{return} Organisation.objects.filter(org\_pass=self.request.user.org.org\_pass)}
 \DoxyCodeLine{45 }
+\DoxyCodeLine{46 }
 
 \end{DoxyCode}
 
@@ -73,7 +73,7 @@ Definition at line 39 of file views.\+py.
 
 
 
-Definition at line 37 of file views.\+py.
+Definition at line 38 of file views.\+py.
 
 \mbox{\Hypertarget{classAuthentication_1_1views_1_1OrganisationViewSet_a4e93293d265c73539e89d4a17dda375b}\label{classAuthentication_1_1views_1_1OrganisationViewSet_a4e93293d265c73539e89d4a17dda375b}} 
 \index{Authentication.views.OrganisationViewSet@{Authentication.views.OrganisationViewSet}!serializer\_class@{serializer\_class}}
@@ -83,7 +83,7 @@ Definition at line 37 of file views.\+py.
 
 
 
-Definition at line 36 of file views.\+py.
+Definition at line 37 of file views.\+py.
 
 
 

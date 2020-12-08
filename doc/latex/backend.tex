@@ -1,0 +1,400 @@
+\label{backend_md_backendREADME}%
+\Hypertarget{backend_md_backendREADME}%
+ This folder contains the implementation for the backend API for the Red\+Plag webapp. The framework used for this implementation is Django REST framework on top of the Django framework. It provides API for registration and authentication of users as well as updation of passwords. It also provides an API to perform CRUD operations on batches of sources code files.\hypertarget{backend_autotoc_md0}{}\doxysection{API}\label{backend_autotoc_md0}
+The API consists of two major parts -\/\+:\hypertarget{backend_autotoc_md1}{}\doxysubsection{Authentication API}\label{backend_autotoc_md1}
+This API provides endpoints for session as well token authentication to authenticate users The routes offered by the API are \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\# The base path is /auth}
+\DoxyCodeLine{router = DefaultRouter()}
+\DoxyCodeLine{router.register(r'orgs',views.OrganisationViewSet,basename='organisation')}
+\DoxyCodeLine{}
+\DoxyCodeLine{urlpatterns = [}
+\DoxyCodeLine{    path('',include(router.urls)),}
+\DoxyCodeLine{    path('register/', RegisterView.as\_view()),}
+\DoxyCodeLine{    path('login/', LoginView.as\_view()),}
+\DoxyCodeLine{    path('profile/',ProfileView.as\_view()),}
+\DoxyCodeLine{    path('logout/',LogoutView.as\_view()),}
+\DoxyCodeLine{    path('changepassword/',ChangePasswordView.as\_view()),}
+\DoxyCodeLine{    path('token/',CustomAuthToken.as\_view()),}
+\DoxyCodeLine{    path('token-\/logout/',TokenLogoutView.as\_view())}
+\DoxyCodeLine{] }
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Register
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+/register   &POST   &Registraion of new users   \\\cline{1-3}
+\end{longtabu}
+
+
+~\newline
+This is the request
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Datatype   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Datatype   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+username   &string   &Username for loggin in (unique)    \\\cline{1-3}
+first\+\_\+name   &string   &First name of user    \\\cline{1-3}
+last\+\_\+name   &string   &Last name of user    \\\cline{1-3}
+email   &string   &User\textquotesingle{}s email address    \\\cline{1-3}
+password   &string   &Login Password    \\\cline{1-3}
+org\+\_\+pass   &string   &Passcode of a registered organisation   \\\cline{1-3}
+\end{longtabu}
+
+
+~\newline
+This is the request body in JSON
+
+
+\begin{DoxyItemize}
+\item Login
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+/login   &POST   &Login into your account   \\\cline{1-3}
+\end{longtabu}
+
+
+~\newline
+This is the request
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Datatype   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Datatype   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+username   &string   &Username    \\\cline{1-3}
+password   &string   &Login Password    \\\cline{1-3}
+org\+\_\+pass   &string   &Passcode of user\textquotesingle{}s organisation   \\\cline{1-3}
+\end{longtabu}
+
+
+~\newline
+This is the request body in JSON
+
+
+\begin{DoxyItemize}
+\item Logout
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+/logout   &GET   &Logout your session   \\\cline{1-3}
+\end{longtabu}
+
+
+~\newline
+This is the request ~\newline
+This request does not have search parameters but must be sent with session headers
+
+
+\begin{DoxyItemize}
+\item Profile
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+/profile   &POST   &Return\textquotesingle{}s the current user\textquotesingle{}s data   \\\cline{1-3}
+\end{longtabu}
+
+
+~\newline
+This is the request ~\newline
+This request does not have search parameters but must be sent with session headers. ~\newline
+Return\textquotesingle{} user data in JSON format
+
+
+\begin{DoxyItemize}
+\item Change password
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+/changepassword   &POST   &Change the current user\textquotesingle{}s password   \\\cline{1-3}
+\end{longtabu}
+
+
+~\newline
+This is the request
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Datatype   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Datatype   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+old\+\_\+password   &string   &Current Password    \\\cline{1-3}
+new\+\_\+password   &string   &New password   \\\cline{1-3}
+\end{longtabu}
+
+
+~\newline
+This is the request body in JSON. This nust also be sent with user session headers
+
+
+\begin{DoxyItemize}
+\item Token
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+/token   &POST   &Get the user\textquotesingle{}s token   \\\cline{1-3}
+\end{longtabu}
+
+
+~\newline
+This is the request
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Datatype   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Datatype   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+username   &string   &Username    \\\cline{1-3}
+password   &string   &Login Password    \\\cline{1-3}
+org\+\_\+pass   &string   &Passcode of user\textquotesingle{}s organisation   \\\cline{1-3}
+\end{longtabu}
+
+
+~\newline
+This is the request body in JSON.. Return a token for authentication on other views
+
+
+\begin{DoxyItemize}
+\item Logout\+Token
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+/token-\/logout   &POST   &Delete the user\textquotesingle{}s token if present   \\\cline{1-3}
+\end{longtabu}
+
+
+~\newline
+This is the request ~\newline
+This request does not have any params. Returns a JSON response with success message\hypertarget{backend_autotoc_md2}{}\doxysubsection{Batch API}\label{backend_autotoc_md2}
+This API handles operations on batches of source code files submitted for evaluation The routes offered by the API are \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\# The base path is /rp}
+\DoxyCodeLine{router = DefaultRouter()}
+\DoxyCodeLine{router.register(r'batch', BatchViewSet,basename='batch')}
+\DoxyCodeLine{}
+\DoxyCodeLine{urlpatterns = [}
+\DoxyCodeLine{    path('',include(router.urls)),}
+\DoxyCodeLine{    path('download/<uuid:id>',DownloadResult.as\_view()),}
+\DoxyCodeLine{] }
+
+\end{DoxyCode}
+
+\begin{DoxyItemize}
+\item List Batch
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+/batch/\+:uid(optional)   &GET   &Returns a list of users batches or a particular batch with ID=uid   \\\cline{1-3}
+\end{longtabu}
+
+
+~\newline
+This is the request ~\newline
+It returns JSON response with information about the current user\textquotesingle{}s batches
+
+
+\begin{DoxyItemize}
+\item Create Batch
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+/batch   &POST   &Create a new batch for the current user   \\\cline{1-3}
+\end{longtabu}
+
+
+~\newline
+This is the request
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Datatype   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Datatype   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+name   &string   &Name of the batch    \\\cline{1-3}
+description   &string   &Short description for the batch    \\\cline{1-3}
+language   &\mbox{[}\char`\"{}\+C++\char`\"{},\char`\"{}\+Python\char`\"{},\char`\"{}\+Other\char`\"{}\mbox{]}   &Language used in code files    \\\cline{1-3}
+inline\+\_\+comment   &string   &Character(s) to start an inline comment    \\\cline{1-3}
+multi\+\_\+begin   &string   &Character(s) to start a multiline comment    \\\cline{1-3}
+multi\+\_\+end   &string   &Character(s) to end a multiline comment    \\\cline{1-3}
+files   &File\mbox{[}\mbox{]}   &List of files to be uploaded   \\\cline{1-3}
+\end{longtabu}
+
+
+~\newline
+This is the request body in {\itshape {\bfseries{multipart/form-\/data}}}
+
+
+\begin{DoxyItemize}
+\item Delete Batch
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+/batch/\+:uid   &DELETE   &Deletes the batch with ID=uid   \\\cline{1-3}
+\end{longtabu}
+
+
+~\newline
+This is the request ~\newline
+Can only destroy the request\textquotesingle{}s user\textquotesingle{}s batches.\+Returns a success or failure message accordingly.
+
+
+\begin{DoxyItemize}
+\item Download Result
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Route   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Method   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+/download/\+:uid   &GET   &Returns a file containing results of plagiarism check on the specified batch   \\\cline{1-3}
+\end{longtabu}
+
+
+~\newline
+This is the request ~\newline
+This must also be sent with session or token headers. It return a File response.\hypertarget{backend_autotoc_md3}{}\doxysection{Usage}\label{backend_autotoc_md3}
+Clone the repository, navigate into the project diectory and run the following commands
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$ cd Backend}
+\DoxyCodeLine{\$ pip install -\/r requirements.txt}
+\DoxyCodeLine{\$ python3 manage.py makemigrations}
+\DoxyCodeLine{\$ python3 manage.py migrate}
+\DoxyCodeLine{\$ python3 manage.py runserver }
+
+\end{DoxyCode}
+ 
