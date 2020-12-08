@@ -1,14 +1,15 @@
-"""@package docstring
+"""!
+@package core
 This module describes the logic used to find plagiarism for code files.
 We have used k-grams models for computing similarity scores.
 Note that the logic autodetects Basefile efficiently and neutralises it's 
 affect. Hence giving an option to add base file snippet is redundant
-
-Authors:
-Bhavnoor Singh Marok	190050027
-Jayesh Singla			190050053
-Shrey Singla			190050114
-Tanu Goyal				190050123
+\n\n
+Authors:\n
+Bhavnoor Singh Marok	190050027\n
+Jayesh Singla			190050053\n
+Shrey Singla			190050114\n
+Tanu Goyal				190050123\n
 """
 
 import numpy as np
