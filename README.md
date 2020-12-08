@@ -26,7 +26,7 @@ Go to the respective folders for more detailed documentation.
 
 ## Usage
 ```
-$ cd Backend && pip install -r requirments.txt &
+$ cd Backend && pip install -r requirements.txt &
 $ cd Frontend && npm install & 
 $ ./run.sh
 ```
