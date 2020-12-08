@@ -1,5 +1,5 @@
 # Core Logic
-
+A K-gram based model for computing code similarity matrix capable of auto detecting keywords and base file snippets. Specialized for C++, the model is generalized for any language. As the logical part (example arithematic/logical operations) of code contributes the most towards score, the model is able to make accurate computations invariant of base file code and various plagiarism tactics.
 ## The Algorithm
 <ol>
   <li>Keyword detection: The programme traverses through a number of file in the batch and computes the document frequency of each frequency of each word it traverses.
