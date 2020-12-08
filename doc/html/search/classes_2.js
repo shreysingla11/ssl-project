@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['downloadresult_55',['DownloadResult',['../classMain_1_1views_1_1DownloadResult.html',1,'Main::views']]]
+  ['downloadresult_57',['DownloadResult',['../classMain_1_1views_1_1DownloadResult.html',1,'Main::views']]]
 ];

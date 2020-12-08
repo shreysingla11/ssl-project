@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['views_2epy_84',['views.py',['../Authentication_2views_8py.html',1,'(Global Namespace)'],['../Main_2views_8py.html',1,'(Global Namespace)']]]
+  ['z_53',['z',['../namespacedebug.html#a2f5bbcd85298feb7f074836a045ec1eb',1,'debug']]]
 ];

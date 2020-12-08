@@ -2,8 +2,7 @@
 This module describes the logic used to find plagiarism for code files.
 We have used k-grams models for computing similarity scores.
 Note that the logic autodetects Basefile efficiently and neutralises it's 
-affect. Hence giving an option to add base file snippet was redundant, but 
-we dont want this bonus feature to be ignored while evaluation.
+affect. Hence giving an option to add base file snippet is redundant
 
 Authors:
 Bhavnoor Singh Marok	190050027

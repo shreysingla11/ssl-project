@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['update_47',['update',['../classAuthentication_1_1views_1_1ChangePasswordView.html#a24eee992009b8a4bc7d1c63a6310f789',1,'Authentication::views::ChangePasswordView']]],
-  ['userviewset_48',['UserViewSet',['../classAuthentication_1_1views_1_1UserViewSet.html',1,'Authentication::views']]]
+  ['terminalreadme_2emd_48',['terminalREADME.md',['../terminalREADME_8md.html',1,'']]]
 ];

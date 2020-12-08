@@ -1,0 +1,26 @@
+This is a basic terminal client for the Red\+Plag API developed using Node\+JS. This client uses token authentication to authenticate the user and interacts with the Red\+Plag Django server to handle requests.\hypertarget{md_terminalREADME_autotoc_md9}{}\doxysection{Installation}\label{md_terminalREADME_autotoc_md9}
+Clone the project repository and cd into into it. Then execute the following commands 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$ cd terminal-\/client}
+\DoxyCodeLine{\$ npm i }
+
+\end{DoxyCode}
+ \hypertarget{md_terminalREADME_autotoc_md10}{}\doxysection{Usage}\label{md_terminalREADME_autotoc_md10}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$ node main.js}
+\DoxyCodeLine{\$ help }
+
+\end{DoxyCode}
+ This will open an interactive console where you can execute commands \hypertarget{md_terminalREADME_autotoc_md11}{}\doxysection{Commands}\label{md_terminalREADME_autotoc_md11}
+
+\begin{DoxyEnumerate}
+\item \#\#\# Login \`{}\`{}\`{} \$ login \`{}\`{}\`{} Login using your username, password and organisation passcode. This creates an authorization token which you include in subsequent requests.
+\item \#\#\# Create \`{}\`{}\`{} \$ create \`{}\`{}\`{} Create a new batch of code files. The user needs to be logged in for this. You need to have all files in a single folder.
+\item \#\#\# Batch listing, retreiving and deletion \`{}\`{}\`{} \$ batch \mbox{[}-\/d,--delete\mbox{]} \mbox{[}uid\mbox{]} \`{}\`{}\`{} Prints the list of batches or download result of batch with ID = uid. ~\newline
+FLAG -\/d,--delete Deletes the batch with specified uid
+\item \#\#\# Logout
+
+\`{}\`{}\`{} \$ logout \`{}\`{}\`{} Logout from Red Plag server and dete the generated token
+\item \#\#\# Exit \`{}\`{}\`{} \$ exit \`{}\`{}\`{} Exits the application 
+\end{DoxyEnumerate}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['views_2epy_72',['views.py',['../Authentication_2views_8py.html',1,'(Global Namespace)'],['../Main_2views_8py.html',1,'(Global Namespace)']]]
+  ['terminalreadme_2emd_74',['terminalREADME.md',['../terminalREADME_8md.html',1,'']]]
 ];
